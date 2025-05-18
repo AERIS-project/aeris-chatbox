@@ -39,11 +39,33 @@ h1 strong {
   border: 1px solid #222;
   border-radius: 10px;
   padding: 15px;
-  height: 300px;
+  height: 350px;
   overflow-y: auto;
   margin: 20px 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   text-align: left;
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user {
+  background-color: #1e1e1e;
+  align-self: flex-end;
+  margin-left: auto;
+  border: 1px solid #444;
+}
+
+.aeris {
+  background-color: #182033;
+  color: #d8e6ff;
+  border-left: 3px solid #8fb5dd;
+  border-radius: 8px;
 }
 
 .input-area {
