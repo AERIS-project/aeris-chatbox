@@ -5,6 +5,7 @@ const userInput = document.getElementById("user-input");
 
 function appendMessage(role, text) {
   const message = document.createElement("div");
+  message.className = "message " + (role === "You" ? "user" : "aeris");
   message.innerHTML = `<strong>${role}:</strong> ${text}`;
   chatWindow.appendChild(message);
   chatWindow.scrollTop = chatWindow.scrollHeight;
