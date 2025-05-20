@@ -95,3 +95,25 @@ button {
 button:hover {
   background-color: #4a4a4a;
 }
+
+.comparison-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.comparison-columns > div {
+  flex: 1;
+}
+
+.compare-button {
+  display: inline-block;
+  margin-top: 20px;
+  color: #8fb5dd;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.compare-button:hover {
+  text-decoration: underline;
+}
+
