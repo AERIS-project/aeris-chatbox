@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare AERIS vs Baseline</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Compare AERIS vs Baseline</h1>
+    <input type="text" id="compare-input" placeholder="Enter a message to compare..." />
+    <button onclick="runComparison()">Compare</button>
+    <div class="comparison-columns">
+      <div>
+        <h2>Gemma-27B (No AERIS)</h2>
+        <div class="chat-window" id="baseline-window"></div>
+      </div>
+      <div>
+        <h2>AERIS (Gemma-27B)</h2>
+        <div class="chat-window" id="aeris-window"></div>
+      </div>
+    </div>
+    <a href="index.html" class="compare-button">← Back to AERIS</a>
+  </div>
+  <script src="script-compare.js"></script>
+</body>
+</html>
