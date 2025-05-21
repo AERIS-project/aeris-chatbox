@@ -18,7 +18,9 @@ async function runComparison() {
     method: "POST",
     headers,
     body: JSON.stringify({
-      model: "google/gemma-3-27b-it", // ou autre, selon ce que tu veux comparer
+      model: "google/gemma-3-27b-it",
+      temperature: 1.0,
+      max_tokens: 800,
       messages: [{ role: "user", content: input }]
     })
   }).then(r => r.json());
@@ -31,7 +33,9 @@ async function runComparison() {
     method: "POST",
     headers,
     body: JSON.stringify({
-      model: "gpt-4", // ou "gemma-27b-it" (nom utilisé côté Render)
+      model: "gpt-4", // ou "google/gemma-3-27b-it" si AERIS tourne dessus
+      temperature: 1.0,
+      max_tokens: 800,
       messages: [
         { role: "system", content: "You are AERIS, a dialectical reasoning assistant." },
         { role: "user", content: input }
