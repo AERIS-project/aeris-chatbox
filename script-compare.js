@@ -18,7 +18,7 @@ async function runComparison() {
     method: "POST",
     headers,
     body: JSON.stringify({
-      model: "google/gemma-27b-it", // ou autre, selon ce que tu veux comparer
+      model: "google/gemma-3-27b-it", // ou autre, selon ce que tu veux comparer
       messages: [{ role: "user", content: input }]
     })
   }).then(r => r.json());
