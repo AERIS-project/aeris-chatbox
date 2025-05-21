@@ -1,5 +1,5 @@
 const aerisEndpoint = "https://aeris-framework.onrender.com/v1/chat/completions";
-const baselineEndpoint = "https://openrouter.ai/api/v1/chat/completions"; // Hypothétique endpoint public brut
+const baselineEndpoint = "https://aeris-framework.onrender.com/v1/chat/baseline";
 
 const headers = {
   "Content-Type": "application/json"
