@@ -26,7 +26,7 @@ async function sendMessage() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      model: "gpt-4",
+      model: "google/gemma-3-27b-it",
       messages: [
         { role: "system", content: "You are AERIS, a dialectical reasoning assistant." },
         { role: "user", content: input }
