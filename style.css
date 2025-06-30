@@ -12,7 +12,7 @@ body {
 
 .container {
   text-align: center;
-  max-width: 800px;
+  max-width: 1200px;  /* Élargi de 800px à 1200px */
   width: 100%;
   padding: 20px;
 }
@@ -40,7 +40,7 @@ h1 strong {
   border: 1px solid #222;
   border-radius: 10px;
   padding: 15px;
-  height: 350px;
+  height: 450px;  /* Augmenté de 350px à 450px */
   overflow-y: auto;
   margin: 20px 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -51,8 +51,9 @@ h1 strong {
   margin-bottom: 12px;
   padding: 10px 14px;
   border-radius: 8px;
-  max-width: 80%;
+  max-width: 85%;  /* Augmenté de 80% à 85% */
   word-wrap: break-word;
+  position: relative;
 }
 
 .user {
@@ -67,6 +68,47 @@ h1 strong {
   color: #d8e6ff;
   border-left: 3px solid #8fb5dd;
   border-radius: 8px;
+  padding-right: 45px;  /* Espace pour le bouton copier */
+  line-height: 1.6;  /* Meilleur espacement des lignes */
+}
+
+/* Améliorer l'espacement dans les messages AERIS */
+.aeris p {
+  margin: 0 0 10px 0;
+}
+
+.aeris br + br {
+  display: block;
+  content: "";
+  margin: 10px 0;
+}
+
+/* Bouton copier pour les messages AERIS */
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: 1px solid #3a5270;
+  color: #8fb5dd;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  opacity: 1;
+  background-color: #3a5270;
+  color: #fff;
+}
+
+.copy-button.copied {
+  background-color: #2d5a2d;
+  border-color: #4a8c4a;
+  color: #90ee90;
 }
 
 .input-area {
@@ -117,3 +159,21 @@ button:hover {
   text-decoration: underline;
 }
 
+/* Scrollbar personnalisée pour la fenêtre de chat */
+.chat-window::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+  background: #3a5270;
+  border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb:hover {
+  background: #4a6380;
+}
