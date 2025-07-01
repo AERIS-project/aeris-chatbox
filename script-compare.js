@@ -70,8 +70,17 @@ async function runComparison() {
   const input = document.getElementById("compare-input").value.trim();
   if (!input) return;
 
-  document.getElementById("baseline-window").innerHTML = "<em>Loading…</em>";
-  document.getElementById("aeris-window").innerHTML = "<em>Thinking…</em>";
+  // Animation pour les deux fenêtres
+  const loadingHTML = `<em>Loading</em><span class="typing-indicator"><span>.</span><span>.</span><span>.</span></span>`;
+  
+  const thinkingHTML = `<em>Thinking</em><span class="typing-indicator"><span>.</span><span>.</span><span>.</span></span>`;
+  
+  document.getElementById("baseline-window").innerHTML = loadingHTML;
+  document.getElementById("aeris-window").innerHTML = thinkingHTML;
+  
+  // Temps de départ pour les deux requêtes
+  const baselineStart = Date.now();
+  const aerisStart = Date.now();
 
   try {
     const baselineResponse = await fetch(baselineEndpoint, {
@@ -89,9 +98,20 @@ async function runComparison() {
       ? (baseline.choices?.[0]?.message?.content || "No response.") 
       : `Error: ${baseline.detail || 'Failed to fetch baseline response.'}`;
     
+    // Calculer le temps de réponse baseline
+    const baselineTime = ((Date.now() - baselineStart) / 1000).toFixed(1);
+    
     const baselineWindow = document.getElementById("baseline-window");
     baselineWindow.innerHTML = "";
-    baselineWindow.appendChild(createCopyButton("baseline-window", baselineContent));
+    const baselineMessage = createCopyButton("baseline-window", baselineContent);
+    
+    // Ajouter le temps de réponse
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "response-time";
+    timeSpan.textContent = `(${baselineTime}s)`;
+    baselineMessage.insertBefore(timeSpan, baselineMessage.firstChild.nextSibling);
+    
+    baselineWindow.appendChild(baselineMessage);
   } catch (error) {
     const baselineWindow = document.getElementById("baseline-window");
     baselineWindow.innerHTML = "";
@@ -117,9 +137,20 @@ async function runComparison() {
       ? (enriched.choices?.[0]?.message?.content || "No response.") 
       : `Error: ${enriched.detail || 'Failed to fetch AERIS response.'}`;
     
+    // Calculer le temps de réponse AERIS
+    const aerisTime = ((Date.now() - aerisStart) / 1000).toFixed(1);
+    
     const aerisWindow = document.getElementById("aeris-window");
     aerisWindow.innerHTML = "";
-    aerisWindow.appendChild(createCopyButton("aeris-window", enrichedContent));
+    const aerisMessage = createCopyButton("aeris-window", enrichedContent);
+    
+    // Ajouter le temps de réponse
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "response-time";
+    timeSpan.textContent = `(${aerisTime}s)`;
+    aerisMessage.insertBefore(timeSpan, aerisMessage.firstChild.nextSibling);
+    
+    aerisWindow.appendChild(aerisMessage);
   } catch (error) {
     const aerisWindow = document.getElementById("aeris-window");
     aerisWindow.innerHTML = "";
