@@ -177,3 +177,26 @@ button:hover {
 .chat-window::-webkit-scrollbar-thumb:hover {
   background: #4a6380;
 }
+
+/* Animation des trois points - Version simple et fiable */
+.typing-indicator {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: monospace;
+  letter-spacing: 2px;
+  color: #8fb5dd;
+}
+
+/* Style pour le temps de réponse */
+.response-time {
+  font-size: 0.75rem;
+  color: #6a7a8a;
+  margin-left: 10px;
+  opacity: 0.7;
+}
+
+/* Style pour le texte "Thinking" */
+.aeris em {
+  font-style: italic;
+  color: #b8c8d8;
+}
