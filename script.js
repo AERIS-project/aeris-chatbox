@@ -101,7 +101,26 @@ async function sendMessage() {
   appendMessage("You", input);
   userInput.value = "";
 
-  appendMessage("AERIS", "<em>thinking…</em>");
+  // Créer l'indicateur de typing avec animation JavaScript
+  const thinkingMessage = document.createElement("div");
+  thinkingMessage.className = "message aeris";
+  thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
+  chatWindow.appendChild(thinkingMessage);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  
+  // Animation des points
+  const dotsElement = thinkingMessage.querySelector('.typing-indicator');
+  let dots = 0;
+  const dotsInterval = setInterval(() => {
+    dots = (dots + 1) % 4;
+    dotsElement.textContent = '.'.repeat(dots);
+  }, 1000); // Change toutes les secondes
+  
+  // Stocker l'interval pour pouvoir l'arrêter plus tard
+  dotsElement.dataset.intervalId = dotsInterval;
+
+  // Enregistrer le temps de début
+  const startTime = Date.now();
 
   try {
     const response = await fetch(endpoint, {
@@ -121,12 +140,93 @@ async function sendMessage() {
     const data = await response.json();
     const message = data.choices?.[0]?.message?.content || "Error: no response.";
     
-    chatWindow.lastChild.remove(); // remove thinking…
-    appendMessage("AERIS", message);
+    // Calculer le temps de réponse
+    const endTime = Date.now();
+    const responseTime = ((endTime - startTime) / 1000).toFixed(1);
+    
+    // Arrêter l'animation des points
+    const lastMessage = chatWindow.lastChild;
+    const dotsElement = lastMessage.querySelector('.typing-indicator');
+    if (dotsElement && dotsElement.dataset.intervalId) {
+      clearInterval(dotsElement.dataset.intervalId);
+    }
+    
+    chatWindow.lastChild.remove(); // remove typing indicator
+    appendMessageWithTime("AERIS", message, responseTime);
   } catch (error) {
-    chatWindow.lastChild.remove(); // remove thinking…
+    // Arrêter l'animation des points en cas d'erreur
+    const lastMessage = chatWindow.lastChild;
+    const dotsElement = lastMessage.querySelector('.typing-indicator');
+    if (dotsElement && dotsElement.dataset.intervalId) {
+      clearInterval(dotsElement.dataset.intervalId);
+    }
+    
+    chatWindow.lastChild.remove(); // remove typing indicator
     appendMessage("AERIS", "Error: Failed to connect to the server.");
   }
+}
+
+// Nouvelle fonction pour ajouter un message avec le temps de réponse
+function appendMessageWithTime(role, text, responseTime) {
+  const message = document.createElement("div");
+  message.className = "message aeris";
+  
+  // Créer la structure avec le bouton et le temps
+  const strongEl = document.createElement("strong");
+  strongEl.textContent = role + ":";
+  
+  const timeSpan = document.createElement("span");
+  timeSpan.className = "response-time";
+  timeSpan.textContent = `(${responseTime}s)`;
+  
+  const textSpan = document.createElement("span");
+  textSpan.innerHTML = parseBasicMarkdown(text);
+  
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "copy-button";
+  copyBtn.textContent = "Copy";
+  copyBtn.onclick = function() {
+    // Extraire le texte pur (sans HTML)
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = text;
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+    
+    navigator.clipboard.writeText(textContent).then(() => {
+      copyBtn.textContent = "Copied!";
+      copyBtn.classList.add("copied");
+      
+      setTimeout(() => {
+        copyBtn.textContent = "Copy";
+        copyBtn.classList.remove("copied");
+      }, 2000);
+    }).catch(err => {
+      const textArea = document.createElement("textarea");
+      textArea.value = textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add("copied");
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+          copyBtn.classList.remove("copied");
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+      document.body.removeChild(textArea);
+    });
+  };
+  
+  message.appendChild(strongEl);
+  message.appendChild(timeSpan);
+  message.appendChild(document.createTextNode(" "));
+  message.appendChild(textSpan);
+  message.appendChild(copyBtn);
+  
+  chatWindow.appendChild(message);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 function clearChat() {
