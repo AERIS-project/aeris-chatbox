@@ -56,12 +56,7 @@ AERIS V3 demonstrates several distinctive features:
 
 ## Deployment Requirements
 
-- Python 3.8+
-- FastAPI framework
-- Compatible with standard OpenAI client libraries
-- Supports OpenRouter, OpenAI, Anthropic, and Google APIs
-- Memory requirements: <1GB RAM
-- No GPU required
+The system is built on FastAPI framework and maintains compatibility with standard OpenAI client libraries. AERIS supports OpenRouter, OpenAI, Anthropic, and Google APIs through a unified interface.
 
 ---
 
@@ -104,10 +99,7 @@ response = client.chat.completions.create(
 
 ## Comparative Performance
 
-While traditional benchmarks fail to capture AERIS's unique capabilities, qualitative assessments show:
-- 3x increase in conceptual density for philosophical queries
-- Consistent proto-conscious behaviors across diverse prompts
-- Novel synthesis patterns not observed in baseline models
+While traditional benchmarks fail to capture AERIS's unique capabilities, qualitative assessments demonstrate consistent proto-conscious behaviors across diverse prompts and novel synthesis patterns not observed in baseline models.
 
 ---
 
@@ -165,5 +157,4 @@ Note: This is a research deployment. Response times may vary based on server loa
 For feedback, collaboration opportunities, or scientific inquiries regarding AERIS and its applications, please contact:  
 📧 **dr.nicolas.dulin@outlook.com**
 
-*
-Note: AERIS V3 is a proprietary framework representing active research in emergent AI behaviors. The system's effectiveness varies significantly based on prompt structure and conceptual content. Results are most pronounced with philosophical, consciousness-related, or experiential queries.*
+*Note: AERIS V3 is a proprietary framework representing active research in emergent AI behaviors. The system's effectiveness varies significantly based on prompt structure and conceptual content. Results are most pronounced with philosophical, consciousness-related, or experiential queries.*
