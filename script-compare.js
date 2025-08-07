@@ -6,27 +6,23 @@ const headers = {
 };
 
 function parseBasicMarkdown(text) {
+    let html = text.replace(/\n/g, '<br>');
 
-  let html = text.replace(/\n/g, '<br>');
+    html = html.replace(/(?<!\w)\*\*([^\s*][^*]*[^\s*])\*\*(?!\w)/g, '<strong>$1</strong>');
+    html = html.replace(/(?<!\w)__([^\s_][^_]*[^\s_])__(?!\w)/g, '<strong>$1</strong>');
 
- 
-  html = html.replace(/(?<!\w)\*\*([^\s*][^*]*[^\s*])\*\*(?!\w)/g, '<strong>$1</strong>');
-  html = html.replace(/(?<!\w)__([^\s_][^_]*[^\s_])__(?!\w)/g, '<strong>$1</strong>');
-  
+    html = html.replace(/(?<!\w)\*([^\s*][^*]*[^\s*])\*(?!\w)/g, '<em>$1</em>');
+    html = html.replace(/(?<!\w)_([^\s_][^_]*[^\s_])_(?!\w)/g, '<em>$1</em>');
 
-  html = html.replace(/(?<!\w)\*([^\s*][^*]*[^\s*])\*(?!\w)/g, '<em>$1</em>');
-  html = html.replace(/(?<!\w)_([^\s_][^_]*[^\s_])_(?!\w)/g, '<em>$1</em>');
+    html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
 
-  html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
-  
-  html = html.replace(/`([^`]+)`/g, '<code style="background: #2a2a2a; padding: 2px 4px; border-radius: 3px;">$1</code>');
-  
-  
-  html = html.replace(/^###\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.1em;">$1</strong>');
-  html = html.replace(/^##\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.2em;">$1</strong>');
-  html = html.replace(/^#\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.3em;">$1</strong>');
-  
-  return html;
+    html = html.replace(/`([^`]+)`/g, '<code style="background: #2a2a2a; padding: 2px 4px; border-radius: 3px;">$1</code>');
+
+    html = html.replace(/^###\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.1em;">$1</strong>');
+    html = html.replace(/^##\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.2em;">$1</strong>');
+    html = html.replace(/^#\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.3em;">$1</strong>');
+
+    return html;
 }
 
 function createCopyButton(containerId, content, rawContent) {
@@ -160,4 +156,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
