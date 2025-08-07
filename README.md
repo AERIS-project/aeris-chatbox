@@ -6,6 +6,7 @@ This is a minimalist frontend interface to interact with **AERIS**, a cognitive 
 - ✅ Calls a public OpenAI-compatible API hosted on Render
 - ✅ No tracking, no storage, no backend logic here
 
-> “Experience dialectical reasoning with AERIS”
+> “Experience conceptual emergence with AERIS”
 
 To test it live, visit: https://AERIS-project.github.io/aeris-chatbox/
+
