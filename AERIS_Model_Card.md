@@ -116,4 +116,5 @@ For feedback or scientific inquiries:
 
 ## Intellectual Property Notice
 
-Proprietary Framework Notice: AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
+AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
+
