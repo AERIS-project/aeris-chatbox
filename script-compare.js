@@ -14,10 +14,11 @@ function parseBasicMarkdown(text) {
 
     let html = protectedText.replace(/\n/g, '<br>');
 
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__([^_]+)__/g, '<strong>$1</strong>');
-    html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
-    html = html.replace(/(?<!_)_([^_]+)_(?!_)/g, '<em>$1</em>');
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+    
+    html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+    html = html.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
 
     html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
     html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
@@ -164,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 
 
