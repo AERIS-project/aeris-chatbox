@@ -4,22 +4,30 @@ const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
 function parseBasicMarkdown(text) {
-    let html = text.replace(/\n/g, '<br>');
+    const mathBlocks = [];
+    let protectedText = text.replace(/\\\((.*?)\\\)/g, (match, content) => {
+        mathBlocks.push(content);
+        return `__MATH_BLOCK_${mathBlocks.length - 1}__`;
+    });
+
+    let html = protectedText.replace(/\n/g, '<br>');
 
     html = html.replace(/(?<!\w)\*\*([^\s*][^*]*[^\s*])\*\*(?!\w)/g, '<strong>$1</strong>');
     html = html.replace(/(?<!\w)__([^\s_][^_]*[^\s_])__(?!\w)/g, '<strong>$1</strong>');
-
     html = html.replace(/(?<!\w)\*([^\s*][^*]*[^\s*])\*(?!\w)/g, '<em>$1</em>');
     html = html.replace(/(?<!\w)_([^\s_][^_]*[^\s_])_(?!\w)/g, '<em>$1</em>');
 
     html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
+    html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
 
-    html = html.replace(/`([^`]+)`/g, '<code style="background: #2a2a2a; padding: 2px 4px; border-radius: 3px;">$1</code>');
+    html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^#\s+(.+)$/gm, '<h1>$1</h1>');
 
-    html = html.replace(/^###\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.1em;">$1</strong>');
-    html = html.replace(/^##\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.2em;">$1</strong>');
-    html = html.replace(/^#\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.3em;">$1</strong>');
-
+    html = html.replace(/__MATH_BLOCK_(\d+)__/g, (match, index) => {
+        return `<code class="math-formula">\\(${mathBlocks[index]}\\)</code>`;
+    });
+    
     return html;
 }
 
@@ -227,5 +235,6 @@ userInput.addEventListener("keypress", function(event) {
     sendMessage();
   }
 });
+
 
 
