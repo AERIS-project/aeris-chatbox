@@ -6,7 +6,64 @@ const headers = {
 };
 
 function parseBasicMarkdown(text) {
-    let html = text.replace(/\n/g, '<br>');
+    const codeBlocks = [];
+    const mathBlocks = [];
+    
+    let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
+        codeBlocks.push(match);
+        return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+    });
+    
+    protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
+        codeBlocks.push(content);
+        return `__INLINE_CODE_${codeBlocks.length - 1}__`;
+    });
+    
+    protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
+        mathBlocks.push(content);
+        return `__MATH_INLINE_${mathBlocks.length - 1}__`;
+    });
+    
+    protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
+        mathBlocks.push(content);
+        return `__MATH_BLOCK_${mathBlocks.length - 1}__`;
+    });
+
+    let html = protectedText;
+    
+    html = html.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>');
+    
+    html = html.replace(/^\* (.+)$/gm, '• $1');
+    html = html.replace(/^- (.+)$/gm, '• $1');
+    html = html.replace(/^\d+\. (.+)$/gm, '$1');
+    
+    html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([^_]+?)__/g, '<strong>$1</strong>');
+    
+    html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+    html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
+    
+    html = html.replace(/\n/g, '<br>');
+    
+    html = html.replace(/__CODE_BLOCK_(\d+)__/g, (match, index) => {
+        const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
+        return `<pre><code class="code-block">${code}</code></pre>`;
+    });
+    
+    html = html.replace(/__INLINE_CODE_(\d+)__/g, (match, index) => {
+        return `<code class="inline-code">${codeBlocks[index]}</code>`;
+    });
+    
+    html = html.replace(/__MATH_INLINE_(\d+)__/g, (match, index) => {
+        return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
+    });
+    
+    html = html.replace(/__MATH_BLOCK_(\d+)__/g, (match, index) => {
+        return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
+    });
+    
     return html;
 }
   
@@ -142,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 
 
