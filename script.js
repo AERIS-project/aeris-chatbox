@@ -12,10 +12,10 @@ function parseBasicMarkdown(text) {
 
     let html = protectedText.replace(/\n/g, '<br>');
 
-    html = html.replace(/(?<!\w)\*\*([^\s*][^*]*[^\s*])\*\*(?!\w)/g, '<strong>$1</strong>');
-    html = html.replace(/(?<!\w)__([^\s_][^_]*[^\s_])__(?!\w)/g, '<strong>$1</strong>');
-    html = html.replace(/(?<!\w)\*([^\s*][^*]*[^\s*])\*(?!\w)/g, '<em>$1</em>');
-    html = html.replace(/(?<!\w)_([^\s_][^_]*[^\s_])_(?!\w)/g, '<em>$1</em>');
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+    html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
+    html = html.replace(/(?<!_)_([^_]+)_(?!_)/g, '<em>$1</em>');
 
     html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
     html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
@@ -235,6 +235,7 @@ userInput.addEventListener("keypress", function(event) {
     sendMessage();
   }
 });
+
 
 
 
