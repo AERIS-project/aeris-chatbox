@@ -189,4 +189,20 @@ button:hover {
   font-style: italic;
   color: #b8c8d8;
 }
+.inline-code, .math-formula {
+  background: #2a2a2a;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #b8c8d8;
+}
+
+h1, h2, h3 {
+    display: block;
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+}
+h1 { font-size: 1.3em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.1em; }
 
