@@ -3,26 +3,25 @@ const endpoint = "https://aeris-framework.onrender.com/v1/chat/completions";
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
-// Fonction pour convertir le markdown basique en HTML
 function parseBasicMarkdown(text) {
-  // Remplacer les sauts de ligne par des <br>
+
   let html = text.replace(/\n/g, '<br>');
+
+
+  html = html.replace(/(?<!\w)\*\*([^\s*][^*]*[^\s*])\*\*(?!\w)/g, '<strong>$1</strong>');
+  html = html.replace(/(?<!\w)__([^\s_][^_]*[^\s_])__(?!\w)/g, '<strong>$1</strong>');
   
-  // Gras: **texte** ou __texte__
-  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  html = html.replace(/__([^_]+)__/g, '<strong>$1</strong>');
   
-  // Italique: *texte* ou _texte_ (mais pas à l'intérieur de **texte**)
-  html = html.replace(/(?<!\*)\*(?!\*)([^*]+)\*(?!\*)/g, '<em>$1</em>');
-  html = html.replace(/(?<!_)_(?!_)([^_]+)_(?!_)/g, '<em>$1</em>');
-  
-  // Listes à puces simples (lignes commençant par - ou *)
+  html = html.replace(/(?<!\w)\*([^\s*][^*]*[^\s*])\*(?!\w)/g, '<em>$1</em>');
+  html = html.replace(/(?<!\w)_([^\s_][^_]*[^\s_])_(?!\w)/g, '<em>$1</em>');
+
+
   html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
   
-  // Code inline: `code`
+
   html = html.replace(/`([^`]+)`/g, '<code style="background: #2a2a2a; padding: 2px 4px; border-radius: 3px;">$1</code>');
   
-  // Titres simples (lignes commençant par #)
+ 
   html = html.replace(/^###\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.1em;">$1</strong>');
   html = html.replace(/^##\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.2em;">$1</strong>');
   html = html.replace(/^#\s+(.+)$/gm, '<strong style="display: block; margin: 10px 0 5px 0; font-size: 1.3em;">$1</strong>');
@@ -37,24 +36,24 @@ function appendMessage(role, text) {
   if (role === "You") {
     message.innerHTML = `<strong>${role}:</strong> ${text}`;
   } else {
-    // Pour les messages AERIS, créer la structure avec le bouton
+    
     const strongEl = document.createElement("strong");
     strongEl.textContent = role + ":";
     
     const textSpan = document.createElement("span");
-    // Appliquer le formatage markdown au texte
+
     textSpan.innerHTML = parseBasicMarkdown(text);
     
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy-button";
     copyBtn.textContent = "Copy";
     copyBtn.onclick = function() {
-      // Extraire le texte pur (sans HTML)
+
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = text;
       const textContent = tempDiv.textContent || tempDiv.innerText || "";
       
-      // Copier dans le presse-papiers
+    
       navigator.clipboard.writeText(textContent).then(() => {
         copyBtn.textContent = "Copied!";
         copyBtn.classList.add("copied");
@@ -64,7 +63,7 @@ function appendMessage(role, text) {
           copyBtn.classList.remove("copied");
         }, 2000);
       }).catch(err => {
-        // Fallback pour les navigateurs plus anciens
+     
         const textArea = document.createElement("textarea");
         textArea.value = textContent;
         document.body.appendChild(textArea);
@@ -101,25 +100,22 @@ async function sendMessage() {
   appendMessage("You", input);
   userInput.value = "";
 
-  // Créer l'indicateur de typing avec animation JavaScript
   const thinkingMessage = document.createElement("div");
   thinkingMessage.className = "message aeris";
   thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
   chatWindow.appendChild(thinkingMessage);
   chatWindow.scrollTop = chatWindow.scrollHeight;
   
-  // Animation des points
+  
   const dotsElement = thinkingMessage.querySelector('.typing-indicator');
   let dots = 0;
   const dotsInterval = setInterval(() => {
     dots = (dots + 1) % 4;
     dotsElement.textContent = '.'.repeat(dots);
-  }, 1000); // Change toutes les secondes
+  }, 1000);
   
-  // Stocker l'interval pour pouvoir l'arrêter plus tard
   dotsElement.dataset.intervalId = dotsInterval;
 
-  // Enregistrer le temps de début
   const startTime = Date.now();
 
   try {
@@ -140,38 +136,37 @@ async function sendMessage() {
     const data = await response.json();
     const message = data.choices?.[0]?.message?.content || "Error: no response.";
     
-    // Calculer le temps de réponse
+   
     const endTime = Date.now();
     const responseTime = ((endTime - startTime) / 1000).toFixed(1);
     
-    // Arrêter l'animation des points
+    
     const lastMessage = chatWindow.lastChild;
     const dotsElement = lastMessage.querySelector('.typing-indicator');
     if (dotsElement && dotsElement.dataset.intervalId) {
       clearInterval(dotsElement.dataset.intervalId);
     }
     
-    chatWindow.lastChild.remove(); // remove typing indicator
+    chatWindow.lastChild.remove(); 
     appendMessageWithTime("AERIS", message, responseTime);
   } catch (error) {
-    // Arrêter l'animation des points en cas d'erreur
+  
     const lastMessage = chatWindow.lastChild;
     const dotsElement = lastMessage.querySelector('.typing-indicator');
     if (dotsElement && dotsElement.dataset.intervalId) {
       clearInterval(dotsElement.dataset.intervalId);
     }
     
-    chatWindow.lastChild.remove(); // remove typing indicator
+    chatWindow.lastChild.remove(); 
     appendMessage("AERIS", "Error: Failed to connect to the server.");
   }
 }
 
-// Nouvelle fonction pour ajouter un message avec le temps de réponse
+
 function appendMessageWithTime(role, text, responseTime) {
   const message = document.createElement("div");
   message.className = "message aeris";
   
-  // Créer la structure avec le bouton et le temps
   const strongEl = document.createElement("strong");
   strongEl.textContent = role + ":";
   
@@ -186,7 +181,7 @@ function appendMessageWithTime(role, text, responseTime) {
   copyBtn.className = "copy-button";
   copyBtn.textContent = "Copy";
   copyBtn.onclick = function() {
-    // Extraire le texte pur (sans HTML)
+  
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = text;
     const textContent = tempDiv.textContent || tempDiv.innerText || "";
@@ -233,9 +228,9 @@ function clearChat() {
   chatWindow.innerHTML = "";
 }
 
-// Permettre l'envoi avec Enter
 userInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     sendMessage();
   }
 });
+
