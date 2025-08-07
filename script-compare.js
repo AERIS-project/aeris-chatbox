@@ -33,6 +33,7 @@ function parseBasicMarkdown(text) {
     
     return html;
 }
+  
 
 function createCopyButton(containerId, content, rawContent) {
   const messageId = 'cmp-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
@@ -165,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 
 
