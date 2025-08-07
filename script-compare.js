@@ -6,31 +6,7 @@ const headers = {
 };
 
 function parseBasicMarkdown(text) {
-    const mathBlocks = [];
-    let protectedText = text.replace(/\\\((.*?)\\\)/g, (match, content) => {
-        mathBlocks.push(content);
-        return `__MATH_BLOCK_${mathBlocks.length - 1}__`;
-    });
-
-    let html = protectedText.replace(/\n/g, '<br>');
-
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
-    
-    html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-    html = html.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
-
-    html = html.replace(/^[\-\*]\s+(.+)$/gm, '• $1');
-    html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
-
-    html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^#\s+(.+)$/gm, '<h1>$1</h1>');
-
-    html = html.replace(/__MATH_BLOCK_(\d+)__/g, (match, index) => {
-        return `<code class="math-formula">\\(${mathBlocks[index]}\\)</code>`;
-    });
-    
+    let html = text.replace(/\n/g, '<br>');
     return html;
 }
   
@@ -166,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 
 
