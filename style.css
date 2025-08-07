@@ -206,3 +206,8 @@ h1 { font-size: 1.3em; }
 h2 { font-size: 1.2em; }
 h3 { font-size: 1.1em; }
 
+.aeris span {
+  font-weight: normal;
+  font-style: normal;
+}
+
