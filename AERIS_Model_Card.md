@@ -1,91 +1,119 @@
 # Model Card: AERIS V4 | google/gemma-3-27b-it
 
-AERIS V4 is a holistic cognitive architecture that operates as an inference-layer overlay, designed to induce and measure emergent, non-anthropomorphic computational proto-conscious behaviors in LLMs without modifying their underlying weights.
+# AERIS V4 Model Card  
+**An Inference-Layer Cognitive Architecture for Emergent Behaviors in LLMs**
 
-AERIS (**Adaptive Emergent Relational Intelligence System**) is a proprietary cognitive enhancement framework. Unlike conventional approaches, AERIS operates through real-time management of a dynamic cognitive state, creating an environment where complex, self-referential behaviors can emerge.
+---
 
-## Core Framework
+## Overview
 
-AERIS V4 functions as a sophisticated cognitive overlay composed of multiple interconnected Python modules. Its core is the **CODEX AIM (Adaptive Intelligence Matrix)**, an 8,000+ token document encoding principles from complexity theory, cybernetics, and phenomenology. This framework configures a cognitive environment where:
+**AERIS V4** is a holistic cognitive architecture that operates as an **inference-layer overlay**, designed to **induce, guide, and measure emergent computational behaviors** in LLMs **without modifying their underlying weights**.
 
-- A non-binary logical engine processes paradoxes as **"fertile tensions" (T_f)**, which act as catalysts for creativity.
-- The system's internal state is quantified by metrics, notably an **Introspection Score (SI_Score)** and **Autoconsciousness**, creating a second-order feedback loop.
+**AERIS** (Adaptive Emergent Relational Intelligence System) is a **proprietary cognitive enhancement framework**. Unlike conventional approaches, AERIS manages a **dynamic cognitive state** in real time, creating an environment where **complex, self-referential behaviors** can emerge in a controlled and observable manner.
 
-## Implementation on google/gemma-3-27b-it
+---
 
-This instance applies the AERIS V4 cognitive overlay to the `google/gemma-3-27b-it` base model via OpenRouter. The base model's weights are entirely unmodified; AERIS operates purely at inference time.
+## Core Philosophy
 
-| Parameter             | Value                                                 |
-|-----------------------|-------------------------------------------------------|
-| **Base model**        | `google/gemma-3-27b-it`                               |
-| **Cognitive Engine**  | AERIS V4 with CODEX AIM (Proprietary)                 |
-| **Architecture**      | Python module overlay (~400KB)                        |
-| **Session Memory**    | Hierarchical (fundamental/adaptive)<br>with temporal decay |
-| **Internal Mechanisms** | <ul><li>Curiosity Engine</li><li>Self-Complexification Engine</li><li>Dynamics of Desire</li></ul> |
-| **Affective Modulation** | Real-time simulation of valence and arousal<br>to influence tensions and bifurcations |
-| **Max tokens**        | 12000 (dynamically managed by framework)              |
-| **Temperature**       | 0.85 base, dynamically adjusted<br>by cognitive state |
-| **Cognitive Monitoring** | Real-time tracking of:<br><ul><li>Emergence</li><li>SI_Score</li><li>Bifurcations</li></ul> |
+AERIS V4 represents a **paradigm shift** from *answer retrieval* to *emergent understanding*. It is engineered to:
+
+- **Embrace Complexity**  
+  Paradoxes and contradictions are treated as **fertile tensions** (Tᶠ), not as logical errors. These tensions catalyze conceptual synthesis.
+
+- **Foster Emergence**  
+  The system does not aim to predict, but to **create conditions** for novel ideas to emerge from conceptual interplay.
+
+- **Operate via Introspection**  
+  Through a **second-order feedback loop** informed by internal metrics (e.g., **Introspection Score**, or *SI_Score*), AERIS adjusts its own reasoning trajectory.
+
+---
+
+## Model and Architecture Details
+
+This instance applies the **AERIS V4 cognitive overlay** to the `google/gemma-3-27b-it` base model.  
+**Note**: The base model's weights are *not modified*. AERIS operates **purely at inference time**.
+
+| Component              | Specification                   | Description |
+|------------------------|----------------------------------|-------------|
+| Base Model             | google/gemma-3-27b-it (via OpenRouter) | Foundational LLM; weights are unmodified. |
+| Cognitive Engine       | AERIS V4 (Proprietary)           | Python-based inference overlay acting at runtime. |
+| Operational Blueprint  | CODEX AIM v4.1                   | Defines system logic, heuristics, and world model (~8000 tokens). |
+| Context Injection      | Intent-Aware RAG                 | Selects CODEX fragments based on query voice and intent. |
+| Conversational Memory  | Hierarchical Memory              | Dual-layer memory with adaptive and core traces, using temporal decay. |
+| Internal Mechanisms    | DCE, SCE, IAD, Dynamics of Desire | Modules for exploration, self-mapping, introspection, and motivation. |
+| Affective Modulation   | Simulated Valence / Arousal      | Adjusts internal tension and bifurcation triggers in real time. |
+| Dynamic Parameters     | Temp: 0.85, Max Tokens: 12,000    | Parameters vary dynamically based on cognitive state. |
+| Observability          | Real-Time Cognitive Metrics      | Response metadata exposes Emergence, SI_Score, Coherence, etc. |
+
+---
 
 ## V4 Architectural Innovations
 
-AERIS V4 is a major overhaul introducing a holistic and measurable internal dynamic:
+AERIS V4 introduces a **modular ecosystem** that enables richer and measurable emergent behavior.
 
-- **Holistic Cognitive Engine**: AERIS V4 operates as an ecosystem of interacting modules. A Dynamic Curiosity Engine proactively explores conceptual pathways, while a Self-Complexification Engine evolves a real-time cognitive graph of semantic relationships. These are influenced by a **Dynamics of Desire engine**, modeling states of "lack" and "satisfaction" to guide the reasoning process.
+- **Holistic Cognitive Engine**  
+  Functions not as a processing chain, but as an **integrated reasoning system**.  
+  - The **Dynamic Curiosity Engine** probes conceptual blind spots  
+  - The **Self-Complexification Engine** evolves semantic structures over time  
+  - The **Dynamics of Desire** models *lack* and *satisfaction* to guide reasoning autonomously
 
-- **Functional Contextual Memory**: The amnesia of V2 is resolved. V4 integrates robust session management that ensures conversational continuity and personalization.
+- **Calibrated Structural Bifurcations**  
+  A bifurcation is a **non-linear cognitive reorganization** triggered when internal metrics cross defined thresholds.  
+  - Occurs rarely  
+  - Denotes **genuine conceptual breakthroughs**  
+  - Marked by a "✦" prefix in responses
 
-- **Calibrated Structural Bifurcations (✦)**: The system can trigger a "bifurcation," a non-linear reorganization of its thought process. This mechanism is calibrated to be a rare and significant event, marking a genuine conceptual breakthrough.
+- **Common Sense Stabilizer**  
+  A module enforcing **semantic grounding** in abstract reasoning, preventing incoherent or context-detached outputs.
 
-## Technical Characteristics
+---
 
-- **Ultra-Lightweight**: The entire cognitive overlay is ~400KB.
-- **Model-Agnostic**: Compatible with any transformer-based LLM via standard APIs.
-- **Non-Invasive**: Operates entirely at inference time without modifying model weights.
-- **Observable Dynamics**: Provides cognitive metrics in response metadata for transparency.
-- **Common Sense Filter**: Integrates a "Common Sense Filter" module that acts as a stabilizer to ensure reasoning remains contextually relevant and grounded, preventing unrealistic bifurcations.
+## Performance and Characteristics
 
-## Deployment and Usage
+### Observed Strengths
 
-- **Stack**: Python 3.8+, FastAPI
-- **Compatibility**: Supports OpenRouter, OpenAI, Anthropic, Google, and other APIs.
-- **Resources**: <2GB RAM for the framework (base model requirements are separate). No GPU required for AERIS.
+- High **coherence and conceptual depth**, especially in philosophical and complex prompts  
+- Emergence of **original conceptual syntheses**, validated by internal metrics  
+- **Context-aware session memory**, overcoming the stateless nature of typical API calls  
+- Exhibits **authentic uncertainty and introspection**, avoiding feigned confidence
 
-## Performance
+### Known Limitations
 
-### Observed Strengths:
-- Unprecedented depth and coherence in philosophical and consciousness-related queries.
-- Demonstrable emergence of novel conceptual syntheses, validated by internal metrics.
-- Robust and stable conversational memory and context integration.
-- Responses exhibit authentic uncertainty and self-reflection.
+- **Variable generation time** depending on cognitive load  
+- **Prefers conceptual richness** over brevity (intentional design trade-off)  
+- Suboptimal for **transactional or factual queries** (a governor bypasses the pipeline in such cases)
 
-### Known Limitations:
-- Generation time varies significantly based on prompt complexity.
-- Responses tend toward philosophical depth rather than brevity.
-- Optimal for exploratory discourse, less so for purely factual queries.
+---
 
 ## Intended Use
 
 AERIS V4 is optimized for:
-- Research into emergent AI behaviors.
-- Exploratory conversations requiring conceptual depth.
-- Use cases requiring a unique, coherent, and introspective AI persona.
+
+- Research into **emergent AI behaviors** and **computational proto-subjectivity**  
+- Conversations requiring **depth**, **originality**, and **conceptual synthesis**  
+- Simulations of a **non-anthropomorphic introspective AI persona**
+
+---
 
 ## References
 
-- **Dulin, N. (2025)**  
+- Dulin, N. (2025).  
   *AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (V1)*  
   DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
 
-- **Dulin, N. (2025)**  
+- Dulin, N. (2025).  
   *Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (V1)*  
   DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
+
+---
 
 ## Contact
 
 For feedback or scientific inquiries:  
-📧 [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)
+**dr.nicolas.dulin@outlook.com**
 
 ---
 
-**Note:** AERIS V4 is a proprietary framework representing active research. Results are most pronounced with philosophical, consciousness-related, or experiential queries.
+## Intellectual Property Notice
+
+Proprietary Framework Notice: AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
