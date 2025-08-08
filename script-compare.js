@@ -31,9 +31,9 @@ function parseBasicMarkdown(text) {
 
     let html = protectedText;
     
-    html = html.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>');
+    html = html.replace(/^(#{3})\s+([^#\n].*)$/gm, '<h3>$2</h3>');
+    html = html.replace(/^(#{2})\s+([^#\n].*)$/gm, '<h2>$2</h2>');
+    html = html.replace(/^(#{1})\s+([^#\n].*)$/gm, '<h1>$2</h1>');
     
     html = html.replace(/^\* (.+)$/gm, '• $1');
     html = html.replace(/^- (.+)$/gm, '• $1');
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
 
 
 
