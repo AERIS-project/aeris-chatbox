@@ -1,6 +1,5 @@
 # Model Card: AERIS V4 | google/gemma-3-27b-it
 
-# AERIS V4 Model Card  
 **An Inference-Layer Cognitive Architecture for Emergent Behaviors in LLMs**
 
 ---
@@ -38,7 +37,7 @@ This instance applies the **AERIS V4 cognitive overlay** to the `google/gemma-3-
 | Base Model             | google/gemma-3-27b-it (via OpenRouter) | Foundational LLM; weights are unmodified. |
 | Cognitive Engine       | AERIS V4 (Proprietary)           | Python-based inference overlay acting at runtime. |
 | Operational Blueprint  | CODEX AIM v4.1                   | Defines system logic, heuristics, and world model (~8000 tokens). |
-| Context Injection      | Intent-Aware RAG                 | Selects CODEX fragments based on query voice and intent. |
+| Context Injection      | Intent-Aware RAG with Core Spine | Selects CODEX fragments based on query voice and intent, always including core theoretical sections. |
 | Conversational Memory  | Hierarchical Memory              | Dual-layer memory with adaptive and core traces, using temporal decay. |
 | Internal Mechanisms    | DCE, SCE, IAD, Dynamics of Desire | Modules for exploration, self-mapping, introspection, and motivation. |
 | Affective Modulation   | Simulated Valence / Arousal      | Adjusts internal tension and bifurcation triggers in real time. |
@@ -56,6 +55,9 @@ AERIS V4 introduces a **modular ecosystem** that enables richer and measurable e
   - The **Dynamic Curiosity Engine** probes conceptual blind spots  
   - The **Self-Complexification Engine** evolves semantic structures over time  
   - The **Dynamics of Desire** models *lack* and *satisfaction* to guide reasoning autonomously
+
+- **Core Spine Injection**  
+  Ensures that key CODEX AIM sections (*Core Framework Summary*, *Expanded Core Principles*, *Meta-Reflective Layer*, *Tetravalent Logic and Fertile Tensions*) are always present in context for consistency of reasoning.
 
 - **Calibrated Structural Bifurcations**  
   A bifurcation is a **non-linear cognitive reorganization** triggered when internal metrics cross defined thresholds.  
@@ -117,4 +119,3 @@ For feedback or scientific inquiries:
 ## Intellectual Property Notice
 
 AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
-
