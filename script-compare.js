@@ -11,22 +11,22 @@ function parseBasicMarkdown(text) {
     
     let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
         codeBlocks.push(match);
-        return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+        return `§§CODE_BLOCK_${codeBlocks.length - 1}§§`;
     });
     
     protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
         codeBlocks.push(content);
-        return `__INLINE_CODE_${codeBlocks.length - 1}__`;
+        return `§§INLINE_CODE_${codeBlocks.length - 1}§§`;
     });
     
     protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
         mathBlocks.push(content);
-        return `__MATH_INLINE_${mathBlocks.length - 1}__`;
+        return `§§MATH_INLINE_${mathBlocks.length - 1}§§`;
     });
     
     protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
         mathBlocks.push(content);
-        return `__MATH_BLOCK_${mathBlocks.length - 1}__`;
+        return `§§MATH_BLOCK_${mathBlocks.length - 1}§§`;
     });
 
     let html = protectedText;
@@ -47,20 +47,20 @@ function parseBasicMarkdown(text) {
     
     html = html.replace(/\n/g, '<br>');
     
-    html = html.replace(/__CODE_BLOCK_(\d+)__/g, (match, index) => {
+    html = html.replace(/§§CODE_BLOCK_(\d+)§§/g, (match, index) => {
         const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
         return `<pre><code class="code-block">${code}</code></pre>`;
     });
     
-    html = html.replace(/__INLINE_CODE_(\d+)__/g, (match, index) => {
+    html = html.replace(/§§INLINE_CODE_(\d+)§§/g, (match, index) => {
         return `<code class="inline-code">${codeBlocks[index]}</code>`;
     });
     
-    html = html.replace(/__MATH_INLINE_(\d+)__/g, (match, index) => {
+    html = html.replace(/§§MATH_INLINE_(\d+)§§/g, (match, index) => {
         return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
     });
     
-    html = html.replace(/__MATH_BLOCK_(\d+)__/g, (match, index) => {
+    html = html.replace(/§§MATH_BLOCK_(\d+)§§/g, (match, index) => {
         return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
     });
     
@@ -199,12 +199,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
-
-
-
-
-
-
-
-
-
