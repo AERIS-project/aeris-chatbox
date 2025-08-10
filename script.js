@@ -47,11 +47,11 @@ function parseBasicMarkdown(text) {
     
     html = html.replace(/§§CODE_BLOCK_(\d+)§§/g, (match, index) => {
         const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
-        return `<pre><code class="code-block">${code}</code></pre>`;
+        return `<pre><code class="code-block">${escapeHtml(code)}</code></pre>`;
     });
     
     html = html.replace(/§§INLINE_CODE_(\d+)§§/g, (match, index) => {
-        return `<code class="inline-code">${codeBlocks[index]}</code>`;
+        return `<code class="inline-code">${escapeHtml(codeBlocks[index])}</code>`;
     });
     
     html = html.replace(/§§MATH_INLINE_(\d+)§§/g, (match, index) => {
@@ -65,207 +65,233 @@ function parseBasicMarkdown(text) {
     return html;
 }
 
-function appendMessage(role, text) {
-  const message = document.createElement("div");
-  message.className = "message " + (role === "You" ? "user" : "aeris");
-  
-  if (role === "You") {
-    message.innerHTML = `<strong>${role}:</strong> ${text}`;
-  } else {
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function typewriterEffect(element, html, callback) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    
+    if (textContent.length > 500) {
+        element.innerHTML = html;
+        if (callback) callback();
+        return;
+    }
+    
+    element.innerHTML = '';
+    let currentIndex = 0;
+    
+    const typeChar = () => {
+        if (currentIndex < html.length) {
+            if (html[currentIndex] === '<') {
+                const closeIndex = html.indexOf('>', currentIndex);
+                if (closeIndex !== -1) {
+                    element.innerHTML += html.substring(currentIndex, closeIndex + 1);
+                    currentIndex = closeIndex + 1;
+                } else {
+                    element.innerHTML += html[currentIndex];
+                    currentIndex++;
+                }
+            } else {
+                element.innerHTML += html[currentIndex];
+                currentIndex++;
+            }
+            
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            setTimeout(typeChar, 15);
+        } else {
+            if (callback) callback();
+        }
+    };
+    
+    typeChar();
+}
+
+function appendMessage(role, text, useTyping = false) {
+    const message = document.createElement("div");
+    message.className = "message " + (role === "You" ? "user" : "aeris");
+    
+    if (role === "You") {
+        message.innerHTML = `<strong>${role}:</strong> ${escapeHtml(text)}`;
+    } else {
+        const strongEl = document.createElement("strong");
+        strongEl.textContent = role + ":";
+        
+        const textSpan = document.createElement("span");
+        const parsedContent = parseBasicMarkdown(text);
+        
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-button";
+        copyBtn.textContent = "Copy";
+        copyBtn.onclick = function() {
+            copyTextToClipboard(text, copyBtn);
+        };
+        
+        message.appendChild(strongEl);
+        message.appendChild(document.createTextNode(" "));
+        message.appendChild(textSpan);
+        message.appendChild(copyBtn);
+        
+        chatWindow.appendChild(message);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        
+        if (useTyping && text.length < 800) {
+            typewriterEffect(textSpan, parsedContent, () => {
+                if (typeof MathJax !== 'undefined') {
+                    MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+                }
+            });
+        } else {
+            textSpan.innerHTML = parsedContent;
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+            }
+        }
+        
+        return;
+    }
+    
+    chatWindow.appendChild(message);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+function copyTextToClipboard(text, button) {
+    navigator.clipboard.writeText(text).then(() => {
+        button.textContent = "Copied!";
+        button.classList.add("copied");
+        
+        setTimeout(() => {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+        }, 2000);
+    }).catch(err => {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.top = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+            button.textContent = "Copied!";
+            button.classList.add("copied");
+            setTimeout(() => {
+                button.textContent = "Copy";
+                button.classList.remove("copied");
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+        
+        document.body.removeChild(textArea);
+    });
+}
+
+async function sendMessage() {
+    const input = userInput.value.trim();
+    if (!input) return;
+
+    appendMessage("You", input);
+    userInput.value = "";
+
+    const thinkingMessage = document.createElement("div");
+    thinkingMessage.className = "message aeris thinking";
+    thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
+    chatWindow.appendChild(thinkingMessage);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    
+    const startTime = Date.now();
+
+    try {
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "google/gemma-3-27b-it",
+                messages: [
+                    { role: "system", content: "You are AERIS, a dialectical reasoning assistant." },
+                    { role: "user", content: input }
+                ]
+            })
+        });
+
+        const data = await response.json();
+        const message = data.choices?.[0]?.message?.content || "Error: no response.";
+        
+        const endTime = Date.now();
+        const responseTime = ((endTime - startTime) / 1000).toFixed(1);
+        
+        chatWindow.removeChild(thinkingMessage);
+        
+        appendMessageWithTime("AERIS", message, responseTime, true);
+    } catch (error) {
+        chatWindow.removeChild(thinkingMessage);
+        appendMessage("AERIS", "Error: Failed to connect to the server.");
+    }
+}
+
+function appendMessageWithTime(role, text, responseTime, useTyping = false) {
+    const message = document.createElement("div");
+    message.className = "message aeris";
     
     const strongEl = document.createElement("strong");
     strongEl.textContent = role + ":";
     
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "response-time";
+    timeSpan.textContent = `(${responseTime}s)`;
+    
     const textSpan = document.createElement("span");
-
-    textSpan.innerHTML = parseBasicMarkdown(text);
+    const parsedContent = parseBasicMarkdown(text);
     
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy-button";
     copyBtn.textContent = "Copy";
     copyBtn.onclick = function() {
-
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = text;
-      const textContent = tempDiv.textContent || tempDiv.innerText || "";
-      
-    
-      navigator.clipboard.writeText(textContent).then(() => {
-        copyBtn.textContent = "Copied!";
-        copyBtn.classList.add("copied");
-        
-        setTimeout(() => {
-          copyBtn.textContent = "Copy";
-          copyBtn.classList.remove("copied");
-        }, 2000);
-      }).catch(err => {
-     
-        const textArea = document.createElement("textarea");
-        textArea.value = textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          document.execCommand('copy');
-          copyBtn.textContent = "Copied!";
-          copyBtn.classList.add("copied");
-          setTimeout(() => {
-            copyBtn.textContent = "Copy";
-            copyBtn.classList.remove("copied");
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy: ', err);
-        }
-        document.body.removeChild(textArea);
-      });
+        copyTextToClipboard(text, copyBtn);
     };
     
     message.appendChild(strongEl);
+    message.appendChild(timeSpan);
     message.appendChild(document.createTextNode(" "));
     message.appendChild(textSpan);
     message.appendChild(copyBtn);
-  }
-  
-  chatWindow.appendChild(message);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-}
-
-async function sendMessage() {
-  const input = userInput.value.trim();
-  if (!input) return;
-
-  appendMessage("You", input);
-  userInput.value = "";
-
-  const thinkingMessage = document.createElement("div");
-  thinkingMessage.className = "message aeris";
-  thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
-  chatWindow.appendChild(thinkingMessage);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-  
-  
-  const dotsElement = thinkingMessage.querySelector('.typing-indicator');
-  let dots = 0;
-  const dotsInterval = setInterval(() => {
-    dots = (dots + 1) % 4;
-    dotsElement.textContent = '.'.repeat(dots);
-  }, 1000);
-  
-  dotsElement.dataset.intervalId = dotsInterval;
-
-  const startTime = Date.now();
-
-  try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "google/gemma-3-27b-it",
-        messages: [
-          { role: "system", content: "You are AERIS, a dialectical reasoning assistant." },
-          { role: "user", content: input }
-        ]
-      })
-    });
-
-    const data = await response.json();
-    const message = data.choices?.[0]?.message?.content || "Error: no response.";
     
-   
-    const endTime = Date.now();
-    const responseTime = ((endTime - startTime) / 1000).toFixed(1);
+    chatWindow.appendChild(message);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
     
-    
-    const lastMessage = chatWindow.lastChild;
-    const dotsElement = lastMessage.querySelector('.typing-indicator');
-    if (dotsElement && dotsElement.dataset.intervalId) {
-      clearInterval(dotsElement.dataset.intervalId);
+    if (useTyping && text.length < 800) {
+        typewriterEffect(textSpan, parsedContent, () => {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+            }
+        });
+    } else {
+        textSpan.innerHTML = parsedContent;
+        if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+        }
     }
-    
-    chatWindow.lastChild.remove(); 
-    appendMessageWithTime("AERIS", message, responseTime);
-  } catch (error) {
-  
-    const lastMessage = chatWindow.lastChild;
-    const dotsElement = lastMessage.querySelector('.typing-indicator');
-    if (dotsElement && dotsElement.dataset.intervalId) {
-      clearInterval(dotsElement.dataset.intervalId);
-    }
-    
-    chatWindow.lastChild.remove(); 
-    appendMessage("AERIS", "Error: Failed to connect to the server.");
-  }
-}
-
-
-function appendMessageWithTime(role, text, responseTime) {
-  const message = document.createElement("div");
-  message.className = "message aeris";
-  
-  const strongEl = document.createElement("strong");
-  strongEl.textContent = role + ":";
-  
-  const timeSpan = document.createElement("span");
-  timeSpan.className = "response-time";
-  timeSpan.textContent = `(${responseTime}s)`;
-  
-  const textSpan = document.createElement("span");
-  textSpan.innerHTML = parseBasicMarkdown(text);
-  
-  const copyBtn = document.createElement("button");
-  copyBtn.className = "copy-button";
-  copyBtn.textContent = "Copy";
-  copyBtn.onclick = function() {
-  
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = text;
-    const textContent = tempDiv.textContent || tempDiv.innerText || "";
-    
-    navigator.clipboard.writeText(textContent).then(() => {
-      copyBtn.textContent = "Copied!";
-      copyBtn.classList.add("copied");
-      
-      setTimeout(() => {
-        copyBtn.textContent = "Copy";
-        copyBtn.classList.remove("copied");
-      }, 2000);
-    }).catch(err => {
-      const textArea = document.createElement("textarea");
-      textArea.value = textContent;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        copyBtn.textContent = "Copied!";
-        copyBtn.classList.add("copied");
-        setTimeout(() => {
-          copyBtn.textContent = "Copy";
-          copyBtn.classList.remove("copied");
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy: ', err);
-      }
-      document.body.removeChild(textArea);
-    });
-  };
-  
-  message.appendChild(strongEl);
-  message.appendChild(timeSpan);
-  message.appendChild(document.createTextNode(" "));
-  message.appendChild(textSpan);
-  message.appendChild(copyBtn);
-  
-  chatWindow.appendChild(message);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 function clearChat() {
-  chatWindow.innerHTML = "";
+    chatWindow.innerHTML = "";
 }
 
 userInput.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    userInput.focus();
 });
