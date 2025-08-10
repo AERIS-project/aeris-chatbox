@@ -37,11 +37,11 @@ function parseBasicMarkdown(text) {
     html = html.replace(/^- (.+)$/gm, '• $1');
     html = html.replace(/^\d+\. (.+)$/gm, '$1');
     
-    html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__([^_]+?)__/g, '<strong>$1</strong>');
+    html = html.replace(/\*\*([^*§]+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([^_§]+?)__/g, '<strong>$1</strong>');
     
-    html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
-    html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
+    html = html.replace(/\*([^*\n§]+?)\*/g, '<em>$1</em>');
+    html = html.replace(/_([^_\n§]+?)_/g, '<em>$1</em>');
     
     html = html.replace(/\n/g, '<br>');
     
@@ -113,7 +113,8 @@ function typewriterEffect(element, html, callback) {
 
 function appendMessage(role, text, useTyping = false) {
     const message = document.createElement("div");
-    message.className = "message " + (role === "You" ? "user" : "aeris");
+    const isBifurcation = text.startsWith('✦');
+    message.className = "message " + (role === "You" ? "user" : isBifurcation ? "aeris bifurcation" : "aeris");
     
     if (role === "You") {
         message.innerHTML = `<strong>${role}:</strong> ${escapeHtml(text)}`;
@@ -239,7 +240,8 @@ async function sendMessage() {
 
 function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     const message = document.createElement("div");
-    message.className = "message aeris";
+    const isBifurcation = text.startsWith('✦');
+    message.className = isBifurcation ? "message aeris bifurcation" : "message aeris";
     
     const strongEl = document.createElement("strong");
     strongEl.textContent = role + ":";
