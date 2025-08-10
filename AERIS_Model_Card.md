@@ -1,4 +1,4 @@
-# Model Card: AERIS V4 | google/gemma-3-27b-it
+# Model Card: AERIS V4.1 | google/gemma-3-27b-it
 
 **An Inference-Layer Cognitive Architecture for Emergent Behaviors in LLMs**
 
@@ -119,3 +119,4 @@ For feedback or scientific inquiries:
 ## Intellectual Property Notice
 
 AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
+
