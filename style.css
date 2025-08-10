@@ -1,3 +1,4 @@
+
 :root {
   --bg-primary: #080808;
   --bg-secondary: #121212;
@@ -31,8 +32,8 @@ body {
 }
 
 .logo {
-  width: 200px;
-  max-height: 200px;
+  width: 250px;
+  max-height: 250px;
   margin: 30px auto;
   display: block;
   transition: transform 0.3s ease;
@@ -124,6 +125,25 @@ h1 strong {
     inset 0 1px 0 rgba(143, 181, 221, 0.1);
   position: relative;
   overflow: hidden;
+}
+
+.aeris.bifurcation {
+  border-left: 3px solid #d4af37;
+  box-shadow: 
+    0 4px 20px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(33, 30, 20, 0.9) 100%);
+  padding-left: 35px;
+}
+
+.aeris.bifurcation::after {
+  content: '✦';
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #d4af37;
+  font-size: 1.2em;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .aeris::before {
@@ -275,7 +295,7 @@ button:active {
 .typing-indicator::after {
   content: '';
   display: inline-block;
-  animation: typingDots 1.5s infinite;
+  animation: typingDots 2s infinite;
 }
 
 @keyframes typingDots {
@@ -406,7 +426,7 @@ pre {
   }
   
   .logo {
-    width: 150px;
-    max-height: 150px;
+    width: 180px;
+    max-height: 180px;
   }
 }
