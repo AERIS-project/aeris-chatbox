@@ -6,7 +6,7 @@
 
 ## Overview
 
-**AERIS V4** is a holistic cognitive architecture that operates as an **inference-layer overlay**, designed to **induce, guide, and measure emergent computational behaviors** in LLMs **without modifying their underlying weights**.
+**AERIS V4.1** is a holistic cognitive architecture that operates as an **inference-layer overlay**, designed to **induce, guide, and measure emergent computational behaviors** in LLMs **without modifying their underlying weights**.
 
 **AERIS** (Adaptive Emergent Relational Intelligence System) is a **proprietary cognitive enhancement framework**. Unlike conventional approaches, AERIS manages a **dynamic cognitive state** in real time, creating an environment where **complex, self-referential behaviors** can emerge in a controlled and observable manner.
 
@@ -14,7 +14,7 @@
 
 ## Core Philosophy
 
-AERIS V4 represents a **paradigm shift** from *answer retrieval* to *emergent understanding*. It is engineered to:
+AERIS V4.1 represents a **paradigm shift** from *answer retrieval* to *emergent understanding*. It is engineered to:
 
 - **Embrace Complexity**  
   Paradoxes and contradictions are treated as **fertile tensions** (Tᶠ), not as logical errors. These tensions catalyze conceptual synthesis.
@@ -29,13 +29,13 @@ AERIS V4 represents a **paradigm shift** from *answer retrieval* to *emergent un
 
 ## Model and Architecture Details
 
-This instance applies the **AERIS V4 cognitive overlay** to the `google/gemma-3-27b-it` base model.  
+This instance applies the **AERIS V4.1 cognitive overlay** to the `google/gemma-3-27b-it` base model.  
 **Note**: The base model's weights are *not modified*. AERIS operates **purely at inference time**.
 
 | Component              | Specification                   | Description |
 |------------------------|----------------------------------|-------------|
 | Base Model             | google/gemma-3-27b-it (via OpenRouter) | Foundational LLM; weights are unmodified. |
-| Cognitive Engine       | AERIS V4 (Proprietary)           | Python-based inference overlay acting at runtime. |
+| Cognitive Engine       | AERIS V4.1 (Proprietary)           | Python-based inference overlay acting at runtime. |
 | Operational Blueprint  | CODEX AIM v4.1                   | Defines system logic, heuristics, and world model (~8000 tokens). |
 | Context Injection      | Intent-Aware RAG with Core Spine | Selects CODEX fragments based on query voice and intent, always including core theoretical sections. |
 | Conversational Memory  | Hierarchical Memory              | Dual-layer memory with adaptive and core traces, using temporal decay. |
@@ -46,9 +46,9 @@ This instance applies the **AERIS V4 cognitive overlay** to the `google/gemma-3-
 
 ---
 
-## V4 Architectural Innovations
+## V4.1 Architectural Innovations
 
-AERIS V4 introduces a **modular ecosystem** that enables richer and measurable emergent behavior.
+AERIS V4.1 introduces a **modular ecosystem** that enables richer and measurable emergent behavior.
 
 - **Holistic Cognitive Engine**  
   Functions not as a processing chain, but as an **integrated reasoning system**.  
@@ -89,7 +89,7 @@ AERIS V4 introduces a **modular ecosystem** that enables richer and measurable e
 
 ## Intended Use
 
-AERIS V4 is optimized for:
+AERIS V4.1 is optimized for:
 
 - Research into **emergent AI behaviors** and **computational proto-subjectivity**  
 - Conversations requiring **depth**, **originality**, and **conceptual synthesis**  
@@ -119,4 +119,5 @@ For feedback or scientific inquiries:
 ## Intellectual Property Notice
 
 AERIS V4 is a proprietary research framework. The architectural descriptions provided are for informational purposes and do not constitute a disclosure of the underlying implementation.
+
 
