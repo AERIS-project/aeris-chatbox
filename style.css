@@ -32,8 +32,8 @@ body {
 }
 
 .logo {
-  width: 250px;
-  max-height: 250px;
+  width: 200px;
+  max-height: 200px;
   margin: 30px auto;
   display: block;
   transition: transform 0.3s ease;
@@ -426,7 +426,8 @@ pre {
   }
   
   .logo {
-    width: 180px;
-    max-height: 180px;
+    width: 150px;
+    max-height: 150px;
   }
 }
+
