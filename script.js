@@ -140,20 +140,25 @@ function appendMessage(role, text, useTyping = false) {
         message.appendChild(copyBtn);
         
         chatWindow.appendChild(message);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
         
         if (useTyping && text.length < 800) {
             typewriterEffect(textSpan, parsedContent, () => {
+                message.style.animation = 'none';
                 if (typeof MathJax !== 'undefined') {
-                    MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+                    MathJax.typesetPromise([message]).then(() => {
+                        chatWindow.scrollTop = chatWindow.scrollHeight;
+                    }).catch((err) => console.log('MathJax error:', err));
                 }
             });
         } else {
             textSpan.innerHTML = parsedContent;
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-            if (typeof MathJax !== 'undefined') {
-                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
-            }
+            setTimeout(() => {
+                message.style.animation = 'none';
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                if (typeof MathJax !== 'undefined') {
+                    MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+                }
+            }, 400);
         }
         
         return;
@@ -270,20 +275,25 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     message.appendChild(copyBtn);
     
     chatWindow.appendChild(message);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
     
     if (useTyping && text.length < 800) {
         typewriterEffect(textSpan, parsedContent, () => {
+            message.style.animation = 'none';
             if (typeof MathJax !== 'undefined') {
-                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+                MathJax.typesetPromise([message]).then(() => {
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                }).catch((err) => console.log('MathJax error:', err));
             }
         });
     } else {
         textSpan.innerHTML = parsedContent;
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-        if (typeof MathJax !== 'undefined') {
-            MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
-        }
+        setTimeout(() => {
+            message.style.animation = 'none';
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+            }
+        }, 400);
     }
 }
 
