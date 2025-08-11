@@ -9,29 +9,29 @@ function parseBasicMarkdown(text) {
     
     let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
         codeBlocks.push(match);
-        return `☐CODEBLOCK${codeBlocks.length - 1}☐`;
+        return `~~~CODEBLOCK${codeBlocks.length - 1}~~~`;
     });
     
     protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
         codeBlocks.push(content);
-        return `☐INLINECODE${codeBlocks.length - 1}☐`;
+        return `~~~INLINECODE${codeBlocks.length - 1}~~~`;
     });
     
     protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
         mathBlocks.push(content);
-        return `☐MATHINLINE${mathBlocks.length - 1}☐`;
+        return `~~~MATHINLINE${mathBlocks.length - 1}~~~`;
     });
     
     protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
         mathBlocks.push(content);
-        return `☐MATHBLOCK${mathBlocks.length - 1}☐`;
+        return `~~~MATHBLOCK${mathBlocks.length - 1}~~~`;
     });
 
     let html = protectedText;
     
-    html = html.replace(/^(#{3})\s+([^#\n].*)$/gm, '<h3>$2</h3>');
-    html = html.replace(/^(#{2})\s+([^#\n].*)$/gm, '<h2>$2</h2>');
-    html = html.replace(/^(#{1})\s+([^#\n].*)$/gm, '<h1>$2</h1>');
+    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
     
     html = html.replace(/^\* (.+)$/gm, '• $1');
     html = html.replace(/^- (.+)$/gm, '• $1');
@@ -45,20 +45,20 @@ function parseBasicMarkdown(text) {
     
     html = html.replace(/\n/g, '<br>');
     
-    html = html.replace(/☐CODEBLOCK(\d+)☐/g, (match, index) => {
+    html = html.replace(/~~~CODEBLOCK(\d+)~~~/g, (match, index) => {
         const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
         return `<pre><code class="code-block">${escapeHtml(code)}</code></pre>`;
     });
     
-    html = html.replace(/☐INLINECODE(\d+)☐/g, (match, index) => {
+    html = html.replace(/~~~INLINECODE(\d+)~~~/g, (match, index) => {
         return `<code class="inline-code">${escapeHtml(codeBlocks[index])}</code>`;
     });
     
-    html = html.replace(/☐MATHINLINE(\d+)☐/g, (match, index) => {
+    html = html.replace(/~~~MATHINLINE(\d+)~~~/g, (match, index) => {
         return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
     });
     
-    html = html.replace(/☐MATHBLOCK(\d+)☐/g, (match, index) => {
+    html = html.replace(/~~~MATHBLOCK(\d+)~~~/g, (match, index) => {
         return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
     });
     
