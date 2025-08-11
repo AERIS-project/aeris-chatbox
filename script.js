@@ -78,12 +78,14 @@ function typewriterEffect(element, html, callback) {
     
     if (textContent.length > 500) {
         element.innerHTML = html;
+        chatWindow.scrollTop = chatWindow.scrollHeight;
         if (callback) callback();
         return;
     }
     
     element.innerHTML = '';
     let currentIndex = 0;
+    let lastScrollTime = 0;
     
     const typeChar = () => {
         if (currentIndex < html.length) {
@@ -101,9 +103,15 @@ function typewriterEffect(element, html, callback) {
                 currentIndex++;
             }
             
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+            const now = Date.now();
+            if (now - lastScrollTime > 100) {
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                lastScrollTime = now;
+            }
+            
             setTimeout(typeChar, 15);
         } else {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
             if (callback) callback();
         }
     };
