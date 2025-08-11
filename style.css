@@ -91,7 +91,7 @@ h1 strong {
   word-wrap: break-word;
   overflow-wrap: break-word;
   position: relative;
-  animation: messageSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  animation: messageSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   transform-origin: bottom;
 }
 
@@ -104,6 +104,10 @@ h1 strong {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+.message.no-animation {
+  animation: none !important;
 }
 
 .user {
@@ -125,7 +129,7 @@ h1 strong {
     0 4px 15px rgba(143, 181, 221, 0.1),
     inset 0 1px 0 rgba(143, 181, 221, 0.1);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .aeris.bifurcation {
@@ -145,28 +149,6 @@ h1 strong {
   color: #d4af37;
   font-size: 1.2em;
   text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-.aeris::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(143, 181, 221, 0.03) 50%,
-    transparent 70%
-  );
-  animation: shimmer 6s infinite;
-  pointer-events: none;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%) translateY(-100%); }
-  100% { transform: translateX(100%) translateY(100%); }
 }
 
 .aeris.thinking {
