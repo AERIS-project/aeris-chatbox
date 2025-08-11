@@ -9,22 +9,22 @@ function parseBasicMarkdown(text) {
     
     let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
         codeBlocks.push(match);
-        return `CODE_BLOCK_${codeBlocks.length - 1}_END`;
+        return `☐CODEBLOCK${codeBlocks.length - 1}☐`;
     });
     
     protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
         codeBlocks.push(content);
-        return `INLINE_CODE_${codeBlocks.length - 1}_END`;
+        return `☐INLINECODE${codeBlocks.length - 1}☐`;
     });
     
     protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
         mathBlocks.push(content);
-        return `MATH_INLINE_${mathBlocks.length - 1}_END`;
+        return `☐MATHINLINE${mathBlocks.length - 1}☐`;
     });
     
     protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
         mathBlocks.push(content);
-        return `MATH_BLOCK_${mathBlocks.length - 1}_END`;
+        return `☐MATHBLOCK${mathBlocks.length - 1}☐`;
     });
 
     let html = protectedText;
@@ -45,20 +45,20 @@ function parseBasicMarkdown(text) {
     
     html = html.replace(/\n/g, '<br>');
     
-    html = html.replace(/CODE_BLOCK_(\d+)_END/g, (match, index) => {
+    html = html.replace(/☐CODEBLOCK(\d+)☐/g, (match, index) => {
         const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
         return `<pre><code class="code-block">${escapeHtml(code)}</code></pre>`;
     });
     
-    html = html.replace(/INLINE_CODE_(\d+)_END/g, (match, index) => {
+    html = html.replace(/☐INLINECODE(\d+)☐/g, (match, index) => {
         return `<code class="inline-code">${escapeHtml(codeBlocks[index])}</code>`;
     });
     
-    html = html.replace(/MATH_INLINE_(\d+)_END/g, (match, index) => {
+    html = html.replace(/☐MATHINLINE(\d+)☐/g, (match, index) => {
         return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
     });
     
-    html = html.replace(/MATH_BLOCK_(\d+)_END/g, (match, index) => {
+    html = html.replace(/☐MATHBLOCK(\d+)☐/g, (match, index) => {
         return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
     });
     
@@ -128,7 +128,6 @@ function appendMessage(role, text, useTyping = false) {
         const copyBtn = document.createElement("button");
         copyBtn.className = "copy-button";
         copyBtn.textContent = "Copy";
-        copyBtn.style.cssText = "position: absolute; top: 8px; right: 8px; background: rgba(143, 181, 221, 0.2); border: 1px solid rgba(143, 181, 221, 0.5); color: #8fb5dd; padding: 5px 10px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; z-index: 100;";
         copyBtn.onclick = function() {
             copyTextToClipboard(text, copyBtn);
         };
@@ -257,7 +256,6 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy-button";
     copyBtn.textContent = "Copy";
-    copyBtn.style.cssText = "position: absolute; top: 8px; right: 8px; background: rgba(143, 181, 221, 0.2); border: 1px solid rgba(143, 181, 221, 0.5); color: #8fb5dd; padding: 5px 10px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; z-index: 100;";
     copyBtn.onclick = function() {
         copyTextToClipboard(text, copyBtn);
     };
