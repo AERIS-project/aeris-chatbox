@@ -72,10 +72,45 @@ function escapeHtml(text) {
 }
 
 function typewriterEffect(element, html, callback) {
-    element.innerHTML = html;
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-    if (callback) callback();
-    return;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    
+    if (textContent.length > 500) {
+        element.innerHTML = html;
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        if (callback) callback();
+        return;
+    }
+    
+    element.innerHTML = '';
+    let currentIndex = 0;
+    let animationId = null;
+    
+    const typeChar = () => {
+        if (currentIndex < html.length) {
+            if (html[currentIndex] === '<') {
+                const closeIndex = html.indexOf('>', currentIndex);
+                if (closeIndex !== -1) {
+                    element.innerHTML += html.substring(currentIndex, closeIndex + 1);
+                    currentIndex = closeIndex + 1;
+                } else {
+                    element.innerHTML += html[currentIndex];
+                    currentIndex++;
+                }
+            } else {
+                element.innerHTML += html[currentIndex];
+                currentIndex++;
+            }
+            
+            animationId = setTimeout(typeChar, 15);
+        } else {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            if (callback) callback();
+        }
+    };
+    
+    typeChar();
 }
 
 function appendMessage(role, text, useTyping = false) {
