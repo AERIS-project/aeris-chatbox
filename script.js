@@ -3,6 +3,10 @@ const endpoint = "https://aeris-framework.onrender.com/v1/chat/completions";
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
+// Variable globale pour contrôler les animations en cours
+let activeAnimations = 0;
+let scrollTimeout = null;
+
 function parseBasicMarkdown(text) {
     const codeBlocks = [];
     const mathBlocks = [];
@@ -71,6 +75,19 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+function scrollToBottom() {
+    // Annuler le scroll précédent si nécessaire
+    if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+    }
+    
+    // Utiliser un timeout pour éviter le spam de scroll
+    scrollTimeout = setTimeout(() => {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        scrollTimeout = null;
+    }, 50);
+}
+
 function typewriterEffect(element, html, callback) {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
@@ -78,14 +95,15 @@ function typewriterEffect(element, html, callback) {
     
     if (textContent.length > 500) {
         element.innerHTML = html;
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        scrollToBottom();
         if (callback) callback();
         return;
     }
     
     element.innerHTML = '';
     let currentIndex = 0;
-    let lastScrollTime = 0;
+    let animationId = null;
+    activeAnimations++;
     
     const typeChar = () => {
         if (currentIndex < html.length) {
@@ -103,20 +121,29 @@ function typewriterEffect(element, html, callback) {
                 currentIndex++;
             }
             
-            const now = Date.now();
-            if (now - lastScrollTime > 100) {
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-                lastScrollTime = now;
+            // Scroll seulement tous les 20 caractères pour éviter le spam
+            if (currentIndex % 20 === 0) {
+                scrollToBottom();
             }
             
-            setTimeout(typeChar, 15);
+            animationId = setTimeout(typeChar, 15);
         } else {
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+            // Animation terminée
+            activeAnimations--;
+            scrollToBottom();
             if (callback) callback();
         }
     };
     
     typeChar();
+    
+    // Retourner une fonction pour arrêter l'animation si nécessaire
+    return () => {
+        if (animationId) {
+            clearTimeout(animationId);
+            activeAnimations--;
+        }
+    };
 }
 
 function appendMessage(role, text, useTyping = false) {
@@ -146,9 +173,10 @@ function appendMessage(role, text, useTyping = false) {
         message.appendChild(copyBtn);
         
         chatWindow.appendChild(message);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        scrollToBottom();
         
-        if (useTyping && text.length < 800) {
+        // Ne pas animer si une animation est déjà en cours
+        if (useTyping && text.length < 800 && activeAnimations === 0) {
             typewriterEffect(textSpan, parsedContent, () => {
                 if (typeof MathJax !== 'undefined') {
                     MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
@@ -165,7 +193,7 @@ function appendMessage(role, text, useTyping = false) {
     }
     
     chatWindow.appendChild(message);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    scrollToBottom();
 }
 
 function copyTextToClipboard(text, button) {
@@ -212,7 +240,7 @@ async function sendMessage() {
     thinkingMessage.className = "message aeris thinking";
     thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
     chatWindow.appendChild(thinkingMessage);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    scrollToBottom();
     
     const startTime = Date.now();
 
@@ -275,9 +303,10 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     message.appendChild(copyBtn);
     
     chatWindow.appendChild(message);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    scrollToBottom();
     
-    if (useTyping && text.length < 800) {
+    // Ne pas animer si une animation est déjà en cours
+    if (useTyping && text.length < 800 && activeAnimations === 0) {
         typewriterEffect(textSpan, parsedContent, () => {
             if (typeof MathJax !== 'undefined') {
                 MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
@@ -292,6 +321,12 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
 }
 
 function clearChat() {
+    // Arrêter toutes les animations en cours
+    activeAnimations = 0;
+    if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = null;
+    }
     chatWindow.innerHTML = "";
 }
 
