@@ -3,8 +3,6 @@ const endpoint = "https://aeris-framework.onrender.com/v1/chat/completions";
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
-let isAnimating = false;
-
 function parseBasicMarkdown(text) {
     const codeBlocks = [];
     const mathBlocks = [];
@@ -74,51 +72,10 @@ function escapeHtml(text) {
 }
 
 function typewriterEffect(element, html, callback) {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
-    const textContent = tempDiv.textContent || tempDiv.innerText || '';
-    
-    if (textContent.length > 500) {
-        element.innerHTML = html;
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-        if (callback) callback();
-        return;
-    }
-    
-    element.innerHTML = '';
-    let currentIndex = 0;
-    let animationId = null;
-    isAnimating = true;
-    
-    const typeChar = () => {
-        if (currentIndex < html.length) {
-            if (html[currentIndex] === '<') {
-                const closeIndex = html.indexOf('>', currentIndex);
-                if (closeIndex !== -1) {
-                    element.innerHTML += html.substring(currentIndex, closeIndex + 1);
-                    currentIndex = closeIndex + 1;
-                } else {
-                    element.innerHTML += html[currentIndex];
-                    currentIndex++;
-                }
-            } else {
-                element.innerHTML += html[currentIndex];
-                currentIndex++;
-            }
-            
-            if (currentIndex === html.length) {
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }
-            
-            animationId = setTimeout(typeChar, 15);
-        } else {
-            isAnimating = false;
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-            if (callback) callback();
-        }
-    };
-    
-    typeChar();
+    element.innerHTML = html;
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    if (callback) callback();
+    return;
 }
 
 function appendMessage(role, text, useTyping = false) {
@@ -150,7 +107,7 @@ function appendMessage(role, text, useTyping = false) {
         chatWindow.appendChild(message);
         chatWindow.scrollTop = chatWindow.scrollHeight;
         
-        if (useTyping && text.length < 800 && !isAnimating) {
+        if (useTyping && text.length < 800) {
             typewriterEffect(textSpan, parsedContent, () => {
                 if (typeof MathJax !== 'undefined') {
                     MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
@@ -280,7 +237,7 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     chatWindow.appendChild(message);
     chatWindow.scrollTop = chatWindow.scrollHeight;
     
-    if (useTyping && text.length < 800 && !isAnimating) {
+    if (useTyping && text.length < 800) {
         typewriterEffect(textSpan, parsedContent, () => {
             if (typeof MathJax !== 'undefined') {
                 MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
@@ -296,7 +253,6 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
 }
 
 function clearChat() {
-    isAnimating = false;
     chatWindow.innerHTML = "";
 }
 
