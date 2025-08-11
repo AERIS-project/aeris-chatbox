@@ -74,6 +74,7 @@ h1 strong {
   padding: 15px;
   height: 550px;
   overflow-y: auto;
+  overflow-x: hidden;
   margin: 20px 0;
   box-shadow: 
     0 0 30px rgba(0, 0, 0, 0.8),
@@ -88,6 +89,7 @@ h1 strong {
   border-radius: 8px;
   max-width: 85%;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   position: relative;
   animation: messageSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   transform-origin: bottom;
@@ -117,13 +119,13 @@ h1 strong {
   color: var(--aeris-light);
   border-left: 3px solid var(--aeris-blue);
   border-radius: 8px;
-  padding-right: 55px;
+  padding: 10px 60px 10px 14px;
   line-height: 1.6;
   box-shadow: 
     0 4px 15px rgba(143, 181, 221, 0.1),
     inset 0 1px 0 rgba(143, 181, 221, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .aeris.bifurcation {
@@ -132,7 +134,7 @@ h1 strong {
     0 4px 20px rgba(212, 175, 55, 0.2),
     inset 0 1px 0 rgba(212, 175, 55, 0.2);
   background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(33, 30, 20, 0.9) 100%);
-  padding-left: 35px;
+  padding: 10px 60px 10px 35px;
 }
 
 .aeris.bifurcation::after {
@@ -181,32 +183,42 @@ h1 strong {
 }
 
 .copy-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(143, 181, 221, 0.15);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(143, 181, 221, 0.5);
-  color: #8fb5dd;
-  padding: 5px 10px;
-  font-size: 0.8rem;
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  padding: 8px 16px !important;
+  background: linear-gradient(135deg, rgba(24, 32, 51, 0.9) 0%, rgba(45, 55, 75, 0.8) 100%) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(143, 181, 221, 0.3) !important;
+  border-radius: 8px !important;
+  color: #d8e6ff !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 400 !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.8px !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  z-index: 100 !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
 .copy-button:hover {
-  background: rgba(143, 181, 221, 0.3);
-  border-color: #8fb5dd;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(143, 181, 221, 0.3);
-  color: #ffffff;
+  background: linear-gradient(135deg, rgba(45, 55, 75, 0.95) 0%, rgba(58, 82, 112, 0.9) 100%) !important;
+  border-color: var(--aeris-blue) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 5px 15px rgba(143, 181, 221, 0.3),
+    0 0 20px rgba(143, 181, 221, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.copy-button.copied {
+  background: linear-gradient(135deg, rgba(45, 90, 45, 0.9) 0%, rgba(60, 110, 60, 0.8) 100%) !important;
+  border-color: #4a8c4a !important;
+  color: #90ee90 !important;
 }
 
 .copy-button.copied {
@@ -334,6 +346,8 @@ button:active {
   font-family: 'Courier New', monospace;
   color: #70c0ff;
   overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
   margin: 12px 0;
   display: block;
   font-size: 0.9em;
@@ -345,6 +359,8 @@ pre {
   margin: 10px 0;
   white-space: pre-wrap;
   word-wrap: break-word;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .math-formula {
@@ -352,6 +368,10 @@ pre {
   padding: 2px 4px;
   font-size: 1.05em;
   text-shadow: 0 0 10px rgba(160, 208, 255, 0.3);
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: inline-block;
 }
 
 .aeris h1, .aeris h2, .aeris h3 {
