@@ -9,22 +9,22 @@ function parseBasicMarkdown(text) {
     
     let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
         codeBlocks.push(match);
-        return `§§CODE_BLOCK_${codeBlocks.length - 1}§§`;
+        return `CODE_BLOCK_${codeBlocks.length - 1}_END`;
     });
     
     protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
         codeBlocks.push(content);
-        return `§§INLINE_CODE_${codeBlocks.length - 1}§§`;
+        return `INLINE_CODE_${codeBlocks.length - 1}_END`;
     });
     
     protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
         mathBlocks.push(content);
-        return `§§MATH_INLINE_${mathBlocks.length - 1}§§`;
+        return `MATH_INLINE_${mathBlocks.length - 1}_END`;
     });
     
     protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
         mathBlocks.push(content);
-        return `§§MATH_BLOCK_${mathBlocks.length - 1}§§`;
+        return `MATH_BLOCK_${mathBlocks.length - 1}_END`;
     });
 
     let html = protectedText;
@@ -37,28 +37,28 @@ function parseBasicMarkdown(text) {
     html = html.replace(/^- (.+)$/gm, '• $1');
     html = html.replace(/^\d+\. (.+)$/gm, '$1');
     
-    html = html.replace(/\*\*([^*§]+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__([^_§]+?)__/g, '<strong>$1</strong>');
+    html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([^_]+?)__/g, '<strong>$1</strong>');
     
-    html = html.replace(/\*([^*\n§]+?)\*/g, '<em>$1</em>');
-    html = html.replace(/_([^_\n§]+?)_/g, '<em>$1</em>');
+    html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+    html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
     
     html = html.replace(/\n/g, '<br>');
     
-    html = html.replace(/§§CODE_BLOCK_(\d+)§§/g, (match, index) => {
+    html = html.replace(/CODE_BLOCK_(\d+)_END/g, (match, index) => {
         const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
         return `<pre><code class="code-block">${escapeHtml(code)}</code></pre>`;
     });
     
-    html = html.replace(/§§INLINE_CODE_(\d+)§§/g, (match, index) => {
+    html = html.replace(/INLINE_CODE_(\d+)_END/g, (match, index) => {
         return `<code class="inline-code">${escapeHtml(codeBlocks[index])}</code>`;
     });
     
-    html = html.replace(/§§MATH_INLINE_(\d+)§§/g, (match, index) => {
+    html = html.replace(/MATH_INLINE_(\d+)_END/g, (match, index) => {
         return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
     });
     
-    html = html.replace(/§§MATH_BLOCK_(\d+)§§/g, (match, index) => {
+    html = html.replace(/MATH_BLOCK_(\d+)_END/g, (match, index) => {
         return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
     });
     
@@ -128,6 +128,7 @@ function appendMessage(role, text, useTyping = false) {
         const copyBtn = document.createElement("button");
         copyBtn.className = "copy-button";
         copyBtn.textContent = "Copy";
+        copyBtn.style.cssText = "position: absolute; top: 8px; right: 8px; background: rgba(143, 181, 221, 0.2); border: 1px solid rgba(143, 181, 221, 0.5); color: #8fb5dd; padding: 5px 10px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; z-index: 100;";
         copyBtn.onclick = function() {
             copyTextToClipboard(text, copyBtn);
         };
@@ -256,6 +257,7 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     const copyBtn = document.createElement("button");
     copyBtn.className = "copy-button";
     copyBtn.textContent = "Copy";
+    copyBtn.style.cssText = "position: absolute; top: 8px; right: 8px; background: rgba(143, 181, 221, 0.2); border: 1px solid rgba(143, 181, 221, 0.5); color: #8fb5dd; padding: 5px 10px; font-size: 0.8rem; border-radius: 6px; cursor: pointer; z-index: 100;";
     copyBtn.onclick = function() {
         copyTextToClipboard(text, copyBtn);
     };
