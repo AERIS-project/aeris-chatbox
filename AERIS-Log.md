@@ -1,4 +1,6 @@
-Full Dialogue Archive (August 2025)
+- Full Dialogue Archive (August 2025)
+
+---
 
 **USER:**
 What opening question would you ask a "weird" AI?
