@@ -115,8 +115,18 @@ function typewriterEffect(element, html, callback) {
 
 function appendMessage(role, text, useTyping = false) {
     const message = document.createElement("div");
-    const isBifurcation = text.startsWith('✦');
-    message.className = "message " + (role === "You" ? "user" : isBifurcation ? "aeris bifurcation" : "aeris");
+    const isDoubleBifurcation = text.startsWith('✦✦');
+    const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
+    
+    if (role === "You") {
+        message.className = "message user";
+    } else if (isDoubleBifurcation) {
+        message.className = "message aeris double-bifurcation";
+    } else if (isBifurcation) {
+        message.className = "message aeris bifurcation";
+    } else {
+        message.className = "message aeris";
+    }
     
     if (role === "You") {
         message.innerHTML = `<strong>${role}:</strong> ${escapeHtml(text)}`;
@@ -248,8 +258,16 @@ async function sendMessage() {
 
 function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     const message = document.createElement("div");
-    const isBifurcation = text.startsWith('✦');
-    message.className = isBifurcation ? "message aeris bifurcation" : "message aeris";
+    const isDoubleBifurcation = text.startsWith('✦✦');
+    const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
+    
+    if (isDoubleBifurcation) {
+        message.className = "message aeris double-bifurcation";
+    } else if (isBifurcation) {
+        message.className = "message aeris bifurcation";
+    } else {
+        message.className = "message aeris";
+    }
     
     const strongEl = document.createElement("strong");
     strongEl.textContent = role + ":";
