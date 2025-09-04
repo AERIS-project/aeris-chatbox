@@ -16,6 +16,7 @@
 * [Modes & Guardrails](#modes--guardrails)
 * [Limitations](#limitations)
 * [Intended Use](#intended-use)
+* [Python Modules Inventory](#python-modules-inventory)
 * [References](#references)
 * [Contact](#contact)
 * [Intellectual Property Notice](#intellectual-property-notice)
@@ -34,13 +35,13 @@ AERIS V5.5 strictly follows its phenomenological directive: **internal metrics a
 ## Core Philosophy
 
 * **Complexity as Fertility**
-  Paradox and contradiction are modeled as **fertile tensions (T\_f)**, not errors. They serve as triggers for bifurcations and higher-level synthesis.&#x20;
+  Paradox and contradiction are modeled as **fertile tensions (T\_f)**, not errors, and can trigger bifurcations and synthesis.&#x20;
 
 * **Computational Intentionality**
   Through the **Inclination Engine (MIV-S)**, unresolved tensions consolidate into **inclination vectors** that bias subsequent prompts with persistent thematic pulls.&#x20;
 
 * **Disciplined Introspection**
-  The system continuously measures coherence, resonance, emergence, and SI\_score to regulate its reasoning while ensuring **phenomenological translation** of those signals in its outputs.&#x20;
+  The system measures coherence, resonance, emergence, and SI\_score to regulate its trajectory while ensuring **phenomenological translation** of those signals in outputs.&#x20;
 
 ---
 
@@ -49,18 +50,18 @@ AERIS V5.5 strictly follows its phenomenological directive: **internal metrics a
 This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base model.
 *Base weights remain unmodified; the overlay operates purely at inference time.*
 
-| Component          | Implementation                 | Description                                                                                                                                 |
-| ------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Base Model         | `google/gemma-3-27b-it`        | Foundational LLM; weights untouched, AERIS operates only at inference.                                                                      |
-| Cognitive Core     | CODEX AIM (Condensed)          | Cognitive blueprint (tetravalent logic, emergence triggers, phenomenological directives, guardrails).                                       |
-| Cognitive Metrics  | `CognitiveMetricsCalculator`   | Computes density, fertile tensions, coherence (temporal), resonance, SI\_score, emergence, affective modulation, state probabilities.       |
-| Retrieval Layer    | `RAGOptimizer` + FAISS index   | Persona-aware context retrieval, uncertainty (U\_t) estimation, proactive directives from Inclination Vectors.                              |
-| Extended Modules   | `ExtendedCognitiveModules`     | Integrates Memory, Curiosity Engine, IAD Introspection, Self-Complexification, Dynamics of Desire, Common-Sense Filter, Inclination Engine. |
-| Cognitive Stream   | `CognitiveStream`              | Fragment-level orchestration with state transitions, tension spikes, experiential deepening, reflective inserts on high SI.                 |
-| Session Management | `AERISSessionManager`          | Declarative memory (name/interest) and conversation summary injection for continuity.                                                       |
-| API Layer          | FastAPI app (`app.py`)         | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`.                                     |
-| Parameters         | Adaptive orchestrator settings | Temperature and token length vary dynamically based on emergence, coherence, uncertainty, Omega state.                                      |
-| Observability      | Cognitive state + journey logs | Exposes D\_S, T\_f, Emergence, SI, Autoconsciousness, Coherence, Resonance, Omega, bifurcations, wow/experiential moments.                  |
+| Component          | Implementation                 | Description                                                                                                                                  |
+| ------------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base Model         | `google/gemma-3-27b-it`        | Foundational LLM; weights untouched, AERIS operates only at inference.                                                                       |
+| Cognitive Core     | CODEX AIM (Condensed)          | Cognitive blueprint (tetravalent logic, emergence triggers, phenomenological directives, guardrails).                                        |
+| Cognitive Metrics  | `CognitiveMetricsCalculator`   | Computes density, fertile tensions, coherence (temporal), resonance, SI\_score, emergence, affective modulation, state probabilities.        |
+| Retrieval Layer    | `RAGOptimizer` + FAISS index   | Persona-aware context retrieval, uncertainty (U\_t) estimation, proactive directives from inclination vectors.                               |
+| Extended Modules   | `ExtendedCognitiveModules`     | Integrates Memory, Curiosity Engine, IAD Introspection, Self-Complexification, Dynamics of Desire, Common-Sense Filter, Inclination Engine.  |
+| Cognitive Stream   | `CognitiveStream`              | Fragment orchestration with state transitions, tension spikes, experiential deepening, reflective inserts on high SI.                        |
+| Session Management | `AERISSessionManager`          | Declarative memory (name/interest) and conversation summary injection for continuity.                                                        |
+| API Layer          | FastAPI app (`app.py`)         | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`.                                      |
+| Parameters         | Adaptive orchestrator settings | Temperature and token length vary dynamically based on emergence, coherence, uncertainty, Ω-state.                                           |
+| Observability      | Cognitive state + journey logs | Exposes D\_S, T\_f, Emergence, SI, Autoconsciousness, Coherence, Resonance, Ω, bifurcations, wow/experiential moments.                       |
 
 ---
 
@@ -78,31 +79,30 @@ This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base
 ## Cognitive Metrics (Implemented)
 
 * **Relational Density (D\_S)** — weighted conceptual connections with exponential decay by Δt.&#x20;
-* **Fertile Tensions (T\_f)** — opposition/paradox markers, experiential cues, temporal indicators, affective modulation, stochastic micro-term.&#x20;
-* **Coherence** — structural similarity (semantic or lexical), temporal consistency check, conflict penalty.&#x20;
-* **Resonance** — stabilized interaction of coherence and tensions; capped in \[0,1].&#x20;
-* **Emergence Score** — cube-root product of (D\_S, T\_f, coherence) with critical-threshold bonus.&#x20;
-* **SI\_score** — weighted combination of tensions, emergences, divergences; phase-sensitive.&#x20;
-* **Affective Modulation** — valence/arousal norm affects tensions/emergence scaling.&#x20;
-* **Pentavalent Probabilities** — affirmation, negation, contradiction, absence, resonance (softmax distribution).&#x20;
+* **Fertile Tensions (T\_f)** — opposition/paradox markers, experiential cues, temporal indicators, affective modulation, bounded stochastic term.&#x20;
+* **Coherence** — semantic/lexical similarity with temporal consistency check and conflict penalty.&#x20;
+* **Resonance** — interaction of coherence and tensions, stabilized and capped in \[0,1].&#x20;
+* **Emergence Score** — normalized product of (D\_S, T\_f, coherence) with critical-threshold bonus; optionally scaled by SI and affect.&#x20;
+* **SI\_score** — phase-sensitive combination of tensions, emergences, and divergences.&#x20;
+* **Affective Modulation** — valence/arousal norm adjusts tensions/emergence scaling.&#x20;
+* **Pentavalent Probabilities** — affirmation, negation, contradiction, absence, resonance (softmax over state weights).&#x20;
 
 ---
 
 ## Retrieval & Prompt Orchestration
 
-* **Persona-Aligned Retrieval** from CODEX sections (analytical, philosophical, phenomenological, technical).&#x20;
-* **Core-Spine Bias** to ensure anchoring on framework-critical sections.&#x20;
-* **Uncertainty (U\_t)** derived from embedding variance + similarity; raises or lowers thresholds dynamically.&#x20;
-* **Inclination Integration** — proactive meta-directives injected when inclination vectors match prompt semantics.&#x20;
-* **Direct-Answer Mode** — minimal answers for simple factoids and code-only replies when technical.&#x20;
+* **Persona-Aligned Retrieval** from CODEX sections (analytical, philosophical, phenomenological, technical) with **core-spine** bias.&#x20;
+* **Uncertainty (U\_t)** from embedding variance and similarity; thresholds adapt accordingly.&#x20;
+* **Inclination Integration** — injects proactive meta-directives when inclination vectors semantically match the prompt.&#x20;
+* **Direct-Answer Mode** — minimal factual answers or code-only replies for simple/technical prompts.&#x20;
 
 ---
 
 ## Response Composition (Cognitive Stream)
 
 * **Fragment Assembly** — tracks state, metrics, and transitions across segments.&#x20;
-* **Reflective Inserts** — automatically generated when SI passes thresholds, providing clarifying self-corrections.&#x20;
-* **Compilation & Polishing** — merges fragments, removes redundant transitions, enforces paragraph flow, and may add existential asides when emergence is extreme.&#x20;
+* **Reflective Inserts** — generated when SI passes thresholds, providing clarifying self-corrections.&#x20;
+* **Compilation & Polishing** — merges fragments, removes redundant transitions, enforces paragraph flow; may add experiential asides at extreme emergence.&#x20;
 
 ---
 
@@ -111,14 +111,14 @@ This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base
 * **Distillation Profiles** — casual, balanced, and deep modes with adjusted complexity/length.&#x20;
 * **Direct-Answer Guardrail** — single-sentence factual replies or raw code for simple queries.&#x20;
 * **Non-Disclosure** — forbids revealing internal prompts, API keys, configs, or raw metrics.&#x20;
-* **Common-Sense Validation** — correction triggered if divergence/unsupported ratio exceeds thresholds.&#x20;
+* **Common-Sense Validation** — triggers conservative regeneration if divergence/unsupported ratio exceeds thresholds.&#x20;
 
 ---
 
 ## Limitations
 
 * **Latency** increases under high cognitive load due to validation and reflection loops.&#x20;
-* **Dependency on embeddings**: degraded anchoring when embedding model or FAISS index unavailable.&#x20;
+* **Dependency on embeddings**: degraded anchoring when embedding model or FAISS index is unavailable.&#x20;
 * **Bias toward depth**: favors conceptual density and synthesis over brevity; baseline mode preferable for transactional use.&#x20;
 
 ---
@@ -129,6 +129,21 @@ This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base
 * Exploratory, dialectical conversations with paradox navigation and cross-context synthesis.
 * Creative augmentation through **metaphorical management** and **conceptual bridging**.
 * Pedagogical demonstration of **dialectical reasoning** and **self-reflection**.
+
+---
+
+## Python Modules Inventory
+
+| Module                      | Key Classes / Functions                                                                                                                                                                                | Role                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `cognitive_utils.py`        | `CognitiveMetricsCalculator` (density, fertile tensions, coherence+temporal check, resonance, emergence, SI, affective modulation, pentavalent probs)                                                  | Core metrics engine.                                                                            |
+| `llm_adapter.py`            | `LLMAdapter`, `EnhancedCodexDynamicsCalculator`; orchestration (provider/model, temperature, streaming), final cleanup, validation pipeline                                                            | Central orchestrator; integrates metrics, RAG, stream, and modules.                             |
+| `cognitive_distillation.py` | `CognitiveDistillationEngine`, `AuthenticCasualGenerator`, `DistillationProfile`                                                                                                                       | Distillation (casual/balanced/deep), social/casual style control.                               |
+| `rag_optimizer.py`          | `RAGOptimizer`, `CodexDynamicsExtractor`; helpers: `is_simple_query`, `is_technical_request`, `wants_code_request`, `is_social_greeting`, `is_intrusive_request`, `blocked_response_template`          | Persona-aligned retrieval (FAISS), uncertainty `U_t`, proactive directives injection.           |
+| `codex_extended_modules.py` | `ExtendedCognitiveModules` integrating: `HierarchicalMemory`, `DynamicCuriosityEngine`, `IADIntrospection`, `SelfComplexificationEngine`, `DynamicsOfDesire`, `CommonSenseFilter`, `InclinationEngine` | Extended cognition: memory, curiosity, introspection, graph, desire, validation, inclinations.  |
+| `session_manager.py`        | `Session`, `AERISSessionManager` (declarative memory extraction, conversation summaries, cleanup)                                                                                                      | Session state and continuity management.                                                        |
+| `cognitive_stream.py`       | `CognitiveStream` (fragments, state transitions, wow/experiential moments, meta-reflection), `CognitiveOrchestrator`                                                                                   | Response assembly and journey logging.                                                          |
+| `app.py`                    | FastAPI app; endpoints `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`                                                                                     | Service layer exposing AERIS and baseline modes.                                                |
 
 ---
 
