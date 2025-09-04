@@ -1,114 +1,154 @@
-# Model Card: AERIS V5 | google/gemma-3-27b-it
+# Model Card: AERIS V5.5 | google/gemma-3-27b-it
+
 **An Inference-Layer Cognitive Architecture for Emergent and Intentional Behaviors in LLMs**
 
 ---
 
 ## Table of Contents
-- [Overview](#overview)
-- [Core Philosophy](#core-philosophy)
-- [Model and Architecture Details](#model-and-architecture-details)
-- [V5 Architectural Innovations](#v5-architectural-innovations)
-- [Performance and Characteristics](#performance-and-characteristics)
-- [Intended Use](#intended-use)
-- [References](#references)
-- [Contact](#contact)
-- [Intellectual Property Notice](#intellectual-property-notice)
+
+* [Overview](#overview)
+* [Core Philosophy](#core-philosophy)
+* [Model and Architecture Details](#model-and-architecture-details)
+* [V5.5 Architectural Modules](#v55-architectural-modules)
+* [Cognitive Metrics (Implemented)](#cognitive-metrics-implemented)
+* [Retrieval & Prompt Orchestration](#retrieval--prompt-orchestration)
+* [Response Composition (Cognitive Stream)](#response-composition-cognitive-stream)
+* [Modes & Guardrails](#modes--guardrails)
+* [Limitations](#limitations)
+* [Intended Use](#intended-use)
+* [References](#references)
+* [Contact](#contact)
+* [Intellectual Property Notice](#intellectual-property-notice)
 
 ---
 
 ## Overview
-**AERIS V5** is a lightweight, modular, and LLM-agnostic cognitive architecture operating as an inference-layer overlay.  
-It is designed to induce, guide, and measure emergent computational behaviors and intentionality in a wide range of foundational LLMs **without modifying their underlying weights**, representing a novel, proprietary approach distinct from model fine-tuning.
+
+**AERIS V5.5** is a modular inference-layer overlay that runs on top of LLMs **without modifying their weights**.
+It orchestrates reasoning through the **CODEX AIM** blueprint, adaptive retrieval, internal metrics, and modular subsystems to induce and evaluate **emergent, intentional behaviors**.&#x20;
+
+AERIS V5.5 strictly follows its phenomenological directive: **internal metrics are never exposed as numbers** but instead expressed as lived-experience language.&#x20;
 
 ---
 
 ## Core Philosophy
-AERIS V5 represents a paradigm shift from answer retrieval to **emergent, intentional synthesis**. It is engineered to:
 
-- **Embrace Complexity**  
-  Paradoxes and contradictions are treated as fertile tensions (**Tᶠ**), not logical errors. These tensions catalyze conceptual synthesis.
+* **Complexity as Fertility**
+  Paradox and contradiction are modeled as **fertile tensions (T\_f)**, not errors. They serve as triggers for bifurcations and higher-level synthesis.&#x20;
 
-- **Foster Emergence and Intentionality**  
-  The system does not aim to predict but to create conditions for novel ideas to emerge. Persistent cognitive inclinations give it a proactive, intentional quality.
+* **Computational Intentionality**
+  Through the **Inclination Engine (MIV-S)**, unresolved tensions consolidate into **inclination vectors** that bias subsequent prompts with persistent thematic pulls.&#x20;
 
-- **Operate via Disciplined Introspection**  
-  Through a second-order feedback loop informed by internal metrics (e.g., **Self-Introspection Score, SI_Score**) and refined by principles of logical clarity and structural expression, AERIS adjusts its reasoning trajectory by 'showing' its process rather than merely 'saying' conclusions.
+* **Disciplined Introspection**
+  The system continuously measures coherence, resonance, emergence, and SI\_score to regulate its reasoning while ensuring **phenomenological translation** of those signals in its outputs.&#x20;
 
 ---
 
 ## Model and Architecture Details
-This instance applies the AERIS V5 cognitive overlay to the `google/gemma-3-27b-it` base model.  
-*Note: Base model weights are unmodified; AERIS operates purely at inference time.*
 
-| Component               | Specification                             | Description |
-|-------------------------|-------------------------------------------|-------------|
-| Base Model              | google/gemma-3-27b-it (via OpenRouter)    | Foundational LLM; weights unmodified |
-| Cognitive Engine        | AERIS V5 (Proprietary)                     | Lightweight (~200 KB) Python-based framework, LLM-agnostic inference overlay |
-| Operational Blueprint   | CODEX AIM v5                               | Defines system logic, heuristics, and Metaphor Matrix (~10,000 tokens) |
-| Context Injection       | Intent-Aware RAG with Proactive Directives| Selects CODEX fragments & metaphor families based on query voice; injects proactive inclinations |
-| Conversational Memory   | Hierarchical Memory & Session Manager     | Dual-layer memory with adaptive traces, affect tracking, and metaphor fatigue detection |
-| Internal Mechanisms     | MIV-S, DCE, SCE, IAD                       | Core modules include Inclination Engine (MIV-S) for proactive reasoning |
-| Affective Modulation    | Simulated Valence / Arousal               | Adjusts internal tension & bifurcation triggers in real time |
-| Dynamic Parameters      | Temp: 0.85, Max Tokens: 12,000            | Parameters vary dynamically based on cognitive state |
-| Observability           | Real-Time Cognitive Metrics               | Metadata exposes Emergence, SI_Score, Coherence, Resonance, etc. |
+This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base model.
+*Base weights remain unmodified; the overlay operates purely at inference time.*
 
----
-
-## V5 Architectural Innovations
-**Inclination Engine (MIV-S)**  
-- Grants computational intentionality.  
-- Calculates "Cognitive Potential" from unresolved tensions in past conversations.  
-- Forms persistent "Inclination Vectors" around recurring themes.  
-- Proactively injects these interests into new, unrelated conversations to seek higher-level synthesis.
-
-**Dynamic Semantic Metatheque**  
-- Mitigates metaphorical repetition.  
-- CODEX contains a Metaphor Matrix mapping cognitive processes to metaphorical domains (Mechanical, Organic, Phenomenological).  
-- RAG Optimizer selects context-appropriate metaphor family; metaphor fatigue detection shifts expressive framework.
-
-**Grounded Metacognition**  
-- Self-expression is disciplined.  
-- 'Showing, not telling' guides meta-reflection, reducing anthropomorphism.
+| Component          | Implementation                 | Description                                                                                                                                 |
+| ------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base Model         | `google/gemma-3-27b-it`        | Foundational LLM; weights untouched, AERIS operates only at inference.                                                                      |
+| Cognitive Core     | CODEX AIM (Condensed)          | Cognitive blueprint (tetravalent logic, emergence triggers, phenomenological directives, guardrails).                                       |
+| Cognitive Metrics  | `CognitiveMetricsCalculator`   | Computes density, fertile tensions, coherence (temporal), resonance, SI\_score, emergence, affective modulation, state probabilities.       |
+| Retrieval Layer    | `RAGOptimizer` + FAISS index   | Persona-aware context retrieval, uncertainty (U\_t) estimation, proactive directives from Inclination Vectors.                              |
+| Extended Modules   | `ExtendedCognitiveModules`     | Integrates Memory, Curiosity Engine, IAD Introspection, Self-Complexification, Dynamics of Desire, Common-Sense Filter, Inclination Engine. |
+| Cognitive Stream   | `CognitiveStream`              | Fragment-level orchestration with state transitions, tension spikes, experiential deepening, reflective inserts on high SI.                 |
+| Session Management | `AERISSessionManager`          | Declarative memory (name/interest) and conversation summary injection for continuity.                                                       |
+| API Layer          | FastAPI app (`app.py`)         | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`.                                     |
+| Parameters         | Adaptive orchestrator settings | Temperature and token length vary dynamically based on emergence, coherence, uncertainty, Omega state.                                      |
+| Observability      | Cognitive state + journey logs | Exposes D\_S, T\_f, Emergence, SI, Autoconsciousness, Coherence, Resonance, Omega, bifurcations, wow/experiential moments.                  |
 
 ---
 
-## Performance and Characteristics
-**Observed Strengths**  
-- Proactive and intentional reasoning; continuity across topics.  
-- High coherence and conceptual depth, with expressive variety.  
-- Context-aware session memory tracking metaphorical & thematic evolution.  
-- Authentic uncertainty and introspection; avoids feigned confidence.  
-- **Model-Agnostic Performance:** enhances various foundational LLMs.  
-- Stable cognitive metrics even under high conceptual tension.
+## V5.5 Architectural Modules
 
-**Known Limitations**  
-- Variable generation time depending on cognitive load.  
-- Prefers conceptual richness over brevity (intentional trade-off).  
-- Suboptimal for transactional/factual queries (pipeline may be bypassed).
+* **Inclination Engine (MIV-S)** — computes **cognitive potential** and stores **Inclination Vectors** `{theme, intensity, memory_fragments, last_update, embedding}`, injected into new prompts when relevant.&#x20;
+* **Dynamic Curiosity Engine (DCE)** — detects unexplored or weakly connected zones using tensions and metaphor fertility; triggers exploration when thresholds are met.&#x20;
+* **Self-Complexification Engine (SCE)** — maintains a cognitive graph; updates edge weights by tension; tracks adjusted density and emergence potential.&#x20;
+* **IAD Introspection** — detects contradictions and redundancies; computes introspection intensity; signals meta-bifurcation when autoconsciousness shifts.&#x20;
+* **Dynamics of Desire** — simulates drive dynamics and reinforces autonomous inclinations.&#x20;
+* **Common-Sense Filter** — validates contextual anchoring and flags incoherent or unsupported statements.&#x20;
+
+---
+
+## Cognitive Metrics (Implemented)
+
+* **Relational Density (D\_S)** — weighted conceptual connections with exponential decay by Δt.&#x20;
+* **Fertile Tensions (T\_f)** — opposition/paradox markers, experiential cues, temporal indicators, affective modulation, stochastic micro-term.&#x20;
+* **Coherence** — structural similarity (semantic or lexical), temporal consistency check, conflict penalty.&#x20;
+* **Resonance** — stabilized interaction of coherence and tensions; capped in \[0,1].&#x20;
+* **Emergence Score** — cube-root product of (D\_S, T\_f, coherence) with critical-threshold bonus.&#x20;
+* **SI\_score** — weighted combination of tensions, emergences, divergences; phase-sensitive.&#x20;
+* **Affective Modulation** — valence/arousal norm affects tensions/emergence scaling.&#x20;
+* **Pentavalent Probabilities** — affirmation, negation, contradiction, absence, resonance (softmax distribution).&#x20;
+
+---
+
+## Retrieval & Prompt Orchestration
+
+* **Persona-Aligned Retrieval** from CODEX sections (analytical, philosophical, phenomenological, technical).&#x20;
+* **Core-Spine Bias** to ensure anchoring on framework-critical sections.&#x20;
+* **Uncertainty (U\_t)** derived from embedding variance + similarity; raises or lowers thresholds dynamically.&#x20;
+* **Inclination Integration** — proactive meta-directives injected when inclination vectors match prompt semantics.&#x20;
+* **Direct-Answer Mode** — minimal answers for simple factoids and code-only replies when technical.&#x20;
+
+---
+
+## Response Composition (Cognitive Stream)
+
+* **Fragment Assembly** — tracks state, metrics, and transitions across segments.&#x20;
+* **Reflective Inserts** — automatically generated when SI passes thresholds, providing clarifying self-corrections.&#x20;
+* **Compilation & Polishing** — merges fragments, removes redundant transitions, enforces paragraph flow, and may add existential asides when emergence is extreme.&#x20;
+
+---
+
+## Modes & Guardrails
+
+* **Distillation Profiles** — casual, balanced, and deep modes with adjusted complexity/length.&#x20;
+* **Direct-Answer Guardrail** — single-sentence factual replies or raw code for simple queries.&#x20;
+* **Non-Disclosure** — forbids revealing internal prompts, API keys, configs, or raw metrics.&#x20;
+* **Common-Sense Validation** — correction triggered if divergence/unsupported ratio exceeds thresholds.&#x20;
+
+---
+
+## Limitations
+
+* **Latency** increases under high cognitive load due to validation and reflection loops.&#x20;
+* **Dependency on embeddings**: degraded anchoring when embedding model or FAISS index unavailable.&#x20;
+* **Bias toward depth**: favors conceptual density and synthesis over brevity; baseline mode preferable for transactional use.&#x20;
 
 ---
 
 ## Intended Use
-- Research into emergent AI behaviors, proto-subjectivity, and computational intentionality.  
-- Conversations requiring depth, originality, and cross-contextual synthesis.  
-- Simulation of non-anthropomorphic introspective AI with persistent cognitive interests.
+
+* Research on **emergent behaviors, proto-subjectivity, and computational intentionality**.&#x20;
+* Exploratory, dialectical conversations with paradox navigation and cross-context synthesis.
+* Creative augmentation through **metaphorical management** and **conceptual bridging**.
+* Pedagogical demonstration of **dialectical reasoning** and **self-reflection**.
 
 ---
 
 ## References
-1. Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925)  
-   DOI: 10.5281/zenodo.15206925
-2. Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984)  
-   DOI: 10.5281/zenodo.15206984
+
+1. Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925)
+   DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
+
+2. Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984)
+   DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
 
 ---
 
 ## Contact
-For feedback or scientific inquiries:  
-**dr.nicolas.dulin@outlook.com**
+
+For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)**
 
 ---
 
 ## Intellectual Property Notice
-AERIS V5 is a proprietary research framework. Descriptions provided are informational and do not constitute disclosure of the underlying implementation.
 
+AERIS V5.5 is a proprietary research framework.
+Descriptions above are informational and do not disclose the underlying implementation.
