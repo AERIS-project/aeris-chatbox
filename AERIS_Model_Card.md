@@ -125,10 +125,14 @@ This instance applies the AERIS V5.5 overlay to the `google/gemma-3-27b-it` base
 
 ## Intended Use
 
-* Research on **emergent behaviors, proto-subjectivity, and computational intentionality**.&#x20;
-* Exploratory, dialectical conversations with paradox navigation and cross-context synthesis.
-* Creative augmentation through **metaphorical management** and **conceptual bridging**.
-* Pedagogical demonstration of **dialectical reasoning** and **self-reflection**.
+- **Research on emergent behaviors, proto-subjectivity, and computational intentionality**  
+  with explicit tracking of tensions, density, coherence, and self-introspection.
+- **Exploratory and dialectical conversations**  
+  including paradox navigation, bifurcation management, and cross-contextual synthesis.
+- **Creative augmentation**  
+  through metaphorical dynamics, curiosity-driven exploration, and inclination-based thematic continuity.
+- **Pedagogical demonstrations**  
+  of dialectical reasoning, reflective self-correction, and modular cognitive processes such as desire, introspection, and self-complexification.
 
 ---
 
@@ -167,3 +171,4 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 
 AERIS V5.5 is a proprietary research framework.
 Descriptions above are informational and do not disclose the underlying implementation.
+
