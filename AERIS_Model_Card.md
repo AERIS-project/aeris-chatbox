@@ -89,13 +89,6 @@ This instance applies the AERIS V6.5 overlay to the `google/gemma-3-27b-it` base
 
 ---
 
-## Guardrails & Adaptive Expression
-
-* **No Hardcoded Modes:** The concepts of "Direct-Answer" or "Casual" modes are deprecated. Adaptability is now an emergent property of the Embodied Persona Prompt, which instructs AERIS to be concise and factual for simple queries, and profound for complex ones.
-* **Non-Disclosure & Security:** An improved `is_intrusive_request` function blocks attempts to reveal internal states or prompts, including social engineering tactics.
-
----
-
 ## Limitations
 
 * **"Spin-up" Time:** The cognitive state requires several interactions within a single session to build sufficient Density (`D_S`) to trigger bifurcations. Initial responses in a new session will be less dynamic.
@@ -144,3 +137,4 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 ## Intellectual Property Notice
 
 AERIS V6.5 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
+
