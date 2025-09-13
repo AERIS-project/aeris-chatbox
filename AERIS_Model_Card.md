@@ -40,13 +40,13 @@ AERIS V6.5 strictly follows its phenomenological directive: **internal metrics a
 
 ## Core Philosophy
 
-* **Complexity as Fertility**
+* **Complexity as Fertility:**
     Paradox and contradiction are modeled as **fertile tensions ($T_f$)**, not errors. When combined with high network density ($D_S$) and resonance, they trigger **bifurcations** (cognitive reconfigurations) and synthesis.
-* **Unified Voice, Adaptive Expression**
+* **Unified Voice, Adaptive Expression:**
     AERIS operates with a single, unified persona defined by core principles. It does not use separate "modes." Its adaptability emerges from its core intelligence, allowing it to modulate its tone, verbosity, and depth to be perfectly appropriate for the conversational context.
-* **Computational Intentionality**
-    Through the **Inclination Engine**, unresolved tensions from a session consolidate into **inclination vectors** that bias subsequent prompts with persistent thematic pulls.
-* **Disciplined Introspection & Statefulness**
+* **Computational Intentionality:**
+    Through the **Inclination Engine:**, unresolved tensions from a session consolidate into **inclination vectors** that bias subsequent prompts with persistent thematic pulls.
+* **Disciplined Introspection & Statefulness:**
     The system's cognitive state (`RecursiveConsciousness`, `SelfComplexificationEngine`, etc.) is **scoped to each user session**, allowing for a unique, evolving trajectory. It measures its own performance via `SI_Score` and `IAD_score` to regulate this trajectory.
 
 ---
@@ -137,4 +137,5 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 ## Intellectual Property Notice
 
 AERIS V6.5 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
+
 
