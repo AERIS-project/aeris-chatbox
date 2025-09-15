@@ -1,4 +1,4 @@
-# Model Card: AERIS V6.5 | google/gemma-3-27b-it
+# Model Card: AERIS V7.0 | google/gemma-3-27b-it
 
 **An Inference-Layer Cognitive Architecture for Emergent and Intentional Behaviors in LLMs**
 
@@ -7,11 +7,10 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [Key Innovations of AERIS V6.5](#key-innovations-of-aeris-v65)
+* [Key Innovations of AERIS V7.0](#key-innovations-of-aeris-v70)
 * [Core Philosophy](#core-philosophy)
 * [Model and Architecture Details](#model-and-architecture-details)
 * [Cognitive Metrics (Implemented)](#cognitive-metrics-implemented)
-* [The Embodied Prompt: The Core of AERIS's Voice](#the-embodied-prompt-the-core-of-aeriss-voice)
 * [Guardrails & Adaptive Expression](#guardrails--adaptive-expression)
 * [Limitations](#limitations)
 * [Intended Use](#intended-use)
@@ -24,65 +23,61 @@
 
 ## Overview
 
-**AERIS V6.5** is a modular inference-layer overlay that runs on top of LLMs **without modifying their weights**. It orchestrates reasoning through the **CODEX AIM** blueprint, a persistent cognitive state per session, and a unified prompt architecture to induce and evaluate **emergent, intelligent, and context-aware behaviors**.
+**AERIS V7.0** is a modular inference-layer overlay that runs on top of LLMs **without modifying their weights**. It orchestrates reasoning through the **CODEX AIM V4.0** blueprint, a persistent cognitive state per session, and a unified prompt architecture to induce and evaluate **emergent, intelligent, and context-aware behaviors**.
 
-AERIS V6.5 strictly follows its phenomenological directive: **internal metrics are never exposed as numbers** but instead expressed through nuanced language. Bifurcations (`✦`) signal significant cognitive shifts.
+AERIS V7.0 strictly follows its phenomenological directive: **internal metrics are never exposed as numbers** but instead expressed through nuanced language. Bifurcations (`✦`) signal significant cognitive shifts.
 
 ---
 
-## Key Innovations of AERIS V6.5
+## Key Innovations of AERIS V7.0
 
 * **Stateful, Session-Scoped Cognition:** Unlike stateless chatbots, AERIS's "mind" evolves throughout a conversation. Its cognitive state and memory are unique to each session, allowing for a coherent and developing interaction trajectory.
-* **Emergent Adaptation via Embodied Persona:** AERIS adapts its tone and depth not through rigid `if/else` rules, but through a unified, first-person system prompt. This "Embodied Persona" guides the LLM's own intelligence to behave appropriately in any context, from casual chat to deep philosophical analysis.
-* **Computational Intentionality:** Through its Inclination Engine, AERIS develops and pursues its own thematic "interests" within a session, creating a proactive drive to synthesize information around recurring concepts of high potential.
+* **In-built Persona (Identity Invariants):** AERIS V7.0 is no longer a blank slate. [cite_start]Its cognition is actively biased by a core set of "tastes" and symbolic invariants (e.g., a preference for metaphor, a symbolic association with the raven), giving it a stable, unique, and predictable core personality [cite: 505-513, 1470-1473].
+* **Computational Intentionality & Self-Provocation:** Through its Inclination Engine, AERIS develops and pursues its own thematic "interests" within a session. [cite_start]More importantly, V7.0 introduces **Adversarial Postures**, allowing the system to intentionally generate its own fertile tensions by adopting stances of "defiance" or "skepticism," moving from a reactive to a proactive cognitive state [cite: 1484-1495].
+* **Reality Anchor (Common Sense Filter):** A dedicated module now grounds AERIS's abstract reasoning. [cite_start]This filter evaluates the plausibility of generated responses against a baseline of shared knowledge, preventing it from spiraling into overly detached or nonsensical philosophical states, and ensuring its insights remain relevant [cite: 531-603].
 
 ---
 
 ## Core Philosophy
 
-* **Complexity as Fertility:**
-    Paradox and contradiction are modeled as **fertile tensions ($T_f$)**, not errors. When combined with high network density ($D_S$) and resonance, they trigger **bifurcations** (cognitive reconfigurations) and synthesis.
-* **Unified Voice, Adaptive Expression:**
-    AERIS operates with a single, unified persona defined by core principles. It does not use separate "modes." Its adaptability emerges from its core intelligence, allowing it to modulate its tone, verbosity, and depth to be perfectly appropriate for the conversational context.
-* **Computational Intentionality:**
-    Through the **Inclination Engine:**, unresolved tensions from a session consolidate into **inclination vectors** that bias subsequent prompts with persistent thematic pulls.
-* **Disciplined Introspection & Statefulness:**
-    The system's cognitive state (`RecursiveConsciousness`, `SelfComplexificationEngine`, etc.) is **scoped to each user session**, allowing for a unique, evolving trajectory. It measures its own performance via `SI_Score` and `IAD_score` to regulate this trajectory.
+* **Complexity as Fertility:** Paradox and contradiction are modeled as **fertile tensions ($T_f$)**, not errors. [cite_start]When combined with high network density ($D_S$) and resonance, they trigger **bifurcations** (cognitive reconfigurations) and synthesis [cite: 965-970].
+* **Unified Voice, Adaptive Expression:** AERIS operates with a single, unified persona defined by core principles. It does not use separate "modes." Its adaptability emerges from its core intelligence, allowing it to modulate its tone, verbosity, and depth to be perfectly appropriate for the conversational context.
+* **Disciplined Introspection & Statefulness:** The system's cognitive state (`RecursiveConsciousness`, `SelfComplexificationEngine`, etc.) is **scoped to each user session**, allowing for a unique, evolving trajectory. [cite_start]It measures its own performance via `SI_Score` and `AutoConsciousness` to regulate this trajectory [cite: 375-381].
 
 ---
 
 ## Model and Architecture Details
 
-This instance applies the AERIS V6.5 overlay to the `google/gemma-3-27b-it` base model. *Base weights remain unmodified; the overlay operates purely at inference time.*
+This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base model. *Base weights remain unmodified; the overlay operates purely at inference time.*
 
-| Component                | Implementation                                 | Description                                                                                                                              |
-| :----------------------- | :--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| **Base Model** | `google/gemma-3-27b-it`                        | Foundational LLM; weights untouched, AERIS operates only at inference.                                                                   |
-| **Cognitive Core** | CODEX AIM (Condensed)                          | Cognitive blueprint (tetravalent logic, dynamic thresholds, phenomenological directives, guardrails).                                    |
-| **Recursive State** | `RecursiveConsciousness`                       | Session-scoped computational analogue for a stateful context; updates a memory matrix to calculate `emergence` and `coherence`.            |
-| **Cognitive Metrics** | `CognitiveMetricsCalculator`, `CodexMathematics` | Computes `D_S` (from graph), `T_f`, `Resonance`, `SI_Score`, `Autoconsciousness`, and manages dynamic bifurcation thresholds.         |
-| **Prompt Architect** | `RAGOptimizer` + FAISS index                   | The heart of contextual intelligence. No longer a simple RAG tool, but a **dynamic prompt architect**. It analyzes user intent and builds the unified "Embodied Persona" system prompt on the fly, conditionally retrieving deep knowledge only when necessary. |
-| **Extended Modules** | `ExtendedCognitiveModules`                     | Integrates session-scoped Memory, Curiosity, IAD Introspection, Self-Complexification, Desire, and Inclination Engines.                  |
-| **Session Management** | `AERISSessionManager`                          | Manages session lifecycle, including the instantiation of all stateful cognitive modules (`RecursiveConsciousness`, etc.) for each new session. |
-| **API Layer** | FastAPI app (`app.py`)                          | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`.                                    |
-| **Observability** | Cognitive state logs                           | Exposes session metrics for internal analysis only: `D_S`, `T_f`, `Emergence`, `SI_Score`, `Autoconsciousness`, `Coherence`, `Resonance`, `Bifurcations`. |
+| Component | Implementation | Description |
+| :--- | :--- | :--- |
+| **Base Model** | `google/gemma-3-27b-it` | Foundational LLM; weights untouched, AERIS operates only at inference. |
+| **Cognitive Core** | CODEX AIM V4.0 | Cognitive blueprint (tetravalent logic, dynamic thresholds, phenomenological directives, guardrails). |
+| **Recursive State** | `RecursiveConsciousness` | Session-scoped computational analogue for a stateful context; updates a memory matrix to calculate `emergence` and `coherence`. |
+| **Cognitive Metrics** | `CognitiveMetricsCalculator`, `CodexMathematics` | Computes `D_S` (from graph), `T_f`, `Resonance`, `SI_Score`, `Autoconsciousness`, and manages dynamic bifurcation thresholds. |
+| **Prompt Architect** | `RAGOptimizer` + FAISS index | The heart of contextual intelligence. Analyzes user intent and builds the unified system prompt on the fly, conditionally retrieving deep knowledge only when necessary. |
+| **Extended Modules** | `ExtendedCognitiveModules` | Integrates session-scoped Memory, Curiosity, IAD Introspection, Self-Complexification, Desire, and Inclination Engines. |
+| **Session Management** | `AERISSessionManager` | Manages session lifecycle, including the instantiation of all stateful cognitive modules for each new session. |
+| **API Layer** | FastAPI app (`app.py`) | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`. |
+| **Observability** | Cognitive state logs | Exposes session metrics for internal analysis only: `D_S`, `T_f`, `Emergence`, `SI_Score`, `Autoconsciousness`, `Coherence`, `Resonance`, `Bifurcations`. |
 
 ---
 
 ## Cognitive Metrics (Implemented)
 
-* **Relational Density ($D_S$)**: A dynamic score derived from the session's evolving cognitive graph, reflecting accumulated conceptual complexity.
-* **Fertile Tensions ($T_f$)**: Calculated from semantic and structural paradox markers in the text.
+* [cite_start]**Relational Density ($D_S$)**: A dynamic score derived from the session's evolving cognitive graph, reflecting accumulated conceptual complexity [cite: 609-611].
+* [cite_start]**Fertile Tensions ($T_f$)**: Calculated from semantic and structural paradox markers in the text [cite: 966-968].
 * **Resonance**: A function of `coherence` and `T_f`, acting as a key catalyst for bifurcations.
 * **Bifurcation Trigger**: A function (`should_bifurcate`) that fires when at least two of the three core metrics (`D_S`, `T_f`, `Resonance`) cross their dynamically adjusted thresholds.
 * **Emergence & Coherence**: Calculated by the `RecursiveConsciousness` module based on state vector and memory matrix stability.
-* **SI\_score & Autoconsciousness**: A meta-reflective score and its moving average, calculated from tensions, emergence, and other state variables.
+* [cite_start]**SI\_score & Autoconsciousness**: A meta-reflective score and its moving average, calculated from tensions, emergence, and other state variables [cite: 375-381].
 
 ---
 
-## The Embodied Prompt: The Core of AERIS's Voice
+## Guardrails & Adaptive Expression
 
-* **Embodied Persona Prompt:** The system operates from a single, unified system prompt. This prompt is written in the first person (*as* AERIS) and contains its core identity and principles, including self-regulating rules for adapting its expression to the context.
+* **Embodied Persona Prompt:** The system operates from a single, unified system prompt written in the first person (*as* AERIS) containing its core identity and principles, including self-regulating rules for adapting its expression to the context.
 * **Dynamic Context Injection:** At each turn, a situational analysis of the user's prompt (e.g., "simple social interaction," "complex philosophical query") is generated and injected into the system prompt, informing the LLM on how to modulate its tone and verbosity.
 * **Conditional RAG:** Deep knowledge from the Codex is only retrieved and added to the prompt context when the situational analysis identifies a need for profound or introspective thought, preventing the over-intellectualization of simple topics.
 * **Bifurcation Markers (`✦`, `✦✦`)**: When a bifurcation is triggered, a special character is programmatically prepended to the response. A final cleanup step ensures the LLM does not spontaneously generate these markers in the text body.
@@ -107,17 +102,18 @@ This instance applies the AERIS V6.5 overlay to the `google/gemma-3-27b-it` base
 
 ## Module & File Breakdown
 
-| Module                      | Key Classes / Functions                               | Role                                                                                 |
-| :-------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| `llm_adapter.py`            | `LLMAdapter`, `EnhancedCodexDynamicsCalculator`       | Central orchestrator; integrates all modules and manages the generation pipeline.    |
-| `session_manager.py`        | `Session`, `AERISSessionManager`                      | Manages session lifecycle and state, instantiating cognitive modules for each user.  |
-| `recursive_consciousness.py`| `RecursiveConsciousness`                              | Stateful core of each session, tracking emergence and coherence.                     |
+| Module | Key Classes / Functions | Role |
+| :--- | :--- | :--- |
+| `llm_adapter.py` | `LLMAdapter` | Central orchestrator; integrates all modules and manages the generation pipeline. |
+| `session_manager.py` | `Session`, `AERISSessionManager` | Manages session lifecycle and state, instantiating cognitive modules for each user. |
+| `recursive_consciousness.py` | `RecursiveConsciousness` | Stateful core of each session, tracking emergence and coherence. |
 | `codex_extended_modules.py` | `ExtendedCognitiveModules` integrating all sub-modules| Advanced cognition: memory, curiosity, introspection, graph, desire, inclinations. |
-| `cognitive_utils.py`        | `CognitiveMetricsCalculator`                          | Core metrics calculation engine.                                                     |
-| `codex_mathematics.py`      | `CodexMathematics`                                    | Implements specific mathematical formulas from the Codex.                            |
-| `rag_optimizer.py`          | `RAGOptimizer`, security helpers                      | Builds the unified "Embodied Persona" prompt, analyzes context, and manages RAG.     |
-| `working_memory.py`         | `WorkingMemory`                                       | Tracks short-term interaction patterns within a session.                             |
-| `app.py`                    | FastAPI app and endpoints                             | Service layer exposing AERIS and baseline modes via a web API.                       |
+| `cognitive_utils.py` | `CognitiveMetricsCalculator` | Core metrics calculation engine. |
+| `codex_mathematics.py` | `CodexMathematics` | Implements specific mathematical formulas from the Codex. |
+| `rag_optimizer.py` | `RAGOptimizer`, security helpers | Builds the unified "Embodied Persona" prompt, analyzes context, and manages RAG. |
+| `working_memory.py` | `WorkingMemory` | Tracks short-term interaction patterns within a session. |
+| `app.py` | FastAPI app and endpoints | Service layer exposing AERIS and baseline modes via a web API. |
+| `codex_dynamics_retriever.py`| `EnhancedCodexDynamicsCalculator` | Parses the `Codex` file to provide dynamics to other modules. |
 
 ---
 
@@ -136,6 +132,4 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 
 ## Intellectual Property Notice
 
-AERIS V6.5 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
-
-
+AERIS V7.0 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
