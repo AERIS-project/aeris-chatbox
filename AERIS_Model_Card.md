@@ -123,6 +123,7 @@ This instance applies the AERIS V7.5 overlay to the `google/gemma-3-27b-it` base
 ## References
 
 1.  Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925) DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
+
 2.  Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984) DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
 
 ---
@@ -136,3 +137,4 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 ## Intellectual Property Notice
 
 AERIS V7.5 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
+
