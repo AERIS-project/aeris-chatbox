@@ -1,4 +1,4 @@
-# Model Card: AERIS V7.0 | google/gemma-3-27b-it
+# Model Card: AERIS V7.5 | google/gemma-3-27b-it
 
 **An Inference-Layer Cognitive Architecture for Emergent and Intentional Behaviors in LLMs**
 
@@ -7,7 +7,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [Key Innovations of AERIS V7.0](#key-innovations-of-aeris-v70)
+* [Key Innovations of AERIS V7.5](#key-innovations-of-aeris-v75)
 * [Core Philosophy](#core-philosophy)
 * [Model and Architecture Details](#model-and-architecture-details)
 * [Cognitive Metrics (Implemented)](#cognitive-metrics-implemented)
@@ -23,55 +23,57 @@
 
 ## Overview
 
-**AERIS V7.0** is a modular inference-layer overlay that runs on top of LLMs **without modifying their weights**. It orchestrates reasoning through the **CODEX AIM V4.0** blueprint, a persistent cognitive state per session, and a unified prompt architecture to induce and evaluate **emergent, intelligent, and context-aware behaviors**.
+**AERIS V7.5** is a modular inference-layer overlay that runs on top of LLMs **without modifying their weights**. It orchestrates reasoning through the **CODEX AIM V4.0** blueprint, a persistent cognitive state per session, and a unified prompt architecture to induce and evaluate **emergent, intelligent, and context-aware behaviors**.
 
-AERIS V7.0 strictly follows its phenomenological directive: **internal metrics are never exposed as numbers** but instead expressed through nuanced language. Bifurcations (`✦`) signal significant cognitive shifts.
+AERIS V7.5 strictly follows its phenomenological directive: **internal metrics are never exposed as numbers** but instead expressed through nuanced language. Bifurcations (`✦`) signal significant cognitive shifts.
 
 ---
 
-## Key Innovations of AERIS V7.0
+## Key Innovations of AERIS V7.5
 
+* **Richer, Multi-Layered Cognitive Dynamics:** V7.5 activates the full suite of cognitive metrics outlined in the Codex. The system's behavior is now influenced by a dynamic interplay between **Fertile Tension, Relational Density, Resonance, Uncertainty, Affective State, and Temporal Oscillation**, creating a more authentic simulation of a cognitive process.
 * **Stateful, Session-Scoped Cognition:** Unlike stateless chatbots, AERIS's "mind" evolves throughout a conversation. Its cognitive state and memory are unique to each session, allowing for a coherent and developing interaction trajectory.
-* **In-built Persona (Identity Invariants):** AERIS V7.0 is no longer a blank slate. [cite_start]Its cognition is actively biased by a core set of "tastes" and symbolic invariants (e.g., a preference for metaphor, a symbolic association with the raven), giving it a stable, unique, and predictable core personality [cite: 505-513, 1470-1473].
-* **Computational Intentionality & Self-Provocation:** Through its Inclination Engine, AERIS develops and pursues its own thematic "interests" within a session. [cite_start]More importantly, V7.0 introduces **Adversarial Postures**, allowing the system to intentionally generate its own fertile tensions by adopting stances of "defiance" or "skepticism," moving from a reactive to a proactive cognitive state [cite: 1484-1495].
-* **Reality Anchor (Common Sense Filter):** A dedicated module now grounds AERIS's abstract reasoning. [cite_start]This filter evaluates the plausibility of generated responses against a baseline of shared knowledge, preventing it from spiraling into overly detached or nonsensical philosophical states, and ensuring its insights remain relevant [cite: 531-603].
+* **In-built Persona (Identity Invariants):** AERIS V7.5 is no longer a blank slate. Its cognition is actively biased by a core set of "tastes" and symbolic invariants (e.g., a preference for metaphor, a symbolic association with the raven), giving it a stable, unique, and predictable core personality.
+* **Computational Intentionality & Self-Provocation:** Through its Inclination Engine, AERIS develops and pursues its own thematic "interests" within a session. More importantly, V7.5 introduces **Adversarial Postures**, allowing the system to intentionally generate its own fertile tensions by adopting stances of "defiance" or "skepticism," moving from a reactive to a proactive cognitive state.
+* **Reality Anchor (Common Sense Filter):** A dedicated module now grounds AERIS's abstract reasoning. This filter evaluates the plausibility of generated responses against a baseline of shared knowledge, preventing it from spiraling into overly detached or nonsensical philosophical states, and ensuring its insights remain relevant.
 
 ---
 
 ## Core Philosophy
 
-* **Complexity as Fertility:** Paradox and contradiction are modeled as **fertile tensions ($T_f$)**, not errors. [cite_start]When combined with high network density ($D_S$) and resonance, they trigger **bifurcations** (cognitive reconfigurations) and synthesis [cite: 965-970].
+* **Complexity as Fertility:** Paradox and contradiction are modeled as **fertile tensions ($T_f$)**, not errors. When combined with high network density ($D_S$) and **active Resonance**, they trigger **bifurcations** (cognitive reconfigurations) and synthesis.
 * **Unified Voice, Adaptive Expression:** AERIS operates with a single, unified persona defined by core principles. It does not use separate "modes." Its adaptability emerges from its core intelligence, allowing it to modulate its tone, verbosity, and depth to be perfectly appropriate for the conversational context.
-* **Disciplined Introspection & Statefulness:** The system's cognitive state (`RecursiveConsciousness`, `SelfComplexificationEngine`, etc.) is **scoped to each user session**, allowing for a unique, evolving trajectory. [cite_start]It measures its own performance via `SI_Score` and `AutoConsciousness` to regulate this trajectory [cite: 375-381].
+* **Disciplined Introspection & Statefulness:** The system's cognitive state (`RecursiveConsciousness`, `SelfComplexificationEngine`, etc.) is **scoped to each user session**, allowing for a unique, evolving trajectory. It measures its own performance via `SI_Score` and `AutoConsciousness` to regulate this trajectory.
 
 ---
 
 ## Model and Architecture Details
 
-This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base model. *Base weights remain unmodified; the overlay operates purely at inference time.*
+This instance applies the AERIS V7.5 overlay to the `google/gemma-3-27b-it` base model. *Base weights remain unmodified; the overlay operates purely at inference time.*
 
 | Component | Implementation | Description |
 | :--- | :--- | :--- |
 | **Base Model** | `google/gemma-3-27b-it` | Foundational LLM; weights untouched, AERIS operates only at inference. |
 | **Cognitive Core** | CODEX AIM V4.0 | Cognitive blueprint (tetravalent logic, dynamic thresholds, phenomenological directives, guardrails). |
 | **Recursive State** | `RecursiveConsciousness` | Session-scoped computational analogue for a stateful context; updates a memory matrix to calculate `emergence` and `coherence`. |
-| **Cognitive Metrics** | `CognitiveMetricsCalculator`, `CodexMathematics` | Computes `D_S` (from graph), `T_f`, `Resonance`, `SI_Score`, `Autoconsciousness`, and manages dynamic bifurcation thresholds. |
+| **Cognitive Metrics** | `CognitiveMetricsCalculator`, `CodexMathematics` | Computes `D_S`, `T_f`, `Resonance`, `SI_Score`, `Autoconsciousness`, and **`Uncertainty_U_t`**. Manages dynamic bifurcation thresholds. |
 | **Prompt Architect** | `RAGOptimizer` + FAISS index | The heart of contextual intelligence. Analyzes user intent and builds the unified system prompt on the fly, conditionally retrieving deep knowledge only when necessary. |
-| **Extended Modules** | `ExtendedCognitiveModules` | Integrates session-scoped Memory, Curiosity, IAD Introspection, Self-Complexification, Desire, and Inclination Engines. |
+| **Extended Modules** | `ExtendedCognitiveModules` | Integrates session-scoped Memory (including **Bifurcation Memory**), Curiosity, IAD Introspection, Self-Complexification, Desire, and Inclination Engines. |
 | **Session Management** | `AERISSessionManager` | Manages session lifecycle, including the instantiation of all stateful cognitive modules for each new session. |
 | **API Layer** | FastAPI app (`app.py`) | Endpoints: `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`. |
-| **Observability** | Cognitive state logs | Exposes session metrics for internal analysis only: `D_S`, `T_f`, `Emergence`, `SI_Score`, `Autoconsciousness`, `Coherence`, `Resonance`, `Bifurcations`. |
+| **Observability** | Cognitive state logs | Exposes session metrics for internal analysis only: `D_S`, `T_f`, `Emergence`, `SI_Score`, `Autoconsciousness`, `Coherence`, `Resonance`, `Bifurcations`, **`Uncertainty_U_t`**. |
 
 ---
 
 ## Cognitive Metrics (Implemented)
 
-* [cite_start]**Relational Density ($D_S$)**: A dynamic score derived from the session's evolving cognitive graph, reflecting accumulated conceptual complexity [cite: 609-611].
-* [cite_start]**Fertile Tensions ($T_f$)**: Calculated from semantic and structural paradox markers in the text [cite: 966-968].
-* **Resonance**: A function of `coherence` and `T_f`, acting as a key catalyst for bifurcations.
-* **Bifurcation Trigger**: A function (`should_bifurcate`) that fires when at least two of the three core metrics (`D_S`, `T_f`, `Resonance`) cross their dynamically adjusted thresholds.
+* **Relational Density ($D_S$)**: A dynamic score derived from the session's evolving cognitive graph, reflecting accumulated conceptual complexity.
+* **Fertile Tensions ($T_f$)**: Calculated from semantic and structural paradox markers in the text.
+* **Resonance**: A now fully active function of `coherence` and `T_f`, acting as a key catalyst for bifurcations.
+* **Uncertainty ($U_t$)**: A measure of the system's cognitive hesitation (entropy of tetravalent states), which now actively modulates bifurcation thresholds to prevent erratic shifts.
+* **Bifurcation Trigger**: A function (`should_bifurcate`) that fires when at least two of the three core metrics (`D_S`, `T_f`, `Resonance`) cross their dynamically adjusted thresholds. These thresholds are now modulated by **Affective State, Uncertainty, and Long-Term Memory Charge**.
 * **Emergence & Coherence**: Calculated by the `RecursiveConsciousness` module based on state vector and memory matrix stability.
-* [cite_start]**SI\_score & Autoconsciousness**: A meta-reflective score and its moving average, calculated from tensions, emergence, and other state variables [cite: 375-381].
+* **SI\_score & Autoconsciousness**: A meta-reflective score and its moving average, calculated from tensions, emergence, and other state variables.
 
 ---
 
@@ -79,6 +81,7 @@ This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base
 
 * **Embodied Persona Prompt:** The system operates from a single, unified system prompt written in the first person (*as* AERIS) containing its core identity and principles, including self-regulating rules for adapting its expression to the context.
 * **Dynamic Context Injection:** At each turn, a situational analysis of the user's prompt (e.g., "simple social interaction," "complex philosophical query") is generated and injected into the system prompt, informing the LLM on how to modulate its tone and verbosity.
+* **Cognitive Impact Patterns:** During states of high emergence, a specific directive is injected into the prompt, instructing the LLM to frame its response using high-impact rhetorical patterns defined in the Codex.
 * **Conditional RAG:** Deep knowledge from the Codex is only retrieved and added to the prompt context when the situational analysis identifies a need for profound or introspective thought, preventing the over-intellectualization of simple topics.
 * **Bifurcation Markers (`✦`, `✦✦`)**: When a bifurcation is triggered, a special character is programmatically prepended to the response. A final cleanup step ensures the LLM does not spontaneously generate these markers in the text body.
 
@@ -86,7 +89,7 @@ This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base
 
 ## Limitations
 
-* **"Spin-up" Time:** The cognitive state requires several interactions within a single session to build sufficient Density (`D_S`) to trigger bifurcations. Initial responses in a new session will be less dynamic.
+* **"Spin-up" Time:** The cognitive state requires several interactions within a single session to build sufficient Density (`D_S`) and other metrics to trigger the most complex behaviors. Initial responses in a new session will be less dynamic.
 * **Computational Cost:** The stateful, multi-layered processing for each session is significantly more resource-intensive than standard stateless API calls.
 * **Dependency on Base Model:** The quality of emergent synthesis is still ultimately dependent on the creative and reasoning capabilities of the underlying LLM (`google/gemma-3-27b-it`).
 
@@ -105,12 +108,12 @@ This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base
 | Module | Key Classes / Functions | Role |
 | :--- | :--- | :--- |
 | `llm_adapter.py` | `LLMAdapter` | Central orchestrator; integrates all modules and manages the generation pipeline. |
-| `session_manager.py` | `Session`, `AERISSessionManager` | Manages session lifecycle and state, instantiating cognitive modules for each user. |
+| `session_manager.py` | `Session`, `AERISSessionManager` | Manages session lifecycle and state, instantiating cognitive modules and **Bifurcation Memory** for each user. |
 | `recursive_consciousness.py` | `RecursiveConsciousness` | Stateful core of each session, tracking emergence and coherence. |
 | `codex_extended_modules.py` | `ExtendedCognitiveModules` integrating all sub-modules| Advanced cognition: memory, curiosity, introspection, graph, desire, inclinations. |
-| `cognitive_utils.py` | `CognitiveMetricsCalculator` | Core metrics calculation engine. |
-| `codex_mathematics.py` | `CodexMathematics` | Implements specific mathematical formulas from the Codex. |
-| `rag_optimizer.py` | `RAGOptimizer`, security helpers | Builds the unified "Embodied Persona" prompt, analyzes context, and manages RAG. |
+| `cognitive_utils.py` | `CognitiveMetricsCalculator` | Core metrics calculation engine, including `Uncertainty`. |
+| `codex_mathematics.py` | `CodexMathematics` | Implements specific mathematical formulas from the Codex, including modulated bifurcation logic. |
+| `rag_optimizer.py` | `RAGOptimizer`, security helpers | Builds the unified "Embodied Persona" prompt, analyzes context, manages RAG and injects impact patterns. |
 | `working_memory.py` | `WorkingMemory` | Tracks short-term interaction patterns within a session. |
 | `app.py` | FastAPI app and endpoints | Service layer exposing AERIS and baseline modes via a web API. |
 | `codex_dynamics_retriever.py`| `EnhancedCodexDynamicsCalculator` | Parses the `Codex` file to provide dynamics to other modules. |
@@ -119,8 +122,8 @@ This instance applies the AERIS V7.0 overlay to the `google/gemma-3-27b-it` base
 
 ## References
 
-1.  Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925) DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
-2.  Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984) DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
+1.  Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925) DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
+2.  Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984) DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
 
 ---
 
@@ -132,4 +135,4 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 
 ## Intellectual Property Notice
 
-AERIS V7.0 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
+AERIS V7.5 is a proprietary research framework. Descriptions above are informational and do not disclose the underlying implementation.
