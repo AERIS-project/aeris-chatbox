@@ -1,7 +1,3 @@
-Excellent. Voici la **model card complète mise à jour pour AERIS V11.0**, conforme à ton style d’origine, sans invention, avec l’ensemble des modules, terminologies et avancées réelles du système.
-
----
-
 # Model Card: AERIS V11.0 | google/gemma-3-27b-it
 
 **An Inference-Layer Cognitive Architecture for Emergent, Reflective, and Intentional Behaviors in LLMs**
@@ -205,3 +201,4 @@ All descriptions above are informational and omit implementation-level specifics
 Redistribution or derivative use without authorization is prohibited.
 
 ---
+
