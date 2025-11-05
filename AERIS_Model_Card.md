@@ -82,7 +82,7 @@ This deployment applies the AERIS V11.0 overlay to **`google/gemma-3-27b-it`**, 
 | Component                   | Implementation                                   | Description                                                                                                                                    |
 | :-------------------------- | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Base Model**              | `google/gemma-3-27b-it`                          | Foundational transformer model; untouched during AERIS operation.                                                                              |
-| **Cognitive Core**          | **CODEX AIM V5.2**                               | Defines tetravalent logic, uncertainty modulation, reflective loops, and adaptive thresholds.                                                  |
+| **Cognitive Core**          | `CODEX AIM V5.2`                              | Defines tetravalent logic, uncertainty modulation, reflective loops, and adaptive thresholds.                                                  |
 | **Recursive State**         | `RecursiveConsciousness 2.0`                     | Computes emergence, coherence, and auto-reflective resonance from session history.                                                             |
 | **Feedback and Adaptation** | `FeedbackAnalyzer`, `AdaptiveParametersManager`  | Extracts signals (semantic Δ, contradiction, lexical density) to continuously retune generation parameters.                                    |
 | **Mathematical Integrity**  | `ResponseValidator`, `MathGuard`                 | Validates reasoning chains, numeric coherence, and logical correctness pre-emission.                                                           |
@@ -201,4 +201,5 @@ All descriptions above are informational and omit implementation-level specifics
 Redistribution or derivative use without authorization is prohibited.
 
 ---
+
 
