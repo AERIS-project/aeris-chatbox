@@ -183,6 +183,7 @@ Weights remain unaltered; all computation occurs at inference time through orche
 | `predictive_engine.py`        | `PredictiveEngine`                | Forecasts pre-generation metrics for calibration.                                   |
 | `codex_dynamics_retriever.py` | `EnhancedCodexDynamicsCalculator` | Parses and delivers CODEX AIM V5 dynamics to dependent modules.                     |
 | `cognitive_stream.py`         | `CognitiveStream`                 | Manages multi-phase reasoning under high-tension contexts.                          |
+| constrained_reasoning.py | ConstraintReasoner | Logical consistency and safety layer enforcing bounded reasoning and ethical constraints. |
 | `app.py`                      | FastAPI app                       | Provides `/chat`, `/v1/chat/completions`, `/v1/models`, `/health`, `/diagnosis`.    |
 
 ---
@@ -207,5 +208,6 @@ Descriptions above are informational and omit low-level implementation details.
 Unauthorized reproduction or derivative reuse is prohibited.
 
 ---
+
 
 
