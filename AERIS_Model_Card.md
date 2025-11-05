@@ -85,7 +85,7 @@ Weights remain unaltered; all computation occurs at inference time through orche
 | Component                          | Implementation                                                                                          | Description                                                                                                |
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------- |
 | **Base Model**                     | `google/gemma-3-27b-it`                                                                                 | Foundational LLM; weights untouched.                                                                       |
-| **Cognitive Core**                 | **CODEX AIM V5**                                                                                        | Blueprint defining tetravalent logic, uncertainty modulation, recursive feedback, and bifurcation control. |
+| **Cognitive Core**                 | `**CODEX AIM V5**`                                                                                        | Blueprint defining tetravalent logic, uncertainty modulation, recursive feedback, and bifurcation control. |
 | **Recursive State**                | `RecursiveConsciousness`                                                                                | Core engine computing emergence, coherence, and reflective stability.                                      |
 | **Feedback & Adaptation**          | `feedback_analyzer.py` → `AnalyseurRetroaction`, `adaptive_parameters.py` → `AdaptiveParametersManager` | Extracts semantic and structural signals to retune generation dynamics.                                    |
 | **Mathematical Integrity**         | `response_validator.py` → `ResponseValidator`, `MathGuard`                                              | Enforces logical and numerical coherence pre-emission.                                                     |
@@ -207,3 +207,4 @@ Descriptions above are informational and omit low-level implementation details.
 Unauthorized reproduction or derivative reuse is prohibited.
 
 ---
+
