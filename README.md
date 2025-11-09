@@ -16,6 +16,7 @@ AERIS creates evolving cognitive trajectories across conversations, demonstratin
 
 ## Technical
 
+- **Meta-layer**: Operating on top of standard LLM APIs
 - **Frontend**: This repository
 - **Backend**: Proprietary cognitive architecture
 - **Endpoint**: OpenAI-compatible API
