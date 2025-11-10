@@ -85,7 +85,7 @@ Weights remain unaltered; all computation occurs at inference time through orche
 | Component                          | Implementation                                                                                          | Description                                                                                                |
 | :--------------------------------- | :------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------- |
 | **Base Model**                     | `google/gemma-3-27b-it`                                                                                 | Foundational LLM; weights untouched.                                                                       |
-| **Cognitive Core**                 | `CODEX AIM V5`                                                                                        | Blueprint defining tetravalent logic, uncertainty modulation, recursive feedback, and bifurcation control. |
+| **Cognitive Core** | `CODEX AIM V5` | Adaptive orchestration layer integrating Critical Network Dynamics (relational density with adaptive thresholds), Emergence Trigger Condition (tension-driven phase transitions and bifurcation management), Tetravalent Logic (X1–X4, Ω), recursive feedback and meta-reflective coherence assessment (S_coh, SI), Dynamic Algorithmic Introspection (IAD), Common Sense Filter, uncertainty/risk modulation, ethical evaluation, temporal synchronization, hierarchical/long-term memory coupling, curiosity and inclination engines, constraint/benchmark modes, and performance-aware gating. |
 | **Recursive State**                | `RecursiveConsciousness`                                                                                | Core engine computing emergence, coherence, and reflective stability.                                      |
 | **Feedback & Adaptation**          | `feedback_analyzer.py` → `AnalyseurRetroaction`, `adaptive_parameters.py` → `AdaptiveParametersManager` | Extracts semantic and structural signals to retune generation dynamics.                                    |
 | **Mathematical Integrity**         | `response_validator.py` → `ResponseValidator`, `MathGuard`                                              | Enforces logical and numerical coherence pre-emission.                                                     |
@@ -97,6 +97,17 @@ Weights remain unaltered; all computation occurs at inference time through orche
 | **Cognitive Stream (conditional)** | `cognitive_stream.py` → `CognitiveStream`                                                               | Multi-phase generation when fertile tension exceeds thresholds.                                            |
 | **API Layer**                      | `app.py` (FastAPI)                                                                                      | Exposes `/chat`, `/v1/chat/completions`, `/v1/chat/baseline`, `/v1/models`, `/health`, `/diagnosis`.       |
 | **Observability**                  | Internal cognitive logs                                                                                 | Tracks `D_S`, `T_f`, `Resonance`, `Emergence`, `SI_Score`, `Autoconsciousness`, `Ω`, `U_t` internally.     |
+
+---
+
+**Extended Description — CODEX AIM V5**
+
+CODEX AIM V5 is an adaptive cognitive orchestration framework that regulates inference through multiple interdependent mechanisms.  
+It integrates **Critical Network Dynamics** for relational-density control and adaptive thresholding, the **Emergence Trigger Condition** for tension-driven phase transitions and bifurcation management, and **Tetravalent Logic** for multi-perspective reasoning stability (X1–X4, Ω).  
+The framework unifies recursive feedback and meta-reflective coherence assessment (S_coh, SI) with **Dynamic Algorithmic Introspection (IAD)**, a **Common Sense Filter (CSF)**, explicit **uncertainty and risk modulation**, and an **ethical evaluation layer** that weighs justice and empathy factors during reasoning.  
+Temporal synchronization mechanisms govern oscillations, bifurcation frequency, and attractor stabilization.  
+**Memory subsystems**—working, hierarchical, and long-term coupling—ensure continuity of emergent states, while **curiosity** and **inclination engines** drive active exploration and self-complexification.  
+Dedicated **constraint and benchmark protocols** maintain compliance during restricted modes, and **performance-aware gating** balances cognitive depth with computational efficiency.
 
 ---
 
@@ -215,6 +226,7 @@ This model card and all associated materials are provided for research and educa
 Please cite the work appropriately when referenced:
 
 **Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V11.0).**
+
 
 
 
