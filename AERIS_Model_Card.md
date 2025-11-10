@@ -203,11 +203,20 @@ For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr
 
 ## Intellectual Property Notice
 
-AERIS V11.0 is a proprietary research framework.
-Descriptions above are informational and omit low-level implementation details.
-Unauthorized reproduction or derivative reuse is prohibited.
+© 2025 Nicolas Dulin. All rights reserved.  
+*AERIS – Adaptive Emergent Relational Intelligence System (Complete Source Code and Cognitive Framework)*  
+is the intellectual property of its author.  
 
----
+This work is pending registration with the **U.S. Copyright Office**  
+(Case No. 1-14937322281, filed June 7, 2025).  
+A public record will be available upon completion at [https://cocatalog.loc.gov](https://cocatalog.loc.gov).
+
+This model card and all associated materials are provided for research and educational purposes only.  
+Please cite the work appropriately when referenced:
+
+**Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V11.0).**
+
+
 
 
 
