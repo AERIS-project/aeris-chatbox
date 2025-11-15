@@ -300,7 +300,7 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
             if (typeof MathJax !== 'undefined') {
                 MathJax.typesetPromise([message]).then(() => {
                     chatWindow.scrollTop = chatWindow.scrollHeight;
-                }).catch((err) => console.log('MathJax error:', err));
+                });
             }
         });
     } else {
@@ -309,7 +309,7 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
             message.style.animation = 'none';
             chatWindow.scrollTop = chatWindow.scrollHeight;
             if (typeof MathJax !== 'undefined') {
-                MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
+                MathJax.typesetPromise([message]);
             }
         }, 400);
     }
