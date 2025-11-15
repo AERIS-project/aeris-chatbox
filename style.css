@@ -72,7 +72,8 @@ h1 strong {
   border: 1px solid rgba(143, 181, 221, 0.1);
   border-radius: 12px;
   padding: 15px;
-  height: 550px;
+  height: 70vh;
+  max-height: 800px;
   overflow-y: auto;
   overflow-x: hidden;
   margin: 20px 0;
@@ -124,7 +125,7 @@ h1 strong {
   border-left: 3px solid var(--aeris-blue);
   border-radius: 8px;
   padding: 10px 14px 45px 14px;
-  line-height: 1.6;
+  line-height: 1.75;
   box-shadow: 
     0 4px 15px rgba(143, 181, 221, 0.1),
     inset 0 1px 0 rgba(143, 181, 221, 0.1);
@@ -388,7 +389,7 @@ pre {
 .aeris br + br {
   display: block;
   content: "";
-  margin: 10px 0;
+  margin: 14px 0;
 }
 
 .aeris em {
@@ -432,7 +433,7 @@ pre {
   }
   
   .chat-window {
-    height: 400px;
+    height: 60vh;
   }
   
   .message {
