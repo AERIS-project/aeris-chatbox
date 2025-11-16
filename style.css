@@ -120,7 +120,7 @@ h1 strong {
 }
 
 .aeris {
-  background: linear-gradient(135deg, var(--aeris-dark) 0%, rgba(24, 32, 51, 0.9) 100%);
+  background: linear-gradient(135deg, var(--aeris-dark) 0%, rgba(24, 32, 51, 0.9) 60%, rgba(24, 32, 51, 0.95) 100%);
   color: var(--aeris-light);
   border-left: 3px solid var(--aeris-blue);
   border-radius: 8px;
@@ -138,7 +138,7 @@ h1 strong {
   box-shadow: 
     0 4px 20px rgba(212, 175, 55, 0.2),
     inset 0 1px 0 rgba(212, 175, 55, 0.2);
-  background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(33, 30, 20, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(24, 32, 51, 0.96) 0%, rgba(33, 30, 20, 0.94) 55%, rgba(33, 30, 20, 0.98) 100%);
   padding: 10px 14px 45px 35px;
 }
 
@@ -157,7 +157,7 @@ h1 strong {
   box-shadow: 
     0 4px 25px rgba(255, 127, 63, 0.3),
     inset 0 1px 0 rgba(255, 127, 63, 0.3);
-  background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(40, 25, 15, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(24, 32, 51, 0.96) 0%, rgba(40, 25, 15, 0.94) 55%, rgba(40, 25, 15, 0.98) 100%);
   padding: 10px 14px 45px 42px;
 }
 
@@ -183,6 +183,26 @@ h1 strong {
   50% { 
     background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(30, 40, 60, 0.95) 100%);
   }
+}
+
+/* ◆ seul : ambiance de fond accentuée côté droit */
+.aeris.state-has-diamond {
+  background: linear-gradient(
+    135deg,
+    rgba(24, 32, 51, 0.96) 0%,
+    rgba(24, 32, 51, 0.98) 55%,
+    rgba(45, 55, 75, 0.98) 100%
+  );
+}
+
+/* ✦ + ◆ : fond plus polarisé (bipolaire) */
+.aeris.state-has-both {
+  background: linear-gradient(
+    135deg,
+    rgba(24, 32, 51, 0.98) 0%,
+    rgba(33, 30, 20, 0.96) 40%,
+    rgba(45, 55, 75, 0.98) 100%
+  );
 }
 
 .copy-button {
