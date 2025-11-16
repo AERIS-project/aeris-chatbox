@@ -117,6 +117,8 @@ function appendMessage(role, text, useTyping = false) {
     const message = document.createElement("div");
     const isDoubleBifurcation = text.startsWith('✦✦');
     const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
+    const hasDiamond = text.includes('◆');
+    const hasStar = text.includes('✦');
     
     if (role === "You") {
         message.className = "message user";
@@ -126,6 +128,14 @@ function appendMessage(role, text, useTyping = false) {
         message.className = "message aeris bifurcation";
     } else {
         message.className = "message aeris";
+    }
+    
+    if (role !== "You") {
+        if (hasDiamond && hasStar) {
+            message.classList.add("state-has-both");
+        } else if (hasDiamond) {
+            message.classList.add("state-has-diamond");
+        }
     }
     
     if (role === "You") {
@@ -260,6 +270,8 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     const message = document.createElement("div");
     const isDoubleBifurcation = text.startsWith('✦✦');
     const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
+    const hasDiamond = text.includes('◆');
+    const hasStar = text.includes('✦');
     
     if (isDoubleBifurcation) {
         message.className = "message aeris double-bifurcation";
@@ -267,6 +279,12 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
         message.className = "message aeris bifurcation";
     } else {
         message.className = "message aeris";
+    }
+    
+    if (hasDiamond && hasStar) {
+        message.classList.add("state-has-both");
+    } else if (hasDiamond) {
+        message.classList.add("state-has-diamond");
     }
     
     const strongEl = document.createElement("strong");
