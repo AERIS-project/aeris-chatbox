@@ -117,26 +117,28 @@ h1 strong {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Bulle AERIS de base : bleu nuit sobre, légèrement texturé */
 .aeris {
-  background: linear-gradient(135deg, var(--aeris-dark) 0%, rgba(24, 32, 51, 0.9) 60%, rgba(24, 32, 51, 0.95) 100%);
+  background: linear-gradient(135deg, #181d29 0%, #141824 100%);
   color: var(--aeris-light);
   border-left: 3px solid var(--aeris-blue);
   border-radius: 8px;
   padding: 10px 14px 45px 14px;
   line-height: 1.75;
   box-shadow: 
-    0 4px 15px rgba(143, 181, 221, 0.1),
-    inset 0 1px 0 rgba(143, 181, 221, 0.1);
+    0 4px 15px rgba(143, 181, 221, 0.12),
+    inset 0 1px 0 rgba(143, 181, 221, 0.08);
   position: relative;
   overflow: visible;
 }
 
+/* ✦ : même bordure + léger réchauffement, mais sans brun orangé envahissant */
 .aeris.bifurcation {
   border-left: 3px solid #d4af37;
   box-shadow: 
-    0 4px 20px rgba(212, 175, 55, 0.2),
-    inset 0 1px 0 rgba(212, 175, 55, 0.2);
-  background: linear-gradient(135deg, rgba(24, 32, 51, 0.96) 0%, rgba(33, 30, 20, 0.94) 55%, rgba(33, 30, 20, 0.98) 100%);
+    0 4px 20px rgba(212, 175, 55, 0.25),
+    inset 0 1px 0 rgba(212, 175, 55, 0.15);
+  background: linear-gradient(135deg, #201d2c 0%, #181624 100%);
   padding: 10px 14px 45px 35px;
 }
 
@@ -150,12 +152,13 @@ h1 strong {
   text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
+/* ✦✦ : un peu plus chaud, mais toujours dans la gamme sombre */
 .aeris.double-bifurcation {
   border-left: 3px solid #ff7f3f;
   box-shadow: 
     0 4px 25px rgba(255, 127, 63, 0.3),
-    inset 0 1px 0 rgba(255, 127, 63, 0.3);
-  background: linear-gradient(135deg, rgba(24, 32, 51, 0.96) 0%, rgba(40, 25, 15, 0.94) 55%, rgba(40, 25, 15, 0.98) 100%);
+    inset 0 1px 0 rgba(255, 127, 63, 0.25);
+  background: linear-gradient(135deg, #241d30 0%, #191522 100%);
   padding: 10px 14px 45px 42px;
 }
 
@@ -176,28 +179,30 @@ h1 strong {
 
 @keyframes thinkingPulse {
   0%, 100% { 
-    background: linear-gradient(135deg, var(--aeris-dark) 0%, rgba(24, 32, 51, 0.9) 100%);
+    background: linear-gradient(135deg, #181d29 0%, #141824 100%);
   }
   50% { 
-    background: linear-gradient(135deg, rgba(24, 32, 51, 0.95) 0%, rgba(30, 40, 60, 0.95) 100%);
+    background: linear-gradient(135deg, #1c2434 0%, #171c2a 100%);
   }
 }
 
+/* ◆ seul : même famille, mais bleu plus profond vers la droite */
 .aeris.state-has-diamond {
   background: linear-gradient(
     135deg,
-    rgba(24, 32, 51, 0.96) 0%,
-    rgba(24, 32, 51, 0.98) 55%,
-    rgba(52, 80, 110, 0.98) 100%
+    #181d29 0%,
+    #192133 50%,
+    #202b3f 100%
   );
 }
 
+/* ✦ + ◆ : polarisation très légère, sans arc-en-ciel */
 .aeris.state-has-both {
   background: linear-gradient(
     135deg,
-    rgba(24, 32, 51, 0.98) 0%,
-    rgba(33, 30, 20, 0.96) 40%,
-    rgba(52, 80, 110, 0.98) 100%
+    #201d2c 0%,
+    #191a27 45%,
+    #202b3f 100%
   );
 }
 
