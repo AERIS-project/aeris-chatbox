@@ -1,4 +1,5 @@
 const endpoint = "https://aeris-framework.onrender.com/v1/chat/completions";
+const baselineEndpoint = "https://aeris-framework.onrender.com/v1/chat/baseline";
 
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
@@ -259,14 +260,14 @@ async function sendMessage() {
         
         chatWindow.removeChild(thinkingMessage);
         
-        appendMessageWithTime("AERIS", message, responseTime, true);
+        appendMessageWithTime("AERIS", message, responseTime, true, input);
     } catch (error) {
         chatWindow.removeChild(thinkingMessage);
         appendMessage("AERIS", "Error: Failed to connect to the server.");
     }
 }
 
-function appendMessageWithTime(role, text, responseTime, useTyping = false) {
+function appendMessageWithTime(role, text, responseTime, useTyping = false, originalPrompt = "") {
     const message = document.createElement("div");
     const isDoubleBifurcation = text.startsWith('✦✦');
     const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
@@ -303,12 +304,20 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false) {
     copyBtn.onclick = function() {
         copyTextToClipboard(text, copyBtn);
     };
+
+    const compareBtn = document.createElement("button");
+    compareBtn.className = "compare-inline-button";
+    compareBtn.textContent = "Show baseline";
+    compareBtn.onclick = function() {
+        toggleBaseline(message, originalPrompt, compareBtn);
+    };
     
     message.appendChild(strongEl);
     message.appendChild(timeSpan);
     message.appendChild(document.createTextNode(" "));
     message.appendChild(textSpan);
     message.appendChild(copyBtn);
+    message.appendChild(compareBtn);
     
     chatWindow.appendChild(message);
     
@@ -347,3 +356,74 @@ userInput.addEventListener("keypress", function(event) {
 document.addEventListener("DOMContentLoaded", function() {
     userInput.focus();
 });
+
+async function toggleBaseline(parentMessageEl, originalPrompt, button) {
+    const existing = parentMessageEl.nextElementSibling;
+    if (existing && existing.classList.contains("baseline-reply")) {
+        existing.remove();
+        button.textContent = "Show baseline";
+        return;
+    }
+
+    const previousLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = "Loading…";
+
+    try {
+        const response = await fetch(baselineEndpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "google/gemma-3-27b-it",
+                temperature: 1.0,
+                max_tokens: 800,
+                messages: [
+                    { role: "user", content: originalPrompt }
+                ]
+            })
+        });
+
+        const data = await response.json();
+        const text = response.ok
+            ? (data.choices?.[0]?.message?.content || "No response.")
+            : `Error: ${data.detail || "Baseline error"}`;
+
+        const baselineDiv = document.createElement("div");
+        baselineDiv.className = "message baseline baseline-reply";
+
+        const label = document.createElement("div");
+        label.className = "baseline-label";
+        label.textContent = "Baseline (Gemma-27B)";
+
+        const contentSpan = document.createElement("span");
+        const parsed = parseBasicMarkdown(text);
+        contentSpan.innerHTML = parsed;
+
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-button";
+        copyBtn.textContent = "Copy";
+        copyBtn.onclick = function() {
+            copyTextToClipboard(text, copyBtn);
+        };
+
+        baselineDiv.appendChild(label);
+        baselineDiv.appendChild(contentSpan);
+        baselineDiv.appendChild(copyBtn);
+
+        parentMessageEl.insertAdjacentElement("afterend", baselineDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        button.textContent = "Hide baseline";
+    } catch (error) {
+        button.textContent = "Error";
+    } finally {
+        button.disabled = false;
+        setTimeout(function() {
+            if (button.textContent === "Error") {
+                button.textContent = previousLabel;
+            }
+        }, 2000);
+    }
+}
