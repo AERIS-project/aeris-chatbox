@@ -470,3 +470,35 @@ pre {
     max-height: 180px;
   }
 }
+.message.baseline {
+  background: linear-gradient(135deg, #1f1f1f 0%, #252525 100%);
+  color: #e0e0e0;
+  border-left: 3px solid #555;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  padding: 8px 12px 32px 12px;
+  margin-top: 6px;
+  margin-left: 18px;
+}
+
+.message.baseline .baseline-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(230, 230, 230, 0.6);
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.compare-inline-button {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+.compare-inline-button:hover {
+  opacity: 1;
+}
