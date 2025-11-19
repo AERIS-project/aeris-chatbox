@@ -308,6 +308,7 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false, orig
     const compareBtn = document.createElement("button");
     compareBtn.className = "compare-inline-button";
     compareBtn.textContent = "Show baseline";
+    compareBtn.dataset.loaded = "false";
     compareBtn.onclick = function() {
         toggleBaseline(message, originalPrompt, compareBtn);
     };
@@ -359,9 +360,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function toggleBaseline(parentMessageEl, originalPrompt, button) {
     const existing = parentMessageEl.nextElementSibling;
-    if (existing && existing.classList.contains("baseline-reply")) {
-        existing.remove();
-        button.textContent = "Show baseline";
+    if (button.dataset.loaded === "true" && existing && existing.classList.contains("baseline-reply")) {
+        if (existing.style.display === "none") {
+            existing.style.display = "";
+            button.textContent = "Hide baseline";
+        } else {
+            existing.style.display = "none";
+            button.textContent = "Show baseline";
+        }
         return;
     }
 
@@ -378,7 +384,7 @@ async function toggleBaseline(parentMessageEl, originalPrompt, button) {
             body: JSON.stringify({
                 model: "google/gemma-3-27b-it",
                 temperature: 1.0,
-                max_tokens: 800,
+                max_tokens: 1600,
                 messages: [
                     { role: "user", content: originalPrompt }
                 ]
@@ -415,6 +421,7 @@ async function toggleBaseline(parentMessageEl, originalPrompt, button) {
         parentMessageEl.insertAdjacentElement("afterend", baselineDiv);
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
+        button.dataset.loaded = "true";
         button.textContent = "Hide baseline";
     } catch (error) {
         button.textContent = "Error";
