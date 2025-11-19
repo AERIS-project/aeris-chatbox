@@ -10,72 +10,72 @@ function parseBasicMarkdown(text) {
     
     let protectedText = text.replace(/```[\s\S]*?```/g, (match) => {
         codeBlocks.push(match);
-        return `~~~CODEBLOCK${codeBlocks.length - 1}~~~`;
+        return "~~~CODEBLOCK" + (codeBlocks.length - 1) + "~~~";
     });
     
     protectedText = protectedText.replace(/`([^`]+)`/g, (match, content) => {
         codeBlocks.push(content);
-        return `~~~INLINECODE${codeBlocks.length - 1}~~~`;
+        return "~~~INLINECODE" + (codeBlocks.length - 1) + "~~~";
     });
     
     protectedText = protectedText.replace(/\\\((.*?)\\\)/g, (match, content) => {
         mathBlocks.push(content);
-        return `~~~MATHINLINE${mathBlocks.length - 1}~~~`;
+        return "~~~MATHINLINE" + (mathBlocks.length - 1) + "~~~";
     });
     
     protectedText = protectedText.replace(/\\\[(.*?)\\\]/g, (match, content) => {
         mathBlocks.push(content);
-        return `~~~MATHBLOCK${mathBlocks.length - 1}~~~`;
+        return "~~~MATHBLOCK" + (mathBlocks.length - 1) + "~~~";
     });
 
     let html = protectedText;
     
-    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+    html = html.replace(/^### (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^## (.+)$/gm, "<h2>$1</h2>");
+    html = html.replace(/^# (.+)$/gm, "<h1>$1</h1>");
     
-    html = html.replace(/^\* (.+)$/gm, '• $1');
-    html = html.replace(/^- (.+)$/gm, '• $1');
-    html = html.replace(/^\d+\. (.+)$/gm, '$1');
+    html = html.replace(/^\* (.+)$/gm, "• $1");
+    html = html.replace(/^- (.+)$/gm, "• $1");
+    html = html.replace(/^\d+\. (.+)$/gm, "$1");
     
-    html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__([^_]+?)__/g, '<strong>$1</strong>');
+    html = html.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/__([^_]+?)__/g, "<strong>$1</strong>");
     
-    html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
-    html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
+    html = html.replace(/\*([^*\n]+?)\*/g, "<em>$1</em>");
+    html = html.replace(/_([^_\n]+?)_/g, "<em>$1</em>");
     
-    html = html.replace(/\n/g, '<br>');
+    html = html.replace(/\n/g, "<br>");
     
     html = html.replace(/~~~CODEBLOCK(\d+)~~~/g, (match, index) => {
-        const code = codeBlocks[index].replace(/```(\w+)?\n?/, '').replace(/```$/, '');
-        return `<pre><code class="code-block">${escapeHtml(code)}</code></pre>`;
+        const code = codeBlocks[index].replace(/```(\w+)?\n?/, "").replace(/```$/, "");
+        return '<pre><code class="code-block">' + escapeHtml(code) + "</code></pre>";
     });
     
     html = html.replace(/~~~INLINECODE(\d+)~~~/g, (match, index) => {
-        return `<code class="inline-code">${escapeHtml(codeBlocks[index])}</code>`;
+        return '<code class="inline-code">' + escapeHtml(codeBlocks[index]) + "</code>";
     });
     
     html = html.replace(/~~~MATHINLINE(\d+)~~~/g, (match, index) => {
-        return `<span class="math-formula">\\(${mathBlocks[index]}\\)</span>`;
+        return '<span class="math-formula">\\(' + mathBlocks[index] + "\\)</span>";
     });
     
     html = html.replace(/~~~MATHBLOCK(\d+)~~~/g, (match, index) => {
-        return `<div class="math-formula">\\[${mathBlocks[index]}\\]</div>`;
+        return '<div class="math-formula">\\[' + mathBlocks[index] + "\\]</div>";
     });
     
     return html;
 }
 
 function escapeHtml(text) {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
 }
 
 function typewriterEffect(element, html, callback) {
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = html;
-    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
     
     if (textContent.length > 500) {
         element.innerHTML = html;
@@ -84,14 +84,13 @@ function typewriterEffect(element, html, callback) {
         return;
     }
     
-    element.innerHTML = '';
+    element.innerHTML = "";
     let currentIndex = 0;
-    let animationId = null;
     
     const typeChar = () => {
         if (currentIndex < html.length) {
-            if (html[currentIndex] === '<') {
-                const closeIndex = html.indexOf('>', currentIndex);
+            if (html[currentIndex] === "<") {
+                const closeIndex = html.indexOf(">", currentIndex);
                 if (closeIndex !== -1) {
                     element.innerHTML += html.substring(currentIndex, closeIndex + 1);
                     currentIndex = closeIndex + 1;
@@ -103,8 +102,7 @@ function typewriterEffect(element, html, callback) {
                 element.innerHTML += html[currentIndex];
                 currentIndex++;
             }
-            
-            animationId = setTimeout(typeChar, 15);
+            setTimeout(typeChar, 15);
         } else {
             chatWindow.scrollTop = chatWindow.scrollHeight;
             if (callback) callback();
@@ -114,12 +112,12 @@ function typewriterEffect(element, html, callback) {
     typeChar();
 }
 
-function appendMessage(role, text, useTyping = false) {
+function appendMessage(role, text, useTyping) {
     const message = document.createElement("div");
-    const isDoubleBifurcation = text.startsWith('✦✦');
-    const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
-    const hasDiamond = text.includes('◆');
-    const hasStar = text.includes('✦');
+    const isDoubleBifurcation = text.startsWith("✦✦");
+    const isBifurcation = text.startsWith("✦") && !isDoubleBifurcation;
+    const hasDiamond = text.includes("◆");
+    const hasStar = text.includes("✦");
     
     if (role === "You") {
         message.className = "message user";
@@ -140,74 +138,70 @@ function appendMessage(role, text, useTyping = false) {
     }
     
     if (role === "You") {
-        message.innerHTML = `<strong>${role}:</strong> ${escapeHtml(text)}`;
-    } else {
-        const strongEl = document.createElement("strong");
-        strongEl.textContent = role + ":";
-        
-        const textSpan = document.createElement("span");
-        const parsedContent = parseBasicMarkdown(text);
-        
-        const copyBtn = document.createElement("button");
-        copyBtn.className = "copy-button";
-        copyBtn.textContent = "Copy";
-        copyBtn.onclick = function() {
-            copyTextToClipboard(text, copyBtn);
-        };
-        
-        message.appendChild(strongEl);
-        message.appendChild(document.createTextNode(" "));
-        message.appendChild(textSpan);
-        message.appendChild(copyBtn);
-        
+        message.innerHTML = "<strong>" + role + ":</strong> " + escapeHtml(text);
         chatWindow.appendChild(message);
-        
-        if (useTyping && text.length < 800) {
-            typewriterEffect(textSpan, parsedContent, () => {
-                message.style.animation = 'none';
-                if (typeof MathJax !== 'undefined') {
-                    MathJax.typesetPromise([message]).then(() => {
-                        chatWindow.scrollTop = chatWindow.scrollHeight;
-                    }).catch((err) => console.log('MathJax error:', err));
-                }
-            });
-        } else {
-            textSpan.innerHTML = parsedContent;
-            setTimeout(() => {
-                message.style.animation = 'none';
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-                if (typeof MathJax !== 'undefined') {
-                    MathJax.typesetPromise([message]).catch((err) => console.log('MathJax error:', err));
-                }
-            }, 400);
-        }
-        
+        chatWindow.scrollTop = chatWindow.scrollHeight;
         return;
     }
     
+    const strongEl = document.createElement("strong");
+    strongEl.textContent = role + ":";
+    
+    const textSpan = document.createElement("span");
+    const parsedContent = parseBasicMarkdown(text);
+    
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "copy-button";
+    copyBtn.textContent = "Copy";
+    copyBtn.onclick = function() {
+        copyTextToClipboard(text, copyBtn);
+    };
+    
+    message.appendChild(strongEl);
+    message.appendChild(document.createTextNode(" "));
+    message.appendChild(textSpan);
+    message.appendChild(copyBtn);
+    
     chatWindow.appendChild(message);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    
+    if (useTyping && text.length < 800) {
+        typewriterEffect(textSpan, parsedContent, () => {
+            message.style.animation = "none";
+            if (typeof MathJax !== "undefined") {
+                MathJax.typesetPromise([message]).then(() => {
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                }).catch(() => {});
+            }
+        });
+    } else {
+        textSpan.innerHTML = parsedContent;
+        setTimeout(() => {
+            message.style.animation = "none";
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            if (typeof MathJax !== "undefined") {
+                MathJax.typesetPromise([message]).catch(() => {});
+            }
+        }, 400);
+    }
 }
 
 function copyTextToClipboard(text, button) {
     navigator.clipboard.writeText(text).then(() => {
         button.textContent = "Copied!";
         button.classList.add("copied");
-        
         setTimeout(() => {
             button.textContent = "Copy";
             button.classList.remove("copied");
         }, 2000);
-    }).catch(err => {
+    }).catch(() => {
         const textArea = document.createElement("textarea");
         textArea.value = text;
         textArea.style.position = "fixed";
         textArea.style.top = "-9999px";
         document.body.appendChild(textArea);
         textArea.select();
-        
         try {
-            document.execCommand('copy');
+            document.execCommand("copy");
             button.textContent = "Copied!";
             button.classList.add("copied");
             setTimeout(() => {
@@ -215,9 +209,8 @@ function copyTextToClipboard(text, button) {
                 button.classList.remove("copied");
             }, 2000);
         } catch (err) {
-            console.error('Failed to copy: ', err);
+            console.error("Failed to copy: ", err);
         }
-        
         document.body.removeChild(textArea);
     });
 }
@@ -226,12 +219,12 @@ async function sendMessage() {
     const input = userInput.value.trim();
     if (!input) return;
 
-    appendMessage("You", input);
+    appendMessage("You", input, false);
     userInput.value = "";
 
     const thinkingMessage = document.createElement("div");
     thinkingMessage.className = "message aeris thinking";
-    thinkingMessage.innerHTML = `<strong>AERIS:</strong> <em>Thinking</em><span class="typing-indicator"></span>`;
+    thinkingMessage.innerHTML = "<strong>AERIS:</strong> <em>Thinking</em><span class=\"typing-indicator\"></span>";
     chatWindow.appendChild(thinkingMessage);
     chatWindow.scrollTop = chatWindow.scrollHeight;
     
@@ -240,9 +233,7 @@ async function sendMessage() {
     try {
         const response = await fetch(endpoint, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 model: "google/gemma-3-27b-it",
                 messages: [
@@ -253,7 +244,9 @@ async function sendMessage() {
         });
 
         const data = await response.json();
-        const message = data.choices?.[0]?.message?.content || "Error: no response.";
+        const message = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content
+            ? data.choices[0].message.content
+            : "Error: no response.";
         
         const endTime = Date.now();
         const responseTime = ((endTime - startTime) / 1000).toFixed(1);
@@ -263,16 +256,16 @@ async function sendMessage() {
         appendMessageWithTime("AERIS", message, responseTime, true, input);
     } catch (error) {
         chatWindow.removeChild(thinkingMessage);
-        appendMessage("AERIS", "Error: Failed to connect to the server.");
+        appendMessage("AERIS", "Error: Failed to connect to the server.", false);
     }
 }
 
-function appendMessageWithTime(role, text, responseTime, useTyping = false, originalPrompt = "") {
+function appendMessageWithTime(role, text, responseTime, useTyping, originalPrompt) {
     const message = document.createElement("div");
-    const isDoubleBifurcation = text.startsWith('✦✦');
-    const isBifurcation = text.startsWith('✦') && !isDoubleBifurcation;
-    const hasDiamond = text.includes('◆');
-    const hasStar = text.includes('✦');
+    const isDoubleBifurcation = text.startsWith("✦✦");
+    const isBifurcation = text.startsWith("✦") && !isDoubleBifurcation;
+    const hasDiamond = text.includes("◆");
+    const hasStar = text.includes("✦");
     
     if (isDoubleBifurcation) {
         message.className = "message aeris double-bifurcation";
@@ -288,12 +281,15 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false, orig
         message.classList.add("state-has-diamond");
     }
     
+    const msgId = "msg-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+    message.dataset.msgId = msgId;
+    
     const strongEl = document.createElement("strong");
     strongEl.textContent = role + ":";
     
     const timeSpan = document.createElement("span");
     timeSpan.className = "response-time";
-    timeSpan.textContent = `(${responseTime}s)`;
+    timeSpan.textContent = "(" + responseTime + "s)";
     
     const textSpan = document.createElement("span");
     const parsedContent = parseBasicMarkdown(text);
@@ -308,9 +304,9 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false, orig
     const compareBtn = document.createElement("button");
     compareBtn.className = "compare-inline-button";
     compareBtn.textContent = "Show baseline";
-    compareBtn.dataset.loaded = "false";
+    compareBtn.dataset.forMsg = msgId;
     compareBtn.onclick = function() {
-        toggleBaseline(message, originalPrompt, compareBtn);
+        toggleBaseline(msgId, originalPrompt, compareBtn);
     };
     
     message.appendChild(strongEl);
@@ -324,20 +320,20 @@ function appendMessageWithTime(role, text, responseTime, useTyping = false, orig
     
     if (useTyping && text.length < 800) {
         typewriterEffect(textSpan, parsedContent, () => {
-            message.style.animation = 'none';
-            if (typeof MathJax !== 'undefined') {
+            message.style.animation = "none";
+            if (typeof MathJax !== "undefined") {
                 MathJax.typesetPromise([message]).then(() => {
                     chatWindow.scrollTop = chatWindow.scrollHeight;
-                });
+                }).catch(() => {});
             }
         });
     } else {
         textSpan.innerHTML = parsedContent;
         setTimeout(() => {
-            message.style.animation = 'none';
+            message.style.animation = "none";
             chatWindow.scrollTop = chatWindow.scrollHeight;
-            if (typeof MathJax !== 'undefined') {
-                MathJax.typesetPromise([message]);
+            if (typeof MathJax !== "undefined") {
+                MathJax.typesetPromise([message]).catch(() => {});
             }
         }, 400);
     }
@@ -358,18 +354,21 @@ document.addEventListener("DOMContentLoaded", function() {
     userInput.focus();
 });
 
-async function toggleBaseline(parentMessageEl, originalPrompt, button) {
-    const existing = parentMessageEl.nextElementSibling;
-    if (button.dataset.loaded === "true" && existing && existing.classList.contains("baseline-reply")) {
-        if (existing.style.display === "none") {
-            existing.style.display = "";
+async function toggleBaseline(msgId, originalPrompt, button) {
+    const baselineDivExisting = document.querySelector('.baseline-reply[data-for="' + msgId + '"]');
+    if (baselineDivExisting) {
+        if (baselineDivExisting.style.display === "none") {
+            baselineDivExisting.style.display = "";
             button.textContent = "Hide baseline";
         } else {
-            existing.style.display = "none";
+            baselineDivExisting.style.display = "none";
             button.textContent = "Show baseline";
         }
         return;
     }
+
+    const messageEl = document.querySelector('.message.aeris[data-msg-id="' + msgId + '"]');
+    if (!messageEl) return;
 
     const previousLabel = button.textContent;
     button.disabled = true;
@@ -378,9 +377,7 @@ async function toggleBaseline(parentMessageEl, originalPrompt, button) {
     try {
         const response = await fetch(baselineEndpoint, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 model: "google/gemma-3-27b-it",
                 temperature: 1.0,
@@ -393,11 +390,14 @@ async function toggleBaseline(parentMessageEl, originalPrompt, button) {
 
         const data = await response.json();
         const text = response.ok
-            ? (data.choices?.[0]?.message?.content || "No response.")
-            : `Error: ${data.detail || "Baseline error"}`;
+            ? (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content
+                ? data.choices[0].message.content
+                : "No response.")
+            : "Error: " + (data.detail || "Baseline error");
 
         const baselineDiv = document.createElement("div");
         baselineDiv.className = "message baseline baseline-reply";
+        baselineDiv.dataset.for = msgId;
 
         const label = document.createElement("div");
         label.className = "baseline-label";
@@ -418,19 +418,16 @@ async function toggleBaseline(parentMessageEl, originalPrompt, button) {
         baselineDiv.appendChild(contentSpan);
         baselineDiv.appendChild(copyBtn);
 
-        parentMessageEl.insertAdjacentElement("afterend", baselineDiv);
+        messageEl.insertAdjacentElement("afterend", baselineDiv);
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
-        button.dataset.loaded = "true";
         button.textContent = "Hide baseline";
     } catch (error) {
         button.textContent = "Error";
+        setTimeout(() => {
+            button.textContent = previousLabel;
+        }, 2000);
     } finally {
         button.disabled = false;
-        setTimeout(function() {
-            if (button.textContent === "Error") {
-                button.textContent = previousLabel;
-            }
-        }, 2000);
     }
 }
