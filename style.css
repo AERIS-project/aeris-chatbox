@@ -498,9 +498,9 @@ pre {
   padding: 4px 10px;
   font-size: 0.75rem;
   opacity: 0.85;
-  display: none;
 }
 .compare-inline-button:hover {
   opacity: 1;
 }
 
+.message .compare-inline-button{display:none!important}
