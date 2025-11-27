@@ -502,5 +502,17 @@ pre {
 .compare-inline-button:hover {
   opacity: 1;
 }
-
+.version-tag {
+  position: fixed;
+  bottom: 8px;
+  left: 12px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(143, 181, 221, 0.35);
+  letter-spacing: 0.8px;
+  text-shadow: 0 0 4px rgba(0,0,0,0.6);
+  z-index: 9999;
+  pointer-events: none;
+}
 .message .compare-inline-button{display:none!important}
