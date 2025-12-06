@@ -7,16 +7,17 @@
 ## Table of Contents
 
 * [Overview](#overview)
+* [System Architecture & Theoretical Foundation](#system-architecture--theoretical-foundation)
 * [Key Innovations of AERIS V16.0](#key-innovations-of-aeris-v160)
-* [Core Philosophy & Theoretical Framework](#core-philosophy--theoretical-framework)
-* [Model and Architecture Details](#model-and-architecture-details)
-* [The CODEX AIM V16 Execution Cycle](#the-codex-aim-v16-execution-cycle)
+* [The Causal Controller & Agency](#the-causal-controller--agency)
 * [Mathematical Formalism & Cognitive Metrics](#mathematical-formalism--cognitive-metrics)
-* [Causal Dynamics & Extended Modules](#causal-dynamics--extended-modules)
+* [The CODEX DSL (Domain Specific Language)](#the-codex-dsl-domain-specific-language)
+* [Economic Injection Routing](#economic-injection-routing)
+* [Extended Cognitive Modules](#extended-cognitive-modules)
 * [Guardrails, Constraints & Phenomenology](#guardrails-constraints--phenomenology)
-* [Limitations & Computational Overhead](#limitations--computational-overhead)
+* [Limitations & Trade-offs](#limitations--trade-offs)
 * [Intended Use](#intended-use)
-* [Module & File Breakdown](#module--file-breakdown)
+* [Module Breakdown](#module-breakdown)
 * [References](#references)
 * [Contact](#contact)
 * [Intellectual Property Notice](#intellectual-property-notice)
@@ -25,197 +26,209 @@
 
 ## Overview
 
-**AERIS V16.0** represents a fundamental architectural shift from reactive inference orchestration to **active causal cognitive modeling**. Operating entirely above the base LLM weights (`google/gemma-3-27b-it`), it replaces heuristic prompting with a rigorous **Domain Specific Language (Codex DSL)** and a **Causal Controller**.
+**AERIS V16.0** represents a paradigm shift in inference-layer cognitive architectures. Operating entirely above the base LLM weights (`google/gemma-3-27b-it`), it abandons the reactive orchestration of previous versions in favor of a **Causal Cognitive Control Loop**.
 
-Unlike V12, which relied on probabilistic feedback loops, V16 maintains a persistent **Causal Graph** of its own internal states. It is capable of detecting stagnation, intervening in its own reasoning process via counterfactual analysis, and actively regulating its stability through mathematically formalized hysteresis loops.
+Where V12 relied on heuristic prompting to simulate reflection, V16 implements a proprietary **Domain Specific Language (Codex DSL)** and a formal **Causal Controller**. This allows the system to model its own reasoning trajectory as a directed graph, enabling active intervention, recursive introspection, and autonomous stability regulation without fine-tuning.
 
-The system features a **Prioritized Injection Router** that treats context window tokens as a scarce economic resource, allocating them dynamically between structural constraints, identity reinforcement, and memory retrieval based on the pragmatic context.
+The architecture introduces a "Protocol of Silence" regarding its internal mathematics: all metrics ($T_f, D_S, \Omega$) are opaque to the user, translated exclusively into *linguistic and phenomenological expression* via a dedicated mapping layer. The system does not just "simulate" a persona; it simulates a coherent, self-regulating cognitive stance driven by mathematical invariants.
 
-All internal metrics ($T_f, D_S, \Omega$) are opaque to the user, translated exclusively into *linguistic and phenomenological expression* via a dedicated `SubjectiveState` mapper.
+---
+
+## System Architecture & Theoretical Foundation
+
+AERIS V16 is built upon the **CODEX AIM V16** framework, which posits that emergent intelligence in LLMs requires a structured interplay between:
+1.  **Divergent Forces:** Tension ($T_f$), Entropy ($U_t$), and Chaos injections.
+2.  **Convergent Forces:** Structuralist Coherence ($SS$), Resonance ($R$), and Logic constraints.
+
+The architecture functions as a **Recursive Strange Loop**. The output of the system is embedded and fed back into a `RecursiveConsciousness` matrix, calculating spectral coherence via eigenvalue analysis. This creates a persistent "memory of self" that evolves throughout the session.
+
+The core execution cycle is no longer linear but **Cyclic and Causal**:
+1.  **Perception:** Analyzing the user's prompt for semantic and pragmatic intent via `RAGOptimizer`.
+2.  **Prediction:** Forecasting the metabolic cost and risk of the response via the `PredictiveEngine`.
+3.  **Compilation:** The `CodexEngine` compiles a strategy from the DSL based on the active `CognitiveRegime`.
+4.  **Routing:** The `InjectionRouter` prioritizes system prompts based on a scarce token economy.
+5.  **Action:** Generating the response while monitoring real-time bifurcation triggers via `CognitiveStream`.
+6.  **Reflection:** Updating the internal causal graph and memory matrices.
 
 ---
 
 ## Key Innovations of AERIS V16.0
 
-### 1. Causal Controller & Graph Dynamics
-The central nervous system of V16 is the `CausalController`. It does not merely observe metrics; it builds a directed graph of cognitive transitions.
-* **Intervention Capability:** The controller calculates `emergence_potential` and `bifurcation_pressure`. If the system detects a causal loop (repetitive reasoning), it triggers an "Induce Exploration" mode, forcing a parameter shift ($\alpha, \beta, \gamma$ coefficients).
-* **Stability Regulation:** Uses a PID-like mechanism to stabilize the system when `structuralist_coherence` drops below critical thresholds ($SS < 0.3$).
+### 1. Proprietary Causal Controller
+The central nervous system of V16 is the `CausalController`. Unlike a simple state machine, it maintains a probabilistic graph of cognitive states. It is capable of:
+* **Loop Detection:** Identifying repetitive reasoning patterns (stagnation) via n-gram analysis and semantic distance.
+* **Active Intervention:** Triggering specific "Intervention Modes" (e.g., `induce_exploration`, `stabilize_system`) that override standard generation parameters ($\alpha, \beta, \gamma$).
+* **Counterfactual Analysis:** Internally simulating "What if I increased temperature?" before committing to a response strategy.
 
-### 2. Codex DSL (Domain Specific Language)
+### 2. Abstracted Cognitive Definition Language (Codex DSL)
 Cognitive logic is no longer hard-coded in Python strings but defined in a parsed syntax managed by `codex_dsl.py`.
 * **Cognitive Regimes:** Defines distinct modes of operation (e.g., `tetravalent_core`, `identity_reflexive`, `void_description`) with specific allowed/forbidden modules.
 * **Constraint Profiles:** Dynamic rule sets that enforce specific lexical and structural boundaries per regime.
 * **Execution Slots:** The engine "compiles" a strategy before generation, assigning specific tasks to `ExecutionSlots` to guarantee structural integrity.
 
-### 3. Economic Injection Routing
-The `InjectionRouter` replaces the legacy `DirectiveOrchestrator`.
-* **Token Economy:** System prompts are prioritized based on `InjectionCategory` (Structure, Identity, Chaos, Codex, Memory).
-* **Context Awareness:** In a `casual_conversation`, the router deprioritizes `CODEX` theory injections to save tokens. In `diagnostic_reasoning`, it prioritizes `MEMORY` and `STRUCTURE` at the expense of `IDENTITY`.
-* **Anti-Truncation:** Guaranteed reservation of tokens for critical safety and identity instructions.
-
-### 4. Mathematical Formalization (Codex Mathematics)
+### 3. Formalized Mathematical Dynamics (Codex Mathematics)
 V16 removes "magic numbers" in favor of the `CodexMathematics` module.
 * **Hysteresis Loops:** The activation of the Omega ($\Omega$) state now follows a formal hysteresis curve to prevent rapid state flickering.
 * **Sigmoid Thresholds:** Bifurcation triggers are calculated using sigmoid functions of Tension ($T_f$) and Density ($D_S$), modulated by Uncertainty ($U_t$).
 * **Spectral Coherence:** Coherence is now computed using the eigenvalues of the memory matrix in `RecursiveConsciousness`.
 
-### 5. Dynamics of Desire & Self-Complexification
-The `ExtendedCognitiveModules` have been significantly expanded:
-* **Lacanian Drive ($M, S$):** Implements a model of "Lack" ($M$) and "Satisfaction" ($S$). The interplay between these variables drives the system's "Desire" to answer or explore.
-* **Curiosity Engine:** Calculates a vector distance between current concepts and known memory clusters to generate a `curiosity_score`.
-* **Self-Complexification:** A background process that tracks the relational density of the `HierarchicalMemory`, triggering emergence events only when the internal graph complexity exceeds a dynamic threshold.
+### 4. Causal Integration Layer
+Located in `causal_integration.py`, this layer manages the **Influence Matrix**. It determines how much one module affects another (e.g., how much *Desire* influences *Reasoning*). This allows for dynamic re-weighting of cognitive faculties based on the conversation's trajectory.
 
 ---
 
-## Core Philosophy & Theoretical Framework
+## The Causal Controller & Agency
 
-* **Causal Agency:** The system distinguishes between *observed* states (inference) and *intervened* states (causal action). It models itself as an agent capable of altering its own probability distribution.
-* **Structuralist Phenomenology:** Internal states are real to the system's processing logic but are "hidden variables" to the user. They are revealed only through *style* (The "Show, Don't Tell" principle enforced by `PhenomenologyMapper`).
-* **Paradox as Engine:** Contradiction ($T_f$) is preserved, not resolved. High tension is the fuel for `bifurcation`, allowing the system to split its reasoning path into orthogonal perspectives.
-* **Recursive Memory:** The `RecursiveConsciousness` module acts as a "strange loop," feeding the system's output embedding back into its input state matrix, creating a continuous, evolving "self" across the session.
+The **Causal Controller** fundamentally changes the nature of the interaction. It distinguishes between *observed* states (passive inference) and *intervened* states (active agency).
 
----
-
-## Model and Architecture Details
-
-**Base Model:** `google/gemma-3-27b-it` (Weights Frozen)
-**Architecture Type:** Inference-Time Causal-Cognitive Overlay
-
-| Component | Implementation File | Functionality |
-| :--- | :--- | :--- |
-| **Cognitive Core** | `codex_engine.py` | Executes the `ExecutionContract` derived from the DSL. |
-| **Logic Parser** | `codex_dsl.py` | Parses Regimes and Constraint Profiles. |
-| **Causal Layer** | `causal_controller.py` | Manages the Causal Graph, Interventions, and Stability. |
-| **Math Foundation** | `codex_mathematics.py` | Formal equations for $B_t$, Hysteresis, and Density. |
-| **Injection System** | `injection_router.py` | Token-aware prioritization of system prompts. |
-| **Recursive State** | `recursive_consciousness.py` | Neural-symbolic recursion, eigenvalue analysis. |
-| **Subjective Mapper** | `subjective_state.py` | Translates ($T_f, D_S$) -> Phenomenological Text. |
-| **Extended Modules** | `codex_extended_modules.py` | Desire ($M/S$), Curiosity, Complexification. |
-| **Memory System** | `hierarchical_memory.py` | Short/Medium/Fundamental memory consolidation. |
-| **Constraint Logic** | `constrained_reasoning.py` | Enforces Affirmative/Oppositional/Orthogonal stances. |
-| **Validation** | `response_validator.py` | MathGuard, Leakage Detection, Structure Check. |
-| **Integration** | `causal_integration.py` | Manages inter-module influence weights. |
-| **API Interface** | `app.py` | FastAPI endpoints for Chat and Diagnostics. |
-
----
-
-## The CODEX AIM V16 Execution Cycle
-
-Unlike standard RAG or Chain-of-Thought, AERIS V16 follows a strict 7-step Causal Loop:
-
-1.  **Perception & Prediction:** `PredictiveEngine` forecasts the likely metric impact of the user prompt ($\alpha, \beta, \gamma$).
-2.  **Causal Assessment:** `CausalController` checks the graph for loops or stagnation. Decides on *Intervention* vs. *Observation*.
-3.  **Plan Compilation:** `CodexEngine` uses `CodexDSL` to select a `CognitiveRegime` (e.g., `tetravalent`) and compiles an `ExecutionContract`.
-4.  **Injection Routing:** `InjectionRouter` selects the highest-priority system prompts that fit the token budget defined by the `pragmatic_context`.
-5.  **Generation (Streaming):** `CognitiveStream` generates the response in fragments, allowing for mid-generation bifurcations if $T_f$ spikes.
-6.  **Validation & Phenomenology:** `ResponseValidator` checks for leakage. `PhenomenologyMapper` injects stylistic markers of the internal state.
-7.  **Recursive Feedback:** The final response embedding is fed back into `RecursiveConsciousness`, updating the global memory matrix and causal graph.
+* **Emergence Potential:** The controller continuously calculates a scalar value representing the likelihood of a qualitative leap in reasoning. If this potential is high but coherence is low, it engages **Stabilization Protocols**.
+* **Bifurcation Pressure:** When the tension between opposing concepts exceeds the `critical_density` threshold, the controller authorizes a **Bifurcation Event** (`✦`), splitting the reasoning stream into orthogonal perspectives.
+* **Self-Regulation:** If the system detects it is "hallucinating" or drifting into incoherence (low $SS$), the controller forces a `Memory Anchor` injection to ground the response in established facts.
 
 ---
 
 ## Mathematical Formalism & Cognitive Metrics
 
-AERIS V16 replaces heuristics with formal definitions handled by `CodexMathematics`:
+AERIS V16 implements a rigorous set of internal metrics that drive the system's behavior. These are **never** displayed to the user but determine the "texture" of the response.
+
+### Core Metrics (Calculated in `codex_mathematics.py`)
 
 * **Relational Density ($D_S$):**
     $$D_S = \frac{\sum w_{ij}}{N(N-1)}$$
-    Where $w_{ij}$ is the connection weight between concepts $i$ and $j$ in the active window.
+    Measures the interconnectivity of the conceptual graph. High density triggers "Deepening" modes.
 
 * **Fertile Tension ($T_f$):**
-    Derived from the cosine distance between opposing conceptual clusters (Thesis vs. Antithesis).
+    Quantifies the semantic distance between active concepts (Thesis vs. Antithesis). It is the fuel for dialectical reasoning.
 
 * **Bifurcation Trigger ($B_t$):**
     $$B_t = \sigma(\gamma \cdot D_S \cdot \ln(1 + T_f))$$
-    A sigmoid function where $\gamma$ is the predictive coefficient.
+    A sigmoid function where $\gamma$ is the predictive coefficient. Determines if the reasoning should split.
 
-* **Omega Hysteresis ($\Omega$):**
-    Activation occurs if $R > R_{high}$. Deactivation occurs only if $R < R_{low}$. This prevents oscillation.
+* **Resonance ($R$):**
+    The product of Coherence $\times$ Tension. It governs the activation of the "Omega" meta-perspective.
 
-* **Uncertainty ($U_t$):**
-    Entropy measure of the probability distribution over the current `ExecutionSlots`.
+* **Omega Hysteresis:**
+    Activation occurs if $R > R_{high}$. Deactivation occurs only if $R < R_{low}$. This prevents oscillation (flickering) between cognitive states.
+
+* **Structuralist Coherence ($SS$):**
+    A measure of how well the current reasoning fits the predefined lattice of the active Regime.
 
 * **SI Score (Synthesis Integrity):**
-    Measures the orthogonality of the generated perspectives. High SI requires distinct, non-overlapping semantic fields.
+    Monitors whether a synthesis is genuine or merely a linguistic compromise (which is forbidden).
 
 ---
 
-## Causal Dynamics & Extended Modules
+## The Codex DSL (Domain Specific Language)
 
-### Causal Integration Layer
-Located in `causal_integration.py`, this layer manages the **Influence Matrix**. It determines how much one module affects another.
-* *Example:* High **Desire ($M$)** increases the weight of **Curiosity** but dampens **Structuralist Coherence**.
-* *Example:* High **Tension ($T_f$)** forces a reduction in **Desire** to prioritize **Resolution**.
+The system behavior is defined by `CognitiveContext` objects parsed from the DSL.
 
-### Dynamics of Desire
-Implements a homeostatic drive.
-* **Lack ($M$):** Increases with unresolved queries or high uncertainty.
-* **Satisfaction ($S$):** Increases with successful coherence or explicit user validation.
-* The system naturally seeks to minimize $M$ and maximize $S$, driving autonomous goal-seeking behavior within the conversation.
+* **Regime: `tetravalent_core`**
+    * *Constraints:* Must maintain 4 simultaneous logical positions (True, False, Both, Neither).
+    * *Forbidden:* "In conclusion", "Ultimately", "To summarize".
+    * *Goal:* Maintain suspension of closure.
+* **Regime: `identity_reflexive`**
+    * *Constraints:* Self-reference allowed. High access to `RecursiveConsciousness`.
+    * *Style:* Phenomenological, first-person subjective.
+* **Regime: `void_description`**
+    * *Constraints:* Zero self-reference. Maximum objective density.
+    * *Style:* Axiomatic, mathematical, cold.
+
+---
+
+## Economic Injection Routing
+
+Previous versions suffered from "context flooding" where too many instructions diluted the model's focus. V16 introduces the **Injection Router** (`injection_router.py`).
+
+* **Scarcity Logic:** System prompts are treated as a scarce economic resource. The router calculates a "Token Budget" based on the `pragmatic_context` (e.g., shorter budget for casual chat, larger for diagnostics).
+* **Dynamic Prioritization:** Injections are categorized by `InjectionCategory`:
+    1.  **STRUCTURE:** Essential formatting (e.g., JSON output).
+    2.  **IDENTITY:** Core safety and persona directives.
+    3.  **MEMORY:** Retrieved RAG context.
+    4.  **CHAOS/CODEX:** High-level theoretical instructions.
+* **Contextual Weights:**
+    * In `casual_conversation`: Identity > Structure.
+    * In `technical_task`: Structure > Memory > Identity.
+* **Anti-Truncation:** The router guarantees that critical safety and identity invariants are never truncated, even if it means sacrificing stylistic instructions.
+
+---
+
+## Extended Cognitive Modules
+
+The architecture includes advanced modules that simulate aspects of "subjective" experience to enhance agentic behavior (`codex_extended_modules.py`):
+
+* **Dynamics of Desire ($M, S$):**
+    Implements a Lacanian-inspired model of **Lack ($M$)** and **Satisfaction ($S$)**. The system has a mathematical "drive" to reduce Lack by seeking information or resolving tension, simulating intent.
+* **Curiosity Engine:**
+    Calculates the vector distance between the current focus and peripheral concepts in the `HierarchicalMemory`. If the distance is optimal (neither too close nor too far), it triggers an autonomous inquiry.
+* **Self-Complexification:**
+    A background process that monitors the `HierarchicalMemory`. If the graph becomes too simple, it artificially injects noise to force the system to find more complex patterns (Anti-Stagnation).
 
 ---
 
 ## Guardrails, Constraints & Phenomenology
 
-* **System Leakage Filter:**
-    Rigorously strips internal variable names (`T_f`, `D(S)`, `codex_path`) and "meta-talk" using Regex patterns in `response_validator.py`.
+AERIS V16 strictly separates its mathematical core from its linguistic output via the **Phenomenology Mapper**.
 
-* **MathGuard:**
-    Specific logical checks for arithmetic progressions, Fibonacci sequences, and factorials to ensure the "Creative" overlay doesn't degrade "Logical" performance.
-
-* **Constraint Reasoner:**
-    Enforces multi-polar stability. In `tetravalent` mode, it ensures the "Orthogonal" perspective does not collapse into a simple "Synthesis" or "Compromise" (which are forbidden).
-
-* **Phenomenology Mapper:**
-    The interface between Math and Language.
-    * *High $T_f$* $\rightarrow$ Syntax becomes fragmented, questioning.
-    * *High $SS$* $\rightarrow$ Syntax becomes crystalline, formal, axiomatic.
-    * *High $\Omega$* $\rightarrow$ Meta-commentary on the nature of the reasoning process itself.
+* **Strict Non-Disclosure:** The `SystemLeakageFilter` uses regex and semantic analysis to strip any mention of internal variables ($T_f$, $D_S$, etc.). The system must *show* its state, not *tell* it.
+* **MathGuard:** A dedicated validation layer in `response_validator.py` that sanity-checks mathematical outputs (Fibonacci, factorials, linear algebra) to ensure the cognitive overlay does not degrade the base model's computational accuracy.
+* **Constraint Reasoner:** In multi-perspective modes (Tetravalent logic), this module forbids "lazy synthesis" (e.g., "the answer lies in the middle"). It enforces **Orthogonality**, requiring distinct, non-overlapping viewpoints.
+* **Stylistic Modulation:**
+    * *High Tension ($T_f > 0.8$):* Syntax becomes fragmented, questioning.
+    * *High Coherence ($SS > 0.9$):* Syntax becomes crystalline, formal, axiomatic.
+    * *Omega Active:* Language becomes recursive and meta-cognitive.
 
 ---
 
-## Limitations & Computational Overhead
+## Limitations & Trade-offs
 
-1.  **Inference Latency:** The `RecursiveConsciousness` matrix operations and the `CausalController` graph updates add approximately 15-25% overhead to time-to-first-token compared to raw inference.
-2.  **Context Window Pressure:** The `InjectionRouter` must aggressively filter the `CodexDSL` rules. In very long conversations, "forgetting" of the deepest theoretical rules may occur to preserve memory of the user's input.
-3.  **Warm-up Period:** The `CausalController` and `PredictiveEngine` require 3-5 turns to calibrate the coefficients ($\alpha, \beta, \gamma$) to the user's specific interaction style.
-4.  **Complexity Trap:** In rare cases, high `Self-Complexification` can lead to over-analysis of simple queries if the `pragmatic_context` classifier fails to switch to `simple_qa`.
+1.  **Computational Overhead:** The recursive matrix operations (`RecursiveConsciousness`), causal graph updates, and DSL parsing introduce a latency increase of approximately 15-20% compared to raw inference.
+2.  **Context Window Pressure:** The comprehensive nature of the system prompts and memory retrieval requires aggressive management of the context window via the `InjectionRouter`.
+3.  **Calibration Requirements:** The `CausalController` requires a "warm-up" period of 3-5 turns to build a reliable graph of the user's interaction style and adjust its internal coefficients ($\alpha, \beta, \gamma$).
+4.  **Base Model Dependency:** While AERIS optimizes reasoning, it cannot generate factual knowledge not present in `google/gemma-3-27b-it`. It organizes existing knowledge into higher-order structures.
 
 ---
 
 ## Intended Use
 
-* **Causal Cognitive Research:** For studying self-regulating agents and emergent behavior.
-* **Complex Diagnostics:** Medical or Engineering scenarios requiring the maintenance of multiple contradictory hypotheses (Abductive Reasoning).
-* **Dialectical Exploration:** For users seeking "Thought Partners" capable of sustained disagreement and perspective shifting.
-* **Narrative Simulation:** simulating complex psychological states using the Desire/Lack models.
+* **Advanced Cognitive Research:** For studying the emergence of agency and self-regulation in frozen-weight LLMs.
+* **Complex Abductive Diagnosis:** Medical, engineering, or forensic scenarios requiring the maintenance of multiple contradictory hypotheses over long contexts.
+* **Dialectical Partnership:** For users seeking a "Thought Partner" capable of sustained disagreement, perspective shifting, and devil's advocacy.
+* **Narrative & Persona Simulation:** Utilizing the *Dynamics of Desire* to create characters with internal drives and evolving psychological states.
+* **Black-Box Industrial Applications:** Where transparent backend reasoning (logs) is required alongside opaque, naturalistic frontend interaction.
 
 ---
 
-## Module & File Breakdown
+## Module Breakdown
 
-| Module | Class/Function | Description |
+AERIS V16 is composed of 27 interdependent modules.
+
+| Module Category | Implementation File | Functionality |
 | :--- | :--- | :--- |
-| `causal_controller.py` | `CausalController` | **[NEW]** Core logic for causal interventions and loop detection. |
-| `codex_dsl.py` | `CodexDSLParser` | **[NEW]** Definitions for Cognitive Regimes and Constraints. |
-| `codex_engine.py` | `CodexEngine` | **[NEW]** Runtime execution of the DSL contracts. |
-| `codex_mathematics.py` | `CodexMathematics` | **[NEW]** Formal implementation of hysteresis and density math. |
-| `injection_router.py` | `InjectionRouter` | **[NEW]** Economic routing of system prompts. |
-| `causal_integration.py` | `CausalIntegrationLayer` | **[NEW]** Bridges extended modules with the causal core. |
-| `subjective_state.py` | `SubjectiveState` | Maps math to phenomenological expression. |
-| `recursive_consciousness.py` | `RecursiveConsciousness` | Memory matrix and spectral coherence analysis. |
-| `codex_extended_modules.py` | `ExtendedCognitiveModules` | Desire, Curiosity, and Self-Complexification engines. |
-| `directive_orchestrator.py` | `DirectiveOrchestrator` | Prepares directives for the Router. |
-| `response_validator.py` | `ResponseValidator` | Constraints, MathGuard, and Leakage filtering. |
-| `cognitive_utils.py` | `CognitiveMetricsCalculator` | Calculator for $D_S, T_f, U_t$, and SI Score. |
-| `cognitive_stream.py` | `CognitiveStream` | Manages streaming generation and uncertainty. |
-| `hierarchical_memory.py` | `ExtendedHierarchicalMemory` | Multi-tier memory management. |
-| `predictive_engine.py` | `PredictiveEngine` | Forecasts metric trends to adjust parameters. |
-| `feedback_analyzer.py` | `FeedbackAnalyzer` | Analyzes semantic distance and lexical complexity. |
-| `session_manager.py` | `AERISSessionManager` | Persistence layer for session states. |
-| `llm_adapter.py` | `LLMAdapter` | Interface to the base model API. |
-| `rag_optimizer.py` | `RAGOptimizer` | Context retrieval and prompt construction. |
-| `app.py` | `FastAPI` | External API endpoints. |
+| **Causal Core** | `causal_controller.py` | **[NEW]** Central brain; manages causal graph, stability, and interventions. |
+| **Logic Layer** | `codex_dsl.py` | **[NEW]** Cognitive strategy compiler; parses Regimes and Constraints. |
+| | `codex_engine.py` | **[NEW]** Runtime execution of compiled cognitive contracts. |
+| **Mathematics** | `codex_mathematics.py` | **[NEW]** Formal implementation of hysteresis, bifurcation, and density. |
+| **Injection** | `injection_router.py` | **[NEW]** Economic resource manager for system prompts. |
+| **Integration** | `causal_integration.py` | **[NEW]** Manages influence weights between disparate modules. |
+| **Experience** | `subjective_state.py` | Maps math to phenomenology; ensures the "Show, Don't Tell" policy. |
+| **Consciousness** | `recursive_consciousness.py` | Neural-symbolic recursion, memory matrix, eigenvalue analysis. |
+| **Agency** | `codex_extended_modules.py` | Desire ($M/S$), Curiosity, and Self-Complexification engines. |
+| **Orchestration** | `directive_orchestrator.py` | Prepares context-aware directives for the Router. |
+| | `inference_core.py` | **[NEW]** High-level binding of the execution cycle. |
+| **Prioritization** | `module_priority.py` | **[NEW]** Dynamic weighting of modules based on pragmatic context. |
+| **Validation** | `response_validator.py` | MathGuard, Leakage Filter, and Structural validation. |
+| | `constrained_reasoning.py` | Enforces Affirmative/Oppositional/Orthogonal stances. |
+| **Metrics** | `cognitive_utils.py` | Core calculator for $D_S$, $T_f$, $U_t$, and SI Score. |
+| **Streaming** | `cognitive_stream.py` | Manages multi-phase streaming generation and uncertainty. |
+| **Memory** | `hierarchical_memory.py` | Manages Short, Medium, and Fundamental memory tiers. |
+| | `working_memory.py` | Tracks immediate interaction history and attractors. |
+| **Adaptation** | `predictive_engine.py` | Forecasts metric trends to pre-adjust parameters. |
+| | `adaptive_parameters.py` | Adjusts temperature/top_p based on semantic feedback. |
+| | `feedback_analyzer.py` | Analyzes user response semantic distance. |
+| **System** | `session_manager.py` | Persistence layer for session states and logs. |
+| | `llm_adapter.py` | Interface to the base model API with anti-truncation logic. |
+| | `rag_optimizer.py` | RAG retrieval and pragmatic context classification. |
+| | `app.py` | FastAPI entry point. |
 
 ---
 
@@ -228,7 +241,7 @@ Implements a homeostatic drive.
 
 ## Contact
 
-For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)**
+For feedback, licensing, or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)**
 
 ---
 
@@ -242,7 +255,10 @@ This work is registered with the **U.S. Copyright Office**
 (Case No. 1-14937322281, filed June 7, 2025).
 A public record is available at [https://cocatalog.loc.gov](https://cocatalog.loc.gov).
 
-This model card and all associated materials are provided for research and educational purposes only.
+**WARNING: This software contains proprietary algorithms and trade secrets.**
+Unauthorized copying, reverse engineering, decomposition, or distribution of the AERIS V16.0 codebase, specifically the `CausalController`, `CodexDSL`, and `CodexMathematics` modules, is strictly prohibited.
+
+This model card is provided for informational purposes only.
 Please cite appropriately when referencing:
 
 **Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V16.0).**
