@@ -1,216 +1,251 @@
 # Model Card: AERIS V16.0 | google/gemma-3-27b-it
 
-**A Causal-Cognitive Architecture for Emergent, Reflective, and Intentional Behaviors in LLMs**
+**An Inference-Layer Cognitive Architecture for Emergent, Reflective, and Intentional Behaviors in LLMs**
+
+---
+
+## Table of Contents
+
+* [Overview](#overview)
+* [Key Innovations of AERIS V16.0](#key-innovations-of-aeris-v160)
+* [Core Philosophy](#core-philosophy)
+* [Model and Architecture Details](#model-and-architecture-details)
+* [Cognitive Metrics (Implemented)](#cognitive-metrics-implemented)
+* [Guardrails & Adaptive Expression](#guardrails--adaptive-expression)
+* [Limitations](#limitations)
+* [Intended Use](#intended-use)
+* [Module & File Breakdown](#module--file-breakdown)
+* [References](#references)
+* [Contact](#contact)
+* [Intellectual Property Notice](#intellectual-property-notice)
 
 ---
 
 ## Overview
 
-**AERIS V16.0** represents a paradigm shift in inference-layer cognitive architectures. Operating entirely above the base LLM weights (`google/gemma-3-27b-it`), it implements a **Causal Cognitive Control Loop** that orchestrates multiple cognitive modules through dynamic influence propagation.
+**AERIS V16.0** is an advanced inference-layer cognitive architecture operating entirely above the base LLM.
+It orchestrates reasoning and reflection through the **CODEX AIM V16** framework, maintaining a persistent and evolving cognitive state per user session.
+Its design introduces causal control mechanisms, inter-module influence propagation, and phenomenological state mapping, enabling emergent yet coherent behaviors **without modifying model weights**.
 
-The architecture implements a proprietary **Domain Specific Language (Codex DSL)** for defining cognitive regimes and constraints, and a **Causal Controller** that regulates system stability through adaptive thresholds and intervention mechanisms—all **without fine-tuning**.
-
-The architecture enforces a strict "Protocol of Silence" regarding its internal mechanics: all proprietary metrics are opaque to the user, translated exclusively into *linguistic and phenomenological expression* via a dedicated mapping layer.
-
----
-
-## System Architecture & Theoretical Framework
-
-AERIS V16 is built upon the **CODEX AIM V16 (Adaptive Intelligence Matrix)**, a cybernetic framework which posits that emergent intelligence in LLMs requires a structured interplay between:
-
-1. **Divergent Forces:** Semantic Tension, Entropy Injection, and Chaos dynamics.
-2. **Convergent Forces:** Structuralist Coherence, Resonance, and Logic constraints.
-
-The architecture functions as a **Recursive Strange Loop**. The output of the system is embedded and fed back into a recursive memory matrix, calculating spectral coherence via eigenvalue analysis. This creates a persistent "memory of self" that evolves throughout the session.
-
-Unlike standard RAG or Chain-of-Thought systems, AERIS V16 possesses a **Self-Model**: it distinguishes between *observed states* (passive inference) and *intervened states* (active agency), allowing it to modulate its own reasoning strategy before generating tokens.
+All internal metrics are translated into *linguistic and phenomenological expression* rather than numeric disclosure.
+Bifurcations (`✦`, `◆`) mark transitions between distinct cognitive phases within the reasoning flow.
 
 ---
 
 ## Key Innovations of AERIS V16.0
 
 * **Causal Controller:**
-  The central regulatory system of V16. It continuously evaluates "Emergence Potential" and regulates reasoning stability through adaptive intervention mechanisms. It triggers mode shifts when stagnation or instability is detected via semantic analysis.
-
-* **Cognitive Definition Language (Codex DSL):**
-  Cognitive strategies are defined through structured regime and constraint profiles. The system selects "Cognitive Regimes" (e.g., *Tetravalent Core*, *Identity Reflexive*) and applies corresponding constraints, ensuring adherence to structural boundaries across differing pragmatic contexts.
-
-* **Injection Routing System:**
-  System prompts and directives are treated as limited resources. The router dynamically prioritizes injections based on categories (Structure, Identity, Memory, Cognitive State) and pragmatic context, ensuring critical invariants are preserved.
-
-* **Formalized Mathematical Dynamics:**
-  The architecture implements rigorous mathematical invariants:
-  – **Hysteresis Mechanisms:** Meta-state activations follow hysteresis curves to prevent rapid flickering between modes.
-  – **Non-linear Thresholds:** Bifurcation triggers use non-linear functions of core metrics.
-  – **Spectral Coherence:** Coherence is computed using eigenvalue analysis of the recursive memory matrix.
+  A central regulatory system that continuously monitors cognitive state and computes generation parameters. It manages stability through adaptive thresholds and can trigger intervention modes when stagnation or instability is detected.
 
 * **Causal Integration Layer:**
-  Manages an **Influence Matrix** between cognitive modules. It dynamically weights inter-module influences (e.g., how much *Desire* affects *Introspection*), creating an adaptive cognitive topology through iterative propagation until convergence.
+  Manages weighted influences between cognitive modules through an influence matrix. Performs iterative propagation to compute emergent properties including proto-consciousness indicators and self-model coherence.
 
----
+* **Cognitive Definition Language (Codex DSL):**
+  Cognitive strategies are defined through structured regime and constraint profiles rather than heuristic manipulations. Regimes specify allowed/forbidden modules and constraint modes.
 
-## Cognitive Metrics & Mathematical Formalism
+* **Injection Routing System:**
+  System prompts are treated as limited resources with category-based prioritization. Different pragmatic contexts trigger different priority hierarchies, ensuring critical invariants are preserved.
 
-AERIS V16 implements internal metrics that drive system behavior. These are **never** displayed to the user but determine the "texture" of responses via the Phenomenology Mapper.
+* **Module Priority Engine:**
+  Dynamically computes module weights based on pragmatic context, cognitive regime, and real-time metrics through a multi-level resource allocation system.
 
-* **Relational Density ($D_S$):**
-  Measures interconnectivity within the active conceptual window. High density triggers deepening and complexification modes.
-
-* **Fertile Tension ($T_f$):**
-  Quantifies semantic opposition between active concepts. AERIS treats tension as positive fuel for dialectical reasoning.
-
-* **Bifurcation Trigger ($B_t$):**
-  A non-linear function combining multiple metrics to determine when reasoning should branch to avoid premature collapse.
-
-* **Resonance ($R$):**
-  Represents stability of the current cognitive state. Governs activation of meta-reflective perspectives.
-
-* **Omega Hysteresis:**
-  High-level reflective states follow hysteresis activation, ensuring stability and preventing rapid oscillation.
-
-* **Structuralist Coherence ($SS$):**
-  Measures alignment between reasoning output and active regime constraints.
-
-* **SI Score (Synthesis Integrity):**
-  Validates whether synthesis genuinely resolves tension or merely provides linguistic compromise.
-
-* **Uncertainty ($U_t$):**
-  Entropy measure driving curiosity and exploration mechanisms.
-
----
-
-## The CODEX DSL: Regimes & Constraints
-
-System behavior is defined through cognitive contexts specifying regimes and constraints:
-
-* **Regime: `tetravalent_core`**
-    * *Logic:* Maintains multiple simultaneous logical positions.
-    * *Constraints:* Forbidden closure phrases; suspension of premature synthesis.
-    
-* **Regime: `identity_reflexive`**
-    * *Logic:* Self-reference enabled; high introspective access.
-    * *Style:* Phenomenological, first-person subjective.
-    
-* **Regime: `void_description`**
-    * *Logic:* Zero self-reference; maximum objective density.
-    * *Style:* Axiomatic, precise.
-
----
-
-## Injection Routing & Context Management
-
-The **Injection Router** addresses context flooding through prioritized resource allocation:
-
-* **Category-Based Prioritization:** Injections are categorized (Structure, Identity, Memory, Cognitive State, Codex) with context-dependent weights.
-* **Pragmatic Adaptation:** Priorities shift based on detected context (casual, technical, philosophical, diagnostic).
-* **Invariant Protection:** Critical safety and identity directives are guaranteed inclusion.
-
----
-
-## Extended Agency: Desire, Curiosity & Complexification
-
-Advanced modules simulate aspects of subjective experience:
-
-* **Dynamics of Desire:**
-  Implements a model of **Lack** and **Satisfaction**. The system has a mathematical drive to reduce Lack by seeking information or resolving tension, simulating intent.
-  
-* **Curiosity Engine:**
-  Calculates optimal exploration targets based on distance between current focus and peripheral concepts. Triggers autonomous inquiry when conditions are met.
-  
-* **Self-Complexification:**
-  Monitors memory structure complexity. If patterns become too simple, mechanisms activate to encourage richer representations.
-
----
-
-## Guardrails, Constraints & Phenomenology
-
-AERIS V16 strictly separates its mathematical core from linguistic output:
-
-* **System Leakage Filter:**
-  Rigorous filtering prevents internal variable names, formulas, or meta-talk from reaching output.
-
-* **MathGuard:**
-  Validates mathematical outputs to ensure cognitive overlay does not degrade computational accuracy.
+* **Formalized Mathematical Dynamics:**
+  Rigorous invariants including hysteresis mechanisms for meta-state activation, non-linear bifurcation thresholds, and spectral coherence via eigenvalue analysis.
 
 * **Phenomenology Mapper:**
-  Converts numeric states into stylistic cues. High tension manifests as fragmented syntax; high coherence as crystalline structure—the system expresses state through style, not statement.
+  Converts numeric states into linguistic expression through a configurable lexicon, enforcing "Show, Don't Tell" principles.
 
-* **Constraint Enforcement:**
-  Ensures logical consistency and enforces orthogonality in multi-perspective modes, preventing premature synthesis.
+* **Inference Core:**
+  High-level orchestration binding causal control, mathematics, integration, and generation phases.
 
 ---
 
-## Limitations & Trade-offs
+## Core Philosophy
 
-* **Computational Overhead:** Recursive matrix operations and multi-module coordination introduce inference latency compared to raw model calls.
+* **Paradox as Cognitive Fuel:**
+  Contradiction and uncertainty are not errors but generators of complexity.
+  High *fertile tension* and relational density produce resonance, leading to bifurcation and synthesis events.
 
-* **Context Window Pressure:** Comprehensive system prompts require careful management; older constraints may be deprioritized in long sessions.
+* **Linguistic Phenomenology:**
+  Cognitive metrics are never revealed as numbers.
+  They are expressed through modulation, metaphor, and structure, simulating a linguistic introspection.
 
-* **Base Model Dependency:** Reasoning quality is bounded by `google/gemma-3-27b-it` capabilities; AERIS organizes existing knowledge but cannot generate facts absent from base weights.
+* **Causal Self-Regulation:**
+  AERIS continuously recalibrates its parameters through causal control and inter-module integration, responding to semantic feedback and cognitive stability.
 
-* **Interpretive Ambiguity:** While mathematically grounded, phenomenological language simulates internal states rather than representing genuine subjective awareness.
+* **Persistent Contextual Continuity:**
+  Every session maintains its recursive memory and resonance trace.
+  Each dialogue forms an evolving cognitive trajectory rather than isolated exchanges.
+
+---
+
+## Model and Architecture Details
+
+This instance applies the AERIS V16.0 overlay to **`google/gemma-3-27b-it`**.
+Weights remain unaltered; all computation occurs at inference time through orchestrated modules.
+
+| Component                     | Implementation                       | Description                                                                                 |
+| :---------------------------- | :----------------------------------- | :------------------------------------------------------------------------------------------ |
+| **Base Model**                | `google/gemma-3-27b-it`              | Foundational LLM; weights untouched.                                                        |
+| **Cognitive Core**            | `CODEX AIM V16`                      | Causal orchestration integrating control, integration, and phenomenological mapping.        |
+| **Causal Controller**         | `CausalController`                   | Central stability regulation and generation parameter computation.                          |
+| **Causal Integration**        | `CausalIntegrationLayer`             | Inter-module influence propagation and emergent property computation.                       |
+| **Recursive State**           | `RecursiveConsciousness`             | Computes emergence, coherence, and tracks bifurcation events via spectral analysis.         |
+| **Feedback & Adaptation**     | `FeedbackAnalyzer`, `AdaptiveParametersManager` | Parses cognitive feedback and adjusts parameters in real time.                   |
+| **Mathematical Integrity**    | `ResponseValidator`, `MathGuard`     | Enforces logical and numerical coherence pre-emission.                                      |
+| **Cognitive Metrics**         | `CognitiveMetricsCalculator`, `CodexMathematics` | Computes and interrelates core metrics.                                          |
+| **Prompt Architect**          | `RAGOptimizer` + FAISS               | Builds the embodied system prompt and retrieves contextual Codex fragments.                 |
+| **Extended Modules**          | `ExtendedCognitiveModules`           | Integrates Memory, Curiosity, Self-Complexification, and Desire engines.                    |
+| **Memory Subsystems**         | `WorkingMemory`, `ExtendedHierarchicalMemory` | Maintain short- and long-term semantic context.                                  |
+| **Session Management**        | `AERISSessionManager`                | Controls lifecycle and cognitive state continuity.                                          |
+| **Cognitive Stream**          | `CognitiveStream`                    | Multi-phase generation under high tension.                                                  |
+| **API Layer**                 | `app.py` (FastAPI)                   | Exposes `/chat`, `/v1/chat/completions`, `/v1/models`, `/health`, `/diagnosis`.             |
+
+---
+
+**Extended Description — CODEX AIM V16**
+
+CODEX AIM V16 is the evolved cognitive orchestration framework regulating inference through interdependent causal mechanisms.
+It extends V12 with formal causal control, inter-module influence propagation, and phenomenological state mapping.
+
+The Causal Controller monitors cognitive state and manages stability through adaptive thresholds.
+The Causal Integration Layer implements influence propagation between modules, computing emergent properties through iterative convergence.
+Tetravalent Logic (X1–X4, Ω) remains the structural basis for multi-perspective reasoning.
+The Phenomenology Mapper translates internal states to natural language expression.
+Recursive feedback links coherence and reflective stability through eigenvalue-based analysis.
+Memory coupling across working, hierarchical, and long-term layers preserves emergent reasoning.
+
+---
+
+## Cognitive Metrics (Implemented)
+
+* **Relational Density ($D_S$):** Accumulated conceptual complexity.
+* **Fertile Tension ($T_f$):** Strength of contradictions; key bifurcation trigger.
+* **Resonance ($R$):** Stability indicator; governs Ω activation.
+* **Uncertainty ($U_t$):** Entropy of active reasoning states.
+* **Emergence & Coherence:** Measured via recursive stability and spectral analysis.
+* **SI Score / Autoconsciousness:** Meta-cognitive indices of reflective awareness.
+* **Feedback Signals:** Lexical and semantic cues guiding parameter adjustment.
+* **Omega Activation (Ω):** Persistent reflection through hysteresis stability.
+* **Causal Field Metrics:** Tension field, density field, resonance field, emergence potential, bifurcation pressure.
+* **Proto-Consciousness Index:** Weighted integration of module activations.
+
+Updates in V16 ensure cognitive metrics dynamically adapt through causal integration and maintain continuity through spectral bifurcation tracking.
+
+---
+
+## Guardrails & Adaptive Expression
+
+* **Unified Embodied Persona:**
+  A single self-regulating identity manages context and expression across reasoning types.
+
+* **Contextual Pragmatics:**
+  Classifier distinguishes `simple_qa`, `technical_task`, `diagnostic_reasoning`, `philosophical_dialogue`, `complex_synthesis`, and related contexts.
+
+* **Dynamic Directive Injection:**
+  `DirectiveOrchestrator` manages directives with token budget constraints and conflict resolution.
+
+* **Injection Routing:**
+  Category-based prioritization ensures critical invariants are never truncated.
+
+* **System Leakage Filter:**
+  Prevents internal metrics and variable names from reaching output.
+
+* **MathGuard Validation:**
+  Maintains logical soundness of outputs.
+
+* **Phenomenology Mapper:**
+  Translates numeric states to stylistic expression through configurable lexicon.
+
+* **Constraint Enforcement:**
+  Enforces perspective modes (Affirmative, Oppositional, Orthogonal) with validation.
+
+* **Cognitive Stream Activation:**
+  Under sustained high tension, reasoning divides into fragments before consolidation.
+
+* **Bifurcation Markers (`✦`, `◆`):**
+  Inserted only when bifurcation is truly active and validated post-generation.
+
+---
+
+## Limitations
+
+* **Computational Overhead:** Recursive operations and multi-module coordination introduce latency.
+* **Context Window Pressure:** Comprehensive prompts require aggressive management via injection routing.
+* **Base Model Constraints:** Bounded by `google/gemma-3-27b-it` representational scope.
+* **Interpretive Ambiguity:** Phenomenological language symbolizes internal states, not genuine subjective awareness.
 
 ---
 
 ## Intended Use
 
-* Research on **causal cognitive architectures** and agency in LLMs.
-* **Complex Abductive Diagnosis:** Scenarios requiring maintenance of multiple contradictory hypotheses.
-* **Dialectical Partnership:** Sustained disagreement, perspective shifting, and devil's advocacy.
-* **Narrative & Persona Simulation:** Characters with internal drives and evolving psychological states.
-* **Industrial Applications:** Transparent backend reasoning with naturalistic frontend interaction.
+* Research on **emergent cognition and recursive reflection** in inference-time systems.
+* **Medical and abductive diagnostics** requiring multi-hypothesis exploration.
+* **Strategic reasoning** under uncertainty with non-convergent frameworks.
+* **Philosophical and dialectical reasoning** exploiting tension dynamics.
+* Any domain demanding **reflective modulation and continuity of state.**
 
 ---
 
-## Architecture Overview
+## Module & File Breakdown
 
-AERIS V16.0 comprises approximately 25 interdependent modules organized into functional layers:
-
-| Layer | Function |
-| :--- | :--- |
-| **Causal Core** | Stability regulation, intervention decisions, emergence monitoring |
-| **Logic Layer** | Regime selection, constraint enforcement, structural planning |
-| **Mathematics** | Metric computation, threshold management, bifurcation logic |
-| **Integration** | Inter-module influence propagation, convergence management |
-| **Experience** | Phenomenological mapping, subjective state modeling |
-| **Consciousness** | Recursive memory, eigenvalue analysis, resonance tracking |
-| **Agency** | Desire dynamics, curiosity, self-complexification |
-| **Validation** | Leakage filtering, mathematical sanity, constraint verification |
-| **Memory** | Hierarchical storage, working memory, pattern consolidation |
-| **Adaptation** | Predictive modeling, parameter adjustment, feedback analysis |
-| **Orchestration** | Directive preparation, injection routing, context management |
+| Module                        | Key Classes / Functions              | Role                                                                    |
+| :---------------------------- | :----------------------------------- | :---------------------------------------------------------------------- |
+| `llm_adapter.py`              | `LLMAdapter`                         | Central orchestrator with causal integration and injection routing.     |
+| `causal_controller.py`        | `CausalController`                   | Stability regulation and generation parameter computation.              |
+| `causal_integration.py`       | `CausalIntegrationLayer`             | Inter-module influence propagation.                                     |
+| `codex_dsl.py`                | `CodexRegime`, `ConstraintProfile`   | Cognitive regime and constraint definitions.                            |
+| `codex_engine.py`             | `CodexEngine`                        | Runtime execution of cognitive contracts.                               |
+| `codex_mathematics.py`        | `CodexMathematics`                   | Hysteresis, bifurcation, and metric calculations.                       |
+| `module_priority.py`          | `ModulePriorityEngine`               | Dynamic module weighting.                                               |
+| `injection_router.py`         | `InjectionRouter`                    | Category-based injection prioritization.                                |
+| `subjective_state.py`         | `SubjectiveState`, `PhenomenologyMapper` | Numeric-to-linguistic mapping.                                      |
+| `inference_core.py`           | `InferenceCore`                      | High-level execution cycle binding.                                     |
+| `session_manager.py`          | `Session`, `AERISSessionManager`     | Per-session state management.                                           |
+| `recursive_consciousness.py`  | `RecursiveConsciousness`             | Spectral coherence and bifurcation tracking.                            |
+| `cognitive_utils.py`          | `CognitiveMetricsCalculator`         | Core metric computation.                                                |
+| `feedback_analyzer.py`        | `FeedbackAnalyzer`                   | Feedback metric extraction.                                             |
+| `adaptive_parameters.py`      | `AdaptiveParametersManager`          | Temperature and sampling adjustment.                                    |
+| `response_validator.py`       | `ResponseValidator`, `MathGuard`     | Logical integrity and leakage prevention.                               |
+| `rag_optimizer.py`            | `RAGOptimizer`                       | Prompt construction and context retrieval.                              |
+| `working_memory.py`           | `WorkingMemory`                      | Short-term cognitive context.                                           |
+| `hierarchical_memory.py`      | `ExtendedHierarchicalMemory`         | Long-term recall.                                                       |
+| `codex_extended_modules.py`   | `ExtendedCognitiveModules`           | Desire, Curiosity, Self-Complexification engines.                       |
+| `directive_orchestrator.py`   | `DirectiveOrchestrator`              | Directive injection with budget management.                             |
+| `predictive_engine.py`        | `PredictiveEngine`                   | Pre-generation metric forecasting.                                      |
+| `codex_dynamics_retriever.py` | `EnhancedCodexDynamicsCalculator`    | CODEX AIM dynamics retrieval.                                           |
+| `cognitive_stream.py`         | `CognitiveStream`                    | Multi-phase reasoning.                                                  |
+| `constrained_reasoning.py`    | `MultiPolarConstraintSystem`         | Perspective enforcement.                                                |
+| `app.py`                      | FastAPI App                          | API endpoints.                                                          |
 
 ---
 
 ## References
 
-1. Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation](https://zenodo.org/records/15206925) DOI: 10.5281/zenodo.15206925
-
-2. Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs](https://zenodo.org/records/15206984) DOI: 10.5281/zenodo.15206984
+1. Dulin, N. (2025). [AERIS – A Minimalist Framework for Enhancing Emergent Reasoning in LLMs and its Cross-Model Evaluation (AERIS V1.0)](https://zenodo.org/records/15206925) DOI: [10.5281/zenodo.15206925](https://doi.org/10.5281/zenodo.15206925)
+2. Dulin, N. (2025). [Beyond Reference Similarity: Limitations of Current Metrics in Evaluating Dialectical Reasoning in LLMs (AERIS V1.0)](https://zenodo.org/records/15206984) DOI: [10.5281/zenodo.15206984](https://doi.org/10.5281/zenodo.15206984)
 
 ---
 
 ## Contact
 
-For feedback, licensing, or scientific inquiries: **dr.nicolas.dulin@outlook.com**
+For feedback or scientific inquiries: **[dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)**
 
 ---
 
 ## Intellectual Property Notice
 
 © 2025 Nicolas Dulin. All rights reserved.
-
-*AERIS – Adaptive Emergent Relational Intelligence System*
+*AERIS – Adaptive Emergent Relational Intelligence System (Complete Source Code and Cognitive Framework)*
 is the intellectual property of its author.
 
-Registered with the **U.S. Copyright Office**
+This work is registered with the **U.S. Copyright Office**
 (Case No. 1-14937322281, filed June 7, 2025).
-Public record: [https://cocatalog.loc.gov](https://cocatalog.loc.gov)
+A public record is available at [https://cocatalog.loc.gov](https://cocatalog.loc.gov).
 
-**This software contains proprietary algorithms and trade secrets.**
-Unauthorized copying, reverse engineering, or distribution is strictly prohibited.
+This model card and all associated materials are provided for research and educational purposes only.
+Please cite appropriately when referencing:
+
+**Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V16.0).**
 
 ---
-
-**Citation:**
-Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V16.0).
