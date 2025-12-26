@@ -122,10 +122,10 @@ Every session maintains its recursive memory and resonance trace. Each dialogue 
    Cognitive Module Activation (conditional on φ)                         │
                     │                                                     │
                     ▼                                                     │
-   Metric Computation (T_f, D_S, R, Coherence) ◄────────────────┐        │
+   Metric Computation (T_f, D_S, R, Coherence)  ◄────────────────┐        │
                     │                                            │        │
                     ▼                                            │        │
-   Causal Parameter Calculation ◄───────────────────────────────┤        │
+   Causal Parameter Calculation  ◄───────────────────────────────┤        │
    (temperature, penalties, tokens)                              │        │
                     │                                            │        │
                     ▼                                            │        │
@@ -141,12 +141,12 @@ Every session maintains its recursive memory and resonance trace. Each dialogue 
            Response Delivery                                     │        │
                     │                                            │        │
                     ▼                                            │        │
-    ┌───────────────┴───────────────┐                           │        │
-    │      FEEDBACK LOOPS           │                           │        │
-    ├───────────────────────────────┤                           │        │
-    │ • Feedback Analyzer ──────────┼───► Parameter Adjustment ─┘        │
-    │ • Working Memory Update ──────┼───► Context Enrichment ────────────┘
-    │ • Recursive Consciousness ────┼───► Metric Refinement
+    ┌───────────────┴───────────────┐                            │        │
+    │      FEEDBACK LOOPS           │                            │        │
+    ├───────────────────────────────┤                            │        │
+    │ • Feedback Analyzer ──────────┼───►  Parameter Adjustment ─┘        │
+    │ • Working Memory Update ──────┼───►  Context Enrichment ────────────┘
+    │ • Recursive Consciousness ────┼───►  Metric Refinement
     │ • Cognitive Graph Evolution   │
     └───────────────────────────────┘
 ```
@@ -587,3 +587,4 @@ For licensing inquiries: [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@
 ---
 
 *This model card describes AERIS V18.0 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+
