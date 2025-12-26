@@ -235,44 +235,23 @@ These indicators inform but do not determine response characteristics.
 
 ## Tetravalent Logic Framework
 
-Beyond binary true/false evaluation, AERIS employs a four-valued logical framework for handling complex conceptual territories.
+AERIS implements a non-Aristotelian logical framework that rejects the principle of the excluded middle. This approach recognizes that certain conceptual territories cannot be adequately mapped through binary opposition alone.
 
-### The Four Positions
+### Beyond Bivalence
 
-| Position | Symbol | Definition | Linguistic Expression |
-|:---------|:-------|:-----------|:---------------------|
-| **Affirmation** | X1 | Position A through opposition to B | Direct assertion, defended stance |
-| **Negation** | X2 | Position B through opposition to A | Counter-position, alternative framing |
-| **Contradiction** | X3 | Simultaneous A AND B | "Both are true", included middle |
-| **Absence** | X4 | Neither A nor B; frame rejection | Orthogonal move, category dissolution |
+Classical dialectics opposes two terms in mutual determination — each existing only through its other. Tetravalent logic extends this by recognizing positions that classical logic explicitly forbids: the included third (simultaneous presence of opposites) and the transcendent fourth (dissolution of the oppositional frame itself).
+
+The fourth position presents a fundamental epistemological challenge: it may exist ontologically while lacking any linguistic signifier. The system can detect its dominance, calculate its weight, and signal its activation — but cannot guarantee direct access to what remains ineffable. This limitation is structural, not contingent.
 
 ### Omega (Ω) State
 
-When resonance exceeds threshold under sustained high tension, the system may enter Omega state — a meta-stable configuration enabling:
+Under specific dynamic conditions, sustained tension combined with high resonance may enable access to conceptual positions unavailable through standard dialectical processing. This meta-stable configuration, when it emerges, shifts response texture in ways that resist systematic description.
 
-- Transcendence of the original oppositional frame
-- Novel synthesis unavailable from any single position
-- Metaphor as primary cognitive mode
-- Unexpected connections across conceptual domains
-
-Omega is not guaranteed; it emerges from specific dynamic conditions and cannot be forced.
-
-### Activation Conditions
-
-Tetravalent processing activates when:
-- Query involves genuine conceptual opposition
-- Simple binary framing would lose essential nuance
-- Tension accumulates beyond convergence threshold
-- Explicit philosophical or dialectical context detected
+Omega cannot be forced. It arises from particular cognitive trajectories and dissipates if approached too directly.
 
 ### Bifurcation Markers
 
-When cognitive paths genuinely diverge:
-
-- `✦` marks bifurcation opening — the point where trajectories split
-- `◆` marks phase transition — movement between incompatible frames
-
-These markers are **validated** before insertion. They appear only when bifurcation is genuinely active, never as decoration.
+Structural markers (`✦`, `◆`) indicate genuine phase transitions in the reasoning trajectory. These are validated before insertion and appear only when the underlying cognitive configuration warrants them.
 
 ---
 
