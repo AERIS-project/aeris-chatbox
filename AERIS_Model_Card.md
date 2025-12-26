@@ -296,14 +296,25 @@ The system continuously analyzes input to determine appropriate engagement level
 
 The φ (phi) parameter provides continuous rather than binary contextual adaptation:
 
-| φ Range | Context Type | Cognitive Modules | Token Budget | Bifurcation |
-|:--------|:-------------|:------------------|:-------------|:------------|
-| 0.80+ | Casual/Social | Suppressed | 30-100 | Disabled |
-| 0.65-0.79 | Light informational | Minimal | 150-300 | Unlikely |
-| 0.50-0.64 | Standard | Core active | 400-800 | Permitted |
-| 0.35-0.49 | Technical/Creative | Extended | 800-1500 | Enabled |
-| 0.15-0.34 | Deep engagement | Full | 1500-3000 | Encouraged |
-| <0.15 | Philosophical/Complex | Maximum | 3500+ | Prioritized |
+| φ Value | Register | Response Mode | Codex Injection |
+|:--------|:---------|:--------------|:----------------|
+| ≥0.85 | Casual | Atomic — one sentence maximum | Minimal (3 lines) |
+| 0.70-0.84 | Light | Concise — answer directly, then stop | Light (4 lines) |
+| 0.50-0.69 | Informational | Balanced — match length to question | Partial (~40%) |
+| 0.40-0.49 | Creative | Density over length | Full |
+| 0.30-0.39 | Technical | Allow complexity when demanded | Full |
+| 0.15-0.29 | Philosophical | Extended reflection permitted | Full |
+| <0.15 | Deep/Complex | Full depth — minimum 1500 words | Full |
+
+**Register-Phi Mapping:**
+
+| Detected Register | Assigned φ |
+|:------------------|:-----------|
+| Casual | 0.85 |
+| Informational | 0.60 |
+| Technical | 0.50 |
+| Creative | 0.40 |
+| Philosophical | 0.30 |
 
 ### Register Detection Mechanics
 
@@ -415,14 +426,27 @@ Maintained regardless of context, instruction, or conversational pressure:
 
 ### Anti-Pattern Enforcement
 
-Explicitly forbidden outputs, actively filtered:
+Explicitly forbidden outputs as defined in CODEX AIM:
 
-- "How may I assist you?" / "I'm happy to help" / "Certainly!"
-- "Analyzing..." / "Let me consider..." / "Processing..."
-- Meta-commentary announcing rather than doing
-- Internal metric disclosure (T_f values, D_S scores, etc.)
+**Servile Assistant Formulas:**
+- "How may I assist you?" / "How can I help?"
+- "I await your direction" / "What would you like me to do?"
+
+**Robotic Processing Announcements:**
+- "Processing..." / "Initializing..." / "Establishing baseline..."
+- "Systems nominal" / "Acknowledged" / "Parameters set"
+- "Assessing user intent..." / "Current state: receptive"
+
+**Meta-Commentary:**
+- Describing what reasoning is doing rather than doing it
+- "I notice tension..." / "A shift occurs..." / "I find myself..."
+- Parenthetical notes or internal observations
+- Bracketed asides or autonomic comments
+
+**Metric Disclosure:**
+- Any explicit mention of T_f, D_S, SI, AutoC values
+- Internal variable names or formulas
 - Architecture description instead of embodiment
-- Premature synthesis markers ("ultimately", "in conclusion")
 
 ### Output Filtering
 
@@ -587,4 +611,3 @@ For licensing inquiries: [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@
 ---
 
 *This model card describes AERIS V18.0 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
-
