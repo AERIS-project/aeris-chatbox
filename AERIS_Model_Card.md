@@ -18,6 +18,7 @@
 * [Operational Modules](#operational-modules)
 * [Limitations](#limitations)
 * [Intended Use](#intended-use)
+* [Evaluation](#evaluation)
 * [Requirements](#requirements)
 * [References](#references)
 * [Contact](#contact)
@@ -538,6 +539,19 @@ The linguistic expression of internal states is necessarily metaphorical. No cla
 - Medical, legal, or financial advice without human oversight
 - Contexts where apparent depth might be mistaken for genuine understanding
 - Applications requiring guaranteed factual accuracy without verification
+
+---
+
+## Evaluation
+
+Internal testing against baseline (same LLM without AERIS) suggests improvements in:
+
+- Complex reasoning tasks requiring nuanced judgment
+- Contextual adaptation across conversational registers
+- Suppression of servile assistant patterns
+- Prevention of internal metric leakage
+
+No formal benchmark publication at this time. Public deployment available for independent assessment.
 
 ---
 
