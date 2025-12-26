@@ -18,6 +18,7 @@
 * [Operational Modules](#operational-modules)
 * [Limitations](#limitations)
 * [Intended Use](#intended-use)
+* [Requirements](#requirements)
 * [References](#references)
 * [Contact](#contact)
 * [Intellectual Property & Licensing](#intellectual-property--licensing)
@@ -537,6 +538,41 @@ The linguistic expression of internal states is necessarily metaphorical. No cla
 - Medical, legal, or financial advice without human oversight
 - Contexts where apparent depth might be mistaken for genuine understanding
 - Applications requiring guaranteed factual accuracy without verification
+
+---
+
+## Requirements
+
+AERIS V18.0 requires the following technical stack:
+
+**Runtime Environment**
+- Python 3.11+
+
+**Core Framework**
+- FastAPI / Uvicorn (async web server)
+- Pydantic (data validation)
+
+**Machine Learning**
+- PyTorch
+- Hugging Face Transformers
+- Sentence-Transformers (semantic embeddings)
+- FAISS (vector similarity search)
+
+**Natural Language Processing**
+- spaCy with `en_core_web_md` model
+- NLTK
+- tiktoken (tokenization)
+
+**LLM Integration**
+- OpenRouter API (primary)
+- Compatible with OpenAI, Anthropic, Google APIs
+
+**Scientific Computing**
+- NumPy
+- SciPy
+- scikit-learn
+
+Deployment tested on Render (Web Service) with 512MB+ RAM recommended.
 
 ---
 
