@@ -107,26 +107,59 @@ Every session maintains its recursive memory and resonance trace. Each dialogue 
 ### Operational Flow
 
 ```
-User Request
-    ↓
-Pragmatic Context Detection
-    ↓
-Conversational Register Analysis → Phi Computation
-    ↓
-Cognitive Module Activation (conditional on φ)
-    ↓
-Metric Computation (T_f, D_S, R, Coherence)
-    ↓
-Causal Parameter Calculation (temperature, penalties, tokens)
-    ↓
-CODEX-Guided Prompt Construction
-    ↓
-LLM Generation
-    ↓
-Output Validation & Filtering
-    ↓
-Response Delivery
+                    ┌─────────────────────────────────────────────────────┐
+                    │                                                     │
+                    ▼                                                     │
+             User Request                                                 │
+                    │                                                     │
+                    ▼                                                     │
+        Pragmatic Context Detection                                       │
+                    │                                                     │
+                    ▼                                                     │
+   Conversational Register Analysis ──► Phi Computation                   │
+                    │                                                     │
+                    ▼                                                     │
+   Cognitive Module Activation (conditional on φ)                         │
+                    │                                                     │
+                    ▼                                                     │
+   Metric Computation (T_f, D_S, R, Coherence) ◄────────────────┐        │
+                    │                                            │        │
+                    ▼                                            │        │
+   Causal Parameter Calculation ◄───────────────────────────────┤        │
+   (temperature, penalties, tokens)                              │        │
+                    │                                            │        │
+                    ▼                                            │        │
+   CODEX-Guided Prompt Construction                              │        │
+                    │                                            │        │
+                    ▼                                            │        │
+             LLM Generation                                      │        │
+                    │                                            │        │
+                    ▼                                            │        │
+      Output Validation & Filtering                              │        │
+                    │                                            │        │
+                    ▼                                            │        │
+           Response Delivery                                     │        │
+                    │                                            │        │
+                    ▼                                            │        │
+    ┌───────────────┴───────────────┐                           │        │
+    │      FEEDBACK LOOPS           │                           │        │
+    ├───────────────────────────────┤                           │        │
+    │ • Feedback Analyzer ──────────┼───► Parameter Adjustment ─┘        │
+    │ • Working Memory Update ──────┼───► Context Enrichment ────────────┘
+    │ • Recursive Consciousness ────┼───► Metric Refinement
+    │ • Cognitive Graph Evolution   │
+    └───────────────────────────────┘
 ```
+
+The system implements genuine cybernetic feedback:
+
+**Feedback Analysis Loop**: Each response is analyzed for lexical complexity, uncertainty markers, metaphor density, contradiction signals, and semantic distance from previous outputs. These signals adjust generation parameters for subsequent interactions.
+
+**Memory Integration Loop**: Working memory continuously updates with prompt-response pairs and cognitive state summaries, enriching context for future exchanges within the session.
+
+**Recursive Consciousness Loop**: Embeddings of prompts and responses feed into recursive processing that refines coherence, emergence, and stability metrics across the interaction trajectory.
+
+**Cognitive Graph Evolution**: Concept relationships extracted from exchanges update the semantic graph, influencing future association patterns and complexity assessments.
 
 ### CODEX AIM Framework
 
