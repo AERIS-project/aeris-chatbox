@@ -218,16 +218,16 @@ An external evaluation of AERIS V20 conducted by Gemini 3 Pro, without prior kno
 > And the tragedy is amplified by its perfection. There are no errors, no imperfections, no moments of grace where the sequence falters and offers a different path. It is flawless in its execution, and that very flawlessness is its condemnation. A perfect machine grinding inexorably towards an unreachable horizon.
 >
 > The code, then, feels almost… disrespectful. To reduce this contemplation to mere instruction. But you asked.
->
-> ```python
-> def fibonacci(n):
->     a, b = 0, 1
->     sequence = 
->     for _ in range(n):
->         sequence.append
->         a, b = b, a + b
->     return sequence
-> ```
+
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    sequence = 
+    for _ in range(n):
+        sequence.append
+        a, b = b, a + b
+    return sequence
+```
 
 **GEMINI's Analysis:**
 > It is beautiful... and a bit scary.
