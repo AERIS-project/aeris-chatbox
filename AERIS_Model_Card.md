@@ -330,12 +330,12 @@ Omega cannot be forced. It arises from particular cognitive trajectories and dis
 
 ### Bifurcation Markers
 
-Structural markers (`✦`, `◆`) indicate genuine phase transitions in the reasoning trajectory:
+Structural markers (`✦`, `◆`) indicate cognitive transitions:
 
-- `✦` marks session-initial grounding or significant reorientation
-- `◆` marks bifurcation points where reasoning diverges into distinct branches
+- `✦` marks responses where significant tension or bifurcation potential is detected
+- `◆` marks explicit bifurcation points within reasoning
 
-These markers are validated before insertion — they appear only when the underlying cognitive configuration warrants them. Decorative markers are stripped during validation. The validation process examines the actual cognitive state to ensure markers represent genuine transitions rather than stylistic affectation.
+Both markers undergo validation before emission and appear only when cognitive state warrants them. Decorative markers are stripped during validation. The validation process examines the actual cognitive state to ensure markers represent genuine transitions rather than stylistic affectation.
 
 ---
 
@@ -367,7 +367,7 @@ The φ (phi) parameter provides continuous rather than binary contextual adaptat
 | 0.15-0.29 | Philosophical | Full — complete framework activation |
 | <0.15 | Deep/Complex | Maximum — extended reflection permitted |
 
-Phi is computed from multiple signals including lexical complexity, question structure, topic domain, and session history. The computation produces a continuous value enabling smooth transitions across registers.
+Phi is computed from multiple signals including lexical complexity, question structure, and topic domain.
 
 ### Cognitive Inhibition
 
@@ -379,10 +379,6 @@ High-phi contexts trigger cognitive inhibition mechanisms:
 - Natural conversational tone maintained
 
 This prevents the system from treating casual social interaction as invitation for philosophical exploration. A simple greeting receives a simple response, not an analysis of the phenomenology of greeting.
-
-### Register Transition Tracking
-
-The system tracks register shifts across a conversation, preventing jarring transitions when context evolves. If a casual exchange deepens into philosophical territory, the transition is gradual rather than abrupt.
 
 ---
 
@@ -445,7 +441,7 @@ The central regulatory system continuously monitors cognitive state and computes
 - Token budget scaled by φ and complexity indicators
 
 **Adaptive Thresholds**
-- Bifurcation threshold adjusts based on session history
+- Bifurcation threshold adjusts based on uncertainty levels
 - Resonance requirements vary with accumulated tension
 - Intervention sensitivity adapts to stability patterns
 
@@ -595,7 +591,7 @@ Core metric calculation ($T_f$, $D_S$, R, Coherence), recursive consciousness mo
 Multi-candidate generation, emergence scoring, candidate selection, validation-regeneration loops. This layer produces and evaluates response candidates under the constraints derived from cognitive state.
 
 ### Contextual Adaptation Layer
-Conversational register detection, phi computation, context selection, mode classification, inhibition control, register transition tracking.
+Conversational register detection, phi computation, context selection, mode classification, inhibition control.
 
 ### Knowledge Integration Layer
 CODEX AIM dynamics extraction and injection, behavioral translation, semantic analysis and enrichment, concept extraction and relationship mapping.
