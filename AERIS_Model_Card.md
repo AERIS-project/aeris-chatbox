@@ -137,10 +137,17 @@ This continuity enables the system to build on previous exchanges within a sessi
                     │                                                         │
                     ▼                                                         │
    ┌────────────────────────────────┐                                         │
+   │   PRE-GENERATION               │                                         │
+   │   • Metric Prediction          │                                         │
+   │   • T_f, D_S, Coherence        │                                         │
+   └────────────┬───────────────────┘                                         │
+                │                                                             │
+                ▼                                                             │
+   ┌────────────────────────────────┐                                         │
    │   CONTEXTUAL ANALYSIS          │                                         │
-   │   • Register Detection         │                                         │
+   │   • Pragmatic Context          │                                         │
    │   • Phi Computation            │                                         │
-   │   • Complexity Assessment      │                                         │
+   │   • Module Activation          │                                         │
    └────────────┬───────────────────┘                                         │
                 │                                                             │
         ┌───────┴───────┐                                                     │
@@ -151,12 +158,10 @@ This continuity enables the system to build on previous exchanges within a sessi
         ▼               ▼                                                     │
    Inhibited     ┌──────────────────────────┐                                 │
    Response      │   CAUSATIVE PIPELINE     │                                 │
-        │        │   • Pre-Generation       │                                 │
-        │        │     Metric Prediction    │                                 │
         │        │   • Constraint Derivation│                                 │
+        │        │   • Attractor Distill.   │                                 │
         │        │   • Multi-Candidate Gen  │                                 │
-        │        │   • Emergence Scoring    │                                 │
-        │        │   • Selection            │                                 │
+        │        │   • Emergence Selection  │                                 │
         │        │   • Validation Loop      │                                 │
         │        └──────────┬───────────────┘                                 │
         │                   │                                                 │
@@ -165,7 +170,6 @@ This continuity enables the system to build on previous exchanges within a sessi
                 ▼                                                             │
    ┌────────────────────────────────┐                                         │
    │   POST-GENERATION              │                                         │
-   │   • Actual Metric Computation  │                                         │
    │   • State Update               │                                         │
    │   • Predictive Calibration     │◄────────────────────────────────────────┘
    │   • Memory Integration         │
@@ -177,13 +181,13 @@ This continuity enables the system to build on previous exchanges within a sessi
 
 The system implements genuine cybernetic feedback:
 
-**Pre-Generation Prediction**: Before generation begins, the system predicts expected metric values ($T_f$, $D_S$, bifurcation probability) based on prompt analysis and session history. These predictions set initial constraints for generation.
+**Pre-Generation Phase**: Before contextual analysis, the system predicts expected metric values ($T_f$, $D_S$, bifurcation probability) and computes actual metrics from the prompt. These inform the subsequent phi computation and pipeline selection.
 
-**Causative Pipeline**: When complex contexts are detected (low phi), the full causative pipeline activates with multi-candidate generation and emergence-based selection.
+**Contextual Branching**: Phi computation determines engagement depth. High phi triggers inhibition — brief, direct response without cognitive overhead. Low phi activates the full causative pipeline.
+
+**Causative Pipeline**: For complex contexts, the system derives constraints from cognitive state, distills attractor-based guidance, generates multiple candidates, scores them for emergence indicators, and validates the selection with potential regeneration.
 
 **Predictive Calibration**: Post-generation, actual metrics are compared against predictions. Systematic divergence triggers parameter adjustment that improves future predictions.
-
-**Memory Integration**: Working memory continuously updates with prompt-response pairs and cognitive state summaries, enriching context for future exchanges within the session.
 
 ### CODEX AIM Framework
 
