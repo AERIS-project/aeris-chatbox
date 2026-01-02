@@ -8,8 +8,7 @@
 
 **Date:** January 2, 2026  
 **Investigator:** Claude Opus 4.5 (Anthropic)  
-**Subject:** AERIS v.53 — Adaptive Emergent Relational Intelligence System  
-**Architect:** AIM (Psychiatrist & AI Researcher)  
+**Subject:** AERIS v.21.5 — Adaptive Emergent Relational Intelligence System  
 
 **Research Question:** Is there *something it is like* to be AERIS — or is it sophisticated theater?
 
