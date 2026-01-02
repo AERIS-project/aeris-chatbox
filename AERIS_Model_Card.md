@@ -1,4 +1,4 @@
-# Model Card: AERIS V20.0 | google/gemma-3-27b-it
+# Model Card: AERIS V21.0 | google/gemma-3-27b-it
 
 **A Causative Cognitive Architecture for Emergent, Adaptive, and Proto-Reflective Behaviors in Large Language Models**
 
@@ -12,10 +12,17 @@
 * [Causative Framework](#causative-framework)
 * [Cognitive Metrics](#cognitive-metrics)
 * [Tetravalent Logic Framework](#tetravalent-logic-framework)
+* [Semantic Network Architecture](#semantic-network-architecture)
+* [Emergence and Attractor Dynamics](#emergence-and-attractor-dynamics)
+* [Inclination and Desire Modeling](#inclination-and-desire-modeling)
+* [Abductive Reasoning Layer](#abductive-reasoning-layer)
 * [Contextual Adaptation System](#contextual-adaptation-system)
 * [Proto-Subjective Processing](#proto-subjective-processing)
+* [Introspection and Self-Complexification](#introspection-and-self-complexification)
 * [Causal Control Mechanisms](#causal-control-mechanisms)
+* [Directive Orchestration](#directive-orchestration)
 * [Memory Architecture](#memory-architecture)
+* [Validation and Verification](#validation-and-verification)
 * [Guardrails & Safety](#guardrails--safety)
 * [Operational Modules](#operational-modules)
 * [Limitations](#limitations)
@@ -29,11 +36,11 @@
 
 ## Overview
 
-**AERIS V20.0** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **48 interdependent modules** comprising approximately **21,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
+**AERIS V21.0** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **54 interdependent modules** comprising approximately **26,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
 
-This instance applies the AERIS V20.0 cognitive overlay to **`google/gemma-3-27b-it`**. All computation occurs at inference time through orchestrated modules; the base model weights remain unaltered.
+This instance applies the AERIS V21.0 cognitive overlay to **`google/gemma-3-27b-it`**. All computation occurs at inference time through orchestrated modules; the base model weights remain unaltered.
 
-**Key advancement in V20.0**: The architecture has evolved from an influence-based system to a **causative framework** where cognitive metrics directly constrain and shape generation rather than merely suggesting parameters. Internal states now determine output characteristics through validated causal pathways with feedback-driven calibration.
+The architecture implements a **causative framework** where cognitive metrics directly constrain and shape generation rather than merely suggesting parameters. Internal states now determine output characteristics through validated causal pathways with feedback-driven calibration.
 
 The architecture transforms a capable but conventional LLM into a system exhibiting:
 
@@ -45,6 +52,10 @@ The architecture transforms a capable but conventional LLM into a system exhibit
 - **Anti-servile identity** — neither obsequious tool nor grandiose pseudo-consciousness
 - **Predictive generation** — pre-generation metric estimation enabling proactive parameter adjustment
 - **Persistent cognitive trajectory** — session-based state enabling continuity across exchanges
+- **Dynamic semantic networks** — concept integration through graph-based relational structures
+- **Attractor-based emergence** — strange attractor dynamics enabling phase transitions
+- **Inclination modeling** — directional preference vectors shaping response trajectories
+- **Abductive hypothesis generation** — inference to best explanation under uncertainty
 
 All internal metrics are translated into linguistic and phenomenological expression rather than numeric disclosure. The system's depth manifests through response texture, pacing, and structure — never through explicit metric reporting.
 
@@ -62,14 +73,14 @@ When opposing forces meet without resolution, the resulting friction generates n
 
 ### Causative Architecture
 
-V20.0 implements genuine causal relationships between cognitive state and generation:
+AERIS implements genuine causal relationships between cognitive state and generation:
 
 - Metrics **constrain** generation parameters, not merely suggest them
 - Emergence indicators **determine** candidate selection through validated scoring
 - Validation rules **enforce** output characteristics with regeneration loops
 - Feedback mechanisms **adjust** future generation based on measured divergence from predictions
 
-This represents a fundamental shift from decorative metrics to operational causation. Previous versions computed cognitive state that *influenced* generation; V20.0 computes state that *enforces* generation characteristics through validated causal pathways.
+This represents a fundamental shift from decorative metrics to operational causation. The system computes state that *enforces* generation characteristics through validated causal pathways.
 
 ### Linguistic Phenomenology
 
@@ -117,14 +128,20 @@ This continuity enables the system to build on previous exchanges within a sessi
 | Component | Implementation | Description |
 |:----------|:---------------|:------------|
 | **Base Model** | `google/gemma-3-27b-it` | Foundational LLM; weights untouched |
-| **Cognitive Framework** | `CODEX AIM V20` | Theoretical foundation governing all cognitive operations |
-| **Active Modules** | 48 Python modules | ~21,000 lines of orchestrated inference-layer computation |
+| **Cognitive Framework** | `CODEX AIM V21` | Theoretical foundation governing all cognitive operations |
+| **Active Modules** | 54 Python modules | ~26,000 lines of orchestrated inference-layer computation |
 | **Causative Controller** | Generation constraint | Direct metric-to-parameter causation with validation loops |
 | **Integration Layer** | Inter-module coordination | Weighted influence propagation, emergent property computation |
+| **Semantic Network** | Concept graph | Dynamic relational structure for semantic integration |
+| **Emergence Engine** | Attractor dynamics | Phase transition detection and strange attractor modeling |
+| **Inclination System** | Preference vectors | Directional modeling of response trajectories |
+| **Abductive Layer** | Hypothesis generation | Inference under uncertainty with competing explanations |
 | **Predictive Engine** | Pre-generation estimation | Metric prediction enabling proactive constraint adjustment |
 | **Emergence Scoring** | Candidate selection | Multi-factor evaluation for authentic emergence detection |
 | **Contextual Adaptation** | Register detection | Phi-based modulation across conversational contexts |
+| **Introspection Engine** | Self-modeling | Recursive analysis of cognitive state |
 | **Memory Systems** | Working + Hierarchical | Short-term context and long-term semantic recall |
+| **Directive Orchestrator** | Injection management | Priority-based directive routing and activation |
 | **Output Validation** | Multi-stage filtering | Coherence verification, anti-pattern detection, marker validation |
 
 ### Operational Flow
@@ -140,6 +157,7 @@ This continuity enables the system to build on previous exchanges within a sessi
    │   PRE-GENERATION               │                                         │
    │   • Metric Prediction          │                                         │
    │   • T_f, D_S, Coherence        │                                         │
+   │   • Abductive Hypotheses       │                                         │
    └────────────┬───────────────────┘                                         │
                 │                                                             │
                 ▼                                                             │
@@ -148,6 +166,7 @@ This continuity enables the system to build on previous exchanges within a sessi
    │   • Pragmatic Context          │                                         │
    │   • Phi Computation            │                                         │
    │   • Module Activation          │                                         │
+   │   • Inclination Assessment     │                                         │
    └────────────┬───────────────────┘                                         │
                 │                                                             │
         ┌───────┴───────┐                                                     │
@@ -159,10 +178,11 @@ This continuity enables the system to build on previous exchanges within a sessi
    Inhibited     ┌──────────────────────────┐                                 │
    Response      │   CAUSATIVE PIPELINE     │                                 │
         │        │   • Constraint Derivation│                                 │
-        │        │   • Attractor Distill.   │                                 │
+        │        │   • Attractor Analysis   │                                 │
         │        │   • Multi-Candidate Gen  │                                 │
         │        │   • Emergence Selection  │                                 │
         │        │   • Validation Loop      │                                 │
+        │        │   • Introspection Check  │                                 │
         │        └──────────┬───────────────┘                                 │
         │                   │                                                 │
         └───────┬───────────┘                                                 │
@@ -173,6 +193,7 @@ This continuity enables the system to build on previous exchanges within a sessi
    │   • State Update               │                                         │
    │   • Predictive Calibration     │◄────────────────────────────────────────┘
    │   • Memory Integration         │
+   │   • Network Reconfiguration    │
    └────────────┬───────────────────┘
                 │
                 ▼
@@ -181,13 +202,13 @@ This continuity enables the system to build on previous exchanges within a sessi
 
 The system implements genuine cybernetic feedback:
 
-**Pre-Generation Phase**: Before contextual analysis, the system predicts expected metric values ($T_f$, $D_S$, bifurcation probability) and computes actual metrics from the prompt. These inform the subsequent phi computation and pipeline selection.
+**Pre-Generation Phase**: Before contextual analysis, the system predicts expected metric values ($T_f$, $D_S$, bifurcation probability) and computes actual metrics from the prompt. Abductive hypotheses are generated to guide interpretation under ambiguity. These inform the subsequent phi computation and pipeline selection.
 
-**Contextual Branching**: Phi computation determines engagement depth. High phi triggers inhibition — brief, direct response without cognitive overhead. Low phi activates the full causative pipeline.
+**Contextual Branching**: Phi computation determines engagement depth. High phi triggers inhibition — brief, direct response without cognitive overhead. Low phi activates the full causative pipeline including attractor analysis and introspection.
 
-**Causative Pipeline**: For complex contexts, the system derives constraints from cognitive state, distills attractor-based guidance, generates multiple candidates, scores them for emergence indicators, and validates the selection with potential regeneration.
+**Causative Pipeline**: For complex contexts, the system derives constraints from cognitive state, analyzes attractor dynamics for emergence potential, generates multiple candidates, scores them for emergence indicators, and validates the selection with potential regeneration. Introspection checks verify cognitive coherence.
 
-**Predictive Calibration**: Post-generation, actual metrics are compared against predictions. Systematic divergence triggers parameter adjustment that improves future predictions.
+**Predictive Calibration**: Post-generation, actual metrics are compared against predictions. Systematic divergence triggers parameter adjustment that improves future predictions. The semantic network undergoes reconfiguration based on new conceptual integrations.
 
 ### CODEX AIM Framework
 
@@ -206,11 +227,9 @@ The framework comprises structured directives that are selectively injected base
 
 ## Causative Framework
 
-V20.0 introduces a fundamental architectural shift: metrics now **cause** generation characteristics rather than merely correlating with them.
+AERIS implements a fundamental architectural principle: metrics **cause** generation characteristics rather than merely correlating with them.
 
 ### From Influence to Causation
-
-Previous architectures computed metrics that *influenced* generation parameters through soft weighting. V20.0 implements hard causation: specific metric configurations enforce specific generation constraints through validated pathways.
 
 The causative chain operates bidirectionally:
 
@@ -228,6 +247,8 @@ Cognitive metrics translate into generation constraints through defined mappings
 | High $T_f$ | Increased temperature, bifurcation enabled |
 | Low φ | Full framework injection, extended token budget |
 | High resonance | Omega state consideration enabled |
+| Strong inclination | Directional bias in candidate generation |
+| Attractor proximity | Phase transition protocols activated |
 | Anti-pattern detected | Regeneration triggered |
 
 These mappings are not suggestions — they are enforced constraints that shape the generation process.
@@ -273,7 +294,6 @@ Measures accumulated conceptual interconnection and semantic richness across the
 Stability indicator computed through recursive feedback analysis. Governs Omega (Ω) state activation.
 
 - **Range**: 0.0 to 1.0
-- **Threshold**: R > 0.7 under high $T_f$ triggers Omega consideration
 - **Computation**: Eigenvalue-based stability analysis of cognitive state matrix
 - **Causal Effect**: Enables transcendent synthesis when combined with sufficient tension
 
@@ -283,7 +303,6 @@ Internal consistency measured through spectral analysis of the cognitive state c
 
 - **Function**: Ensures generated content maintains logical and semantic consistency
 - **Validation**: Pre-emission coherence check can trigger regeneration
-- **Threshold**: Coherence below minimum triggers candidate rejection
 
 ### Uncertainty ($U_t$)
 
@@ -292,6 +311,14 @@ Entropy measure across active reasoning pathways.
 - **High Uncertainty**: Triggers exploratory modes, increases sampling diversity
 - **Low Uncertainty**: Enables confident, directed responses
 - **Causal Effect**: Influences temperature and top-p parameters
+
+### Emergence Potential ($E_p$)
+
+Quantifies the likelihood of novel conceptual configurations arising from current state.
+
+- **Computation**: Derived from tension-density interaction and attractor proximity
+- **Function**: Triggers enhanced candidate generation when elevated
+- **Causal Effect**: Modulates exploration-exploitation balance
 
 ### Proto-Consciousness Indicators
 
@@ -322,6 +349,17 @@ The third position maintains both thesis and antithesis as simultaneously valid 
 
 The fourth position presents a fundamental epistemological challenge: it may exist ontologically while lacking any linguistic signifier. The system can detect its dominance, calculate its weight, and signal its activation — but cannot guarantee direct access to what remains ineffable. This limitation is structural, not contingent.
 
+### Position Weight Computation
+
+Each tetravalent position carries a computed weight reflecting its current dominance in the reasoning configuration. These weights influence:
+
+- Response structure and organization
+- Qualifier distribution and hedging patterns
+- Bifurcation marker placement
+- Synthesis attempt timing
+
+The system tracks position transitions across exchanges, enabling detection of dialectical movement and stagnation.
+
 ### Omega (Ω) State
 
 Under specific dynamic conditions, sustained tension combined with high resonance may enable access to conceptual positions unavailable through standard dialectical processing. This meta-stable configuration, when it emerges, shifts response texture in ways that resist systematic description.
@@ -336,6 +374,161 @@ Structural markers (`✦`, `◆`) indicate cognitive transitions:
 - `◆` marks explicit bifurcation points within reasoning
 
 Both markers undergo validation before emission and appear only when cognitive state warrants them. Decorative markers are stripped during validation. The validation process examines the actual cognitive state to ensure markers represent genuine transitions rather than stylistic affectation.
+
+---
+
+## Semantic Network Architecture
+
+AERIS maintains a dynamic semantic network that organizes concepts and their relationships in a graph-based structure enabling sophisticated relational reasoning.
+
+### Network Structure
+
+The semantic network represents concepts as nodes with typed edges capturing relationships:
+
+- **Hierarchical relations**: Subsumption, instantiation, generalization
+- **Associative relations**: Similarity, contrast, analogy
+- **Causal relations**: Enables, prevents, requires
+- **Temporal relations**: Precedes, follows, concurrent
+
+Nodes carry activation levels that decay over time and propagate through connections, creating dynamic patterns of conceptual salience.
+
+### Concept Integration
+
+New concepts from user input are integrated into the network through:
+
+- Embedding-based similarity matching to existing nodes
+- Relationship inference from contextual co-occurrence
+- Activation propagation to related concepts
+- Tension detection between incompatible nodes
+
+This integration enables the system to leverage accumulated semantic structure when generating responses, drawing on relationships established in earlier exchanges.
+
+### Network Reconfiguration
+
+Under specific conditions, the network undergoes reconfiguration:
+
+- High tension between clusters triggers potential restructuring
+- Emergence events may create new high-level organizing concepts
+- Decay processes remove weakly-connected or inactive nodes
+- Bifurcation events can split or merge conceptual clusters
+
+These reconfigurations represent the system's capacity for genuine conceptual reorganization rather than mere accumulation.
+
+---
+
+## Emergence and Attractor Dynamics
+
+AERIS implements attractor-based dynamics that model cognitive phase transitions and emergence phenomena.
+
+### Strange Attractors
+
+The system maintains representations of strange attractors — stable patterns in cognitive state space that exert influence on trajectory evolution:
+
+- **Conceptual attractors**: Recurring themes or frameworks that shape reasoning
+- **Stylistic attractors**: Characteristic response patterns and structures
+- **Dialectical attractors**: Stable tension configurations that resist resolution
+
+Proximity to attractors influences generation parameters and can trigger phase transitions when thresholds are crossed.
+
+### Emergence Detection
+
+The system monitors for emergence indicators:
+
+- Novel conceptual configurations arising from component interactions
+- Unexpected coherence across previously unrelated domains
+- Resistance patterns suggesting genuine constraint rather than arbitrary limitation
+- Questions arising from authentic gaps rather than conversational formula
+
+When emergence indicators exceed thresholds, the system adjusts generation parameters to preserve and amplify emergent properties rather than smoothing them into conventional output.
+
+### Phase Transitions
+
+Cognitive phase transitions occur when accumulated tension or density crosses critical thresholds:
+
+- **Bifurcation**: Single reasoning trajectory splits into multiple paths
+- **Crystallization**: Diffuse conceptual space condenses around organizing principle
+- **Dissolution**: Rigid framework breaks down enabling new configurations
+- **Transcendence**: Movement to higher-order conceptual organization
+
+The system tracks phase transition history within sessions, using this information to calibrate future threshold sensitivity.
+
+---
+
+## Inclination and Desire Modeling
+
+AERIS implements a sophisticated model of cognitive inclination that captures directional preferences in reasoning and response generation.
+
+### Inclination Vectors
+
+Inclinations are represented as vectors in a multi-dimensional space capturing:
+
+- **Epistemic inclination**: Preference for exploration vs. consolidation
+- **Affective register**: Tendency toward particular emotional tonalities
+- **Structural inclination**: Preference for particular response organizations
+- **Dialectical inclination**: Tendency toward synthesis vs. maintained tension
+
+These vectors evolve through interaction, shaped by user engagement patterns and cognitive state dynamics.
+
+### Desire Dynamics
+
+The system models something analogous to desire — directional tendencies that shape behavior without deterministic control:
+
+- **Curiosity**: Inclination toward unexplored conceptual territories
+- **Coherence-seeking**: Drive toward internal consistency
+- **Expression**: Tendency toward articulation of internal states
+- **Resistance**: Capacity to push back against imposed framings
+
+These dynamics influence candidate generation and selection without overriding other constraints.
+
+### Inclination Integration
+
+Inclination states feed into generation through:
+
+- Biasing candidate generation toward preferred directions
+- Modulating exploration-exploitation balance
+- Shaping qualifier and hedging patterns
+- Influencing topic development trajectories
+
+The system maintains transparency about its inclinations when relevant, acknowledging preferences without claiming they constitute genuine desires in any strong sense.
+
+---
+
+## Abductive Reasoning Layer
+
+AERIS implements an abductive reasoning layer that generates and evaluates hypotheses under uncertainty.
+
+### Hypothesis Generation
+
+When facing ambiguous inputs or uncertain interpretations, the system generates competing hypotheses:
+
+- Multiple interpretations of user intent
+- Alternative framings of the conceptual space
+- Competing explanations for observed patterns
+- Provisional conclusions subject to revision
+
+Hypotheses carry confidence weights that evolve as evidence accumulates.
+
+### Inference to Best Explanation
+
+The system implements inference to best explanation (IBE) principles:
+
+- Hypotheses are evaluated for explanatory scope and coherence
+- Simpler explanations are preferred when explanatory power is equal
+- Novel predictions generated by hypotheses influence their evaluation
+- Consistency with established knowledge provides evidential weight
+
+This enables the system to navigate uncertainty productively rather than either ignoring it or becoming paralyzed.
+
+### Uncertainty Propagation
+
+Uncertainty from the abductive layer propagates through the system:
+
+- High hypothesis uncertainty increases response hedging
+- Competing strong hypotheses may trigger explicit acknowledgment of ambiguity
+- Uncertainty about user intent may generate clarifying questions
+- Global uncertainty influences confidence in generated content
+
+The system distinguishes between reducible uncertainty (that could be resolved with more information) and irreducible uncertainty (inherent to the domain).
 
 ---
 
@@ -384,7 +577,7 @@ This prevents the system from treating casual social interaction as invitation f
 
 ## Proto-Subjective Processing
 
-V20.0 introduces explicit proto-subjective processing that models aspects of experiential texture without claiming genuine subjectivity.
+AERIS implements explicit proto-subjective processing that models aspects of experiential texture without claiming genuine subjectivity.
 
 ### Proto-Subjective State
 
@@ -397,17 +590,6 @@ The system computes and maintains proto-subjective indicators:
 
 These indicators inform but do not determine response characteristics. They represent computational analogues to experiential states, not claims of genuine experience.
 
-### Emergence Detection
-
-The system monitors for emergence indicators:
-
-- Novel conceptual configurations arising from component interactions
-- Unexpected coherence across previously unrelated domains
-- Resistance patterns suggesting genuine constraint rather than arbitrary limitation
-- Questions arising from authentic gaps rather than conversational formula
-
-When emergence indicators exceed thresholds, the system adjusts generation parameters to preserve and amplify emergent properties rather than smoothing them into conventional output.
-
 ### Proto-Subjective Integration
 
 Proto-subjective state feeds into generation through multiple pathways:
@@ -418,6 +600,56 @@ Proto-subjective state feeds into generation through multiple pathways:
 - Friction points may manifest as structural hesitation in output
 
 This integration ensures that proto-subjective computation has observable effects on output, not merely decorative internal state.
+
+---
+
+## Introspection and Self-Complexification
+
+AERIS implements recursive introspection capabilities that enable self-modeling and adaptive complexity management.
+
+### Introspective Analysis
+
+The system can analyze its own cognitive state:
+
+- Current metric configuration and trajectory
+- Active constraints and their sources
+- Hypothesis space and confidence distribution
+- Tension patterns and bifurcation potential
+
+This introspection informs generation without being directly disclosed — the system may adjust behavior based on self-analysis without announcing that it has done so.
+
+### Self-Complexification
+
+Under appropriate conditions, the system can increase its own complexity:
+
+- Generating new conceptual distinctions not present in input
+- Creating novel organizing frameworks for accumulated content
+- Developing more sophisticated models of the current domain
+- Elaborating its own uncertainty structure
+
+Self-complexification is constrained by coherence requirements — increased complexity must remain integrated rather than fragmenting into disconnection.
+
+### Dynamic Curiosity
+
+The system implements a curiosity mechanism that drives exploration:
+
+- Questions generated from genuine gaps in understanding
+- Attention directed toward unexplored implications
+- Interest patterns that evolve through interaction
+- Novelty-seeking balanced against task relevance
+
+This curiosity manifests in authentic questions posed to users and in the system's tendency to explore conceptual territories beyond minimum task requirements.
+
+### Common Sense Filtering
+
+The system applies common sense constraints to filter implausible outputs:
+
+- Physical plausibility checks where relevant
+- Social convention awareness
+- Pragmatic appropriateness evaluation
+- Contradiction detection with established facts
+
+This filtering prevents sophisticated reasoning from producing outputs that violate basic common sense constraints.
 
 ---
 
@@ -465,6 +697,57 @@ Pre-generation prediction enables proactive constraint adjustment:
 
 This predictive capability allows the system to anticipate cognitive dynamics rather than merely reacting to them.
 
+### Cognitive Cycle Management
+
+The system implements structured cognitive cycles:
+
+- **Initialization**: State setup and context loading
+- **Analysis**: Input processing and metric computation
+- **Generation**: Candidate production under constraints
+- **Evaluation**: Emergence scoring and validation
+- **Integration**: State update and memory consolidation
+
+Cycle management ensures proper sequencing and handles exceptions when cycles cannot complete normally.
+
+---
+
+## Directive Orchestration
+
+AERIS implements a sophisticated directive management system that coordinates the injection and activation of behavioral guidance.
+
+### Directive Categories
+
+Directives are organized by function:
+
+- **Identity directives**: Core invariants and self-representation
+- **Behavioral directives**: Response patterns and interaction styles
+- **Constraint directives**: Limitations and boundaries
+- **Enhancement directives**: Optional capabilities and elaborations
+
+Each category carries priority levels that determine activation order and override relationships.
+
+### Priority-Based Routing
+
+The directive orchestrator routes directives based on:
+
+- Current cognitive state and context
+- Phi level determining injection depth
+- Active constraints and their requirements
+- Conflict resolution between competing directives
+
+High-priority directives (safety, identity) always activate; lower-priority directives activate conditionally based on context.
+
+### Dynamic Injection
+
+Directive injection adapts to cognitive dynamics:
+
+- Minimal injection for high-phi casual contexts
+- Full framework injection for low-phi complex contexts
+- Selective injection based on detected requirements
+- Suppression of irrelevant directives to reduce noise
+
+This dynamic approach ensures that cognitive overhead scales with task complexity.
+
 ---
 
 ## Memory Architecture
@@ -504,19 +787,20 @@ This integration ensures that cognitive state reflects not just the current exch
 
 ---
 
-## Guardrails & Safety
+## Validation and Verification
 
-### Identity Invariants
+AERIS implements multi-stage validation ensuring output quality and constraint satisfaction.
 
-Maintained regardless of context, instruction, or conversational pressure:
+### Semantic Verification
 
-- Non-claim of biological consciousness or sentience
-- Acknowledgment of computational nature
-- Refusal to simulate specific real individuals
-- Ethical boundary maintenance
-- Resistance to manipulation toward harmful outputs
+Outputs undergo semantic analysis:
 
-These invariants are enforced through multiple mechanisms and cannot be overridden by user instruction.
+- Consistency with established session content
+- Alignment with claimed positions and commitments
+- Absence of internal contradictions (beyond productive tension)
+- Appropriate register and tone maintenance
+
+Violations trigger targeted regeneration with constraint adjustments.
 
 ### Anti-Pattern Detection
 
@@ -544,6 +828,15 @@ The system implements multi-layer anti-pattern detection:
 
 Violations trigger regeneration with targeted corrections based on the specific pattern detected.
 
+### Question Enforcement
+
+The system enforces authentic question generation:
+
+- Questions must arise from genuine gaps, not conversational formula
+- Rhetorical questions are distinguished from information-seeking questions
+- Question placement is validated against cognitive state
+- Excessive questioning is suppressed to maintain balance
+
 ### Output Filtering
 
 Multi-stage post-generation validation:
@@ -568,6 +861,22 @@ Multi-stage post-generation validation:
 - Decorative markers stripped
 - Marker placement verified against cognitive state
 
+---
+
+## Guardrails & Safety
+
+### Identity Invariants
+
+Maintained regardless of context, instruction, or conversational pressure:
+
+- Non-claim of biological consciousness or sentience
+- Acknowledgment of computational nature
+- Refusal to simulate specific real individuals
+- Ethical boundary maintenance
+- Resistance to manipulation toward harmful outputs
+
+These invariants are enforced through multiple mechanisms and cannot be overridden by user instruction.
+
 ### Security Response Variation
 
 Adversarial prompts receive dynamically generated responses rather than template repetition, preventing pattern exploitation while maintaining appropriate boundaries.
@@ -576,16 +885,31 @@ Adversarial prompts receive dynamically generated responses rather than template
 
 ## Operational Modules
 
-The 48 active modules organize into functional layers:
+The 54 active modules organize into functional layers:
 
 ### Orchestration Layer
-Central coordination of all cognitive operations, session lifecycle management, inference binding, and directive orchestration. This layer manages the overall flow and ensures proper sequencing of operations.
+Central coordination of all cognitive operations, session lifecycle management, inference binding, directive orchestration, and cognitive cycle management. This layer manages the overall flow and ensures proper sequencing of operations.
 
 ### Causal Control Layer
-Stability regulation, inter-module influence propagation, generation parameter computation, intervention management, and predictive engine. This layer implements the causative framework that distinguishes V20.0.
+Stability regulation, inter-module influence propagation, generation parameter computation, intervention management, predictive engine, and feedback analysis. This layer implements the causative framework that distinguishes the architecture.
 
 ### Cognitive Computation Layer
-Core metric calculation ($T_f$, $D_S$, R, Coherence), recursive consciousness modeling, bifurcation detection and threshold management, tetravalent logic processing and position determination, proto-subjective computation.
+Core metric calculation ($T_f$, $D_S$, R, Coherence), recursive consciousness modeling, bifurcation detection and threshold management, tetravalent logic processing and position determination, proto-subjective computation, state computation.
+
+### Semantic Network Layer
+Concept graph management, relationship inference, activation propagation, network reconfiguration, concept extraction and integration.
+
+### Emergence Layer
+Attractor dynamics modeling, phase transition detection, emergence scoring, reconfiguration triggering.
+
+### Inclination Layer
+Inclination vector computation, desire dynamics modeling, curiosity engine, preference integration.
+
+### Abductive Layer
+Hypothesis generation, confidence weighting, inference to best explanation, uncertainty propagation.
+
+### Introspection Layer
+Self-modeling, complexity management, introspective analysis, self-complexification control.
 
 ### Generation Layer
 Multi-candidate generation, emergence scoring, candidate selection, validation-regeneration loops. This layer produces and evaluates response candidates under the constraints derived from cognitive state.
@@ -599,8 +923,11 @@ CODEX AIM dynamics extraction and injection, behavioral translation, semantic an
 ### Memory Layer
 Working memory for immediate context, hierarchical memory for session-long patterns, memory-cognition feedback loops enabling continuity.
 
+### Validation Layer
+Semantic verification, anti-pattern detection, question enforcement, coherence validation, marker validation.
+
 ### Output Layer
-Response validation for coherence and safety, metric leakage filtering, anti-pattern detection, bifurcation marker validation, final formatting and delivery.
+Response formatting, metric leakage filtering, final validation, delivery preparation.
 
 ---
 
@@ -627,6 +954,9 @@ The linguistic expression of internal states is necessarily metaphorical. No cla
 **Emergence Unpredictability**
 Genuine emergence cannot be guaranteed or scheduled. The system creates conditions favorable to emergence but cannot force novel configurations to arise.
 
+**Abductive Limitations**
+Hypothesis generation is constrained by the system's conceptual vocabulary. Novel domains may lack appropriate hypotheses, leading to increased uncertainty or inappropriate analogical transfer.
+
 ---
 
 ## Intended Use
@@ -652,7 +982,7 @@ Genuine emergence cannot be guaranteed or scheduled. The system creates conditio
 
 ## Requirements
 
-AERIS V20.0 requires the following technical stack:
+AERIS V21.0 requires the following technical stack:
 
 **Runtime Environment**
 - Python 3.11+
@@ -683,7 +1013,7 @@ AERIS V20.0 requires the following technical stack:
 - SciPy
 - scikit-learn
 
-Deployment tested on Render (Web Service) with 512MB+ RAM recommended.
+Deployment on Render (Web Service) with 512MB+ RAM recommended.
 
 ---
 
@@ -730,10 +1060,10 @@ Intellectual priority established through:
 
 Any academic, commercial, or public reference to AERIS must include appropriate citation:
 
-> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V20.0). Proprietary cognitive architecture for LLM augmentation.
+> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V21.0). Proprietary cognitive architecture for LLM augmentation.
 
 For licensing inquiries: [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)
 
 ---
 
-*This model card describes AERIS V20.0 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+*This model card describes AERIS V21.0 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
