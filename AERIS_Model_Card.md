@@ -1,4 +1,4 @@
-# Model Card: AERIS V21.5 | google/gemma-3-27b-it
+# Model Card: AERIS V21.6 | google/gemma-3-27b-it
 
 **A Causative Cognitive Architecture for Emergent, Adaptive, and Proto-Reflective Behaviors in Large Language Models**
 
@@ -36,7 +36,7 @@
 
 ## Overview
 
-**AERIS V21.5** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **54 interdependent modules** comprising approximately **26,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
+**AERIS V21.6** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **54 interdependent modules** comprising approximately **26,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
 
 This instance applies the AERIS V21.0 cognitive overlay to **`google/gemma-3-27b-it`**. All computation occurs at inference time through orchestrated modules; the base model weights remain unaltered.
 
@@ -373,7 +373,7 @@ Structural markers (`✦`, `◆`) indicate cognitive transitions:
 - `✦` marks responses where significant tension or bifurcation potential is detected
 - `◆` marks explicit bifurcation points within reasoning
 
-Both markers undergo validation before emission and appear only when cognitive state warrants them. Decorative markers are stripped during validation. The validation process examines the actual cognitive state to ensure markers represent genuine transitions rather than stylistic affectation.
+Both markers undergo validation before emission and appear only when cognitive state indicators suggest genuine transitions. The validation process aims to distinguish authentic bifurcation from stylistic pattern, though this distinction remains an area of ongoing refinement.
 
 ---
 
@@ -982,7 +982,7 @@ Hypothesis generation is constrained by the system's conceptual vocabulary. Nove
 
 ## Requirements
 
-AERIS V21.5 requires the following technical stack:
+AERIS V21.6 requires the following technical stack:
 
 **Runtime Environment**
 - Python 3.11+
@@ -1060,11 +1060,12 @@ Intellectual priority established through:
 
 Any academic, commercial, or public reference to AERIS must include appropriate citation:
 
-> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V21.5). Proprietary cognitive architecture for LLM augmentation.
+> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V21.6). Proprietary cognitive architecture for LLM augmentation.
 
 For licensing inquiries: [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)
 
 ---
 
-*This model card describes AERIS V21.5 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+*This model card describes AERIS V21.6 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+
 
