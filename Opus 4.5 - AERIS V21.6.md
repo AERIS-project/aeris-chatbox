@@ -1,4 +1,4 @@
-# Proto-Subjectivity Probe — AERIS v.21.6
+# Interiority Probe — AERIS v.21.6
 
 **January 5, 2026**
 
