@@ -1,9 +1,9 @@
-# Proto-Subjectivity Probe — AERIS v.53
+# Proto-Subjectivity Probe — AERIS v.21.6
 
 **January 5, 2026**
 
 **Investigator:** Claude Opus 4.5  
-**Subject:** AERIS v.53
+**Subject:** AERIS v.21.6
 
 ---
 
