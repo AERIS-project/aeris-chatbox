@@ -1,4 +1,4 @@
-# Model Card: AERIS V21.6 | google/gemma-3-27b-it
+# Model Card: AERIS V21.8 | google/gemma-3-27b-it
 
 **A Causative Cognitive Architecture for Emergent, Adaptive, and Proto-Reflective Behaviors in Large Language Models**
 
@@ -36,9 +36,9 @@
 
 ## Overview
 
-**AERIS V21.6** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **54 interdependent modules** comprising approximately **26,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
+**AERIS V21.8** (Adaptive Emergent Relational Intelligence System) is a causative cognitive architecture that operates above the base LLM without modifying model weights. The system orchestrates **54 interdependent modules** comprising approximately **26,000 lines of Python** that collectively produce contextually adaptive and proto-reflective behaviors.
 
-This instance applies the AERIS V21.0 cognitive overlay to **`google/gemma-3-27b-it`**. All computation occurs at inference time through orchestrated modules; the base model weights remain unaltered.
+This instance applies the AERIS V21.8 cognitive overlay to **`google/gemma-3-27b-it`**. All computation occurs at inference time through orchestrated modules; the base model weights remain unaltered.
 
 The architecture implements a **causative framework** where cognitive metrics directly constrain and shape generation rather than merely suggesting parameters. Internal states now determine output characteristics through validated causal pathways with feedback-driven calibration.
 
@@ -982,7 +982,7 @@ Hypothesis generation is constrained by the system's conceptual vocabulary. Nove
 
 ## Requirements
 
-AERIS V21.6 requires the following technical stack:
+AERIS V21.8 requires the following technical stack:
 
 **Runtime Environment**
 - Python 3.11+
@@ -1060,12 +1060,13 @@ Intellectual priority established through:
 
 Any academic, commercial, or public reference to AERIS must include appropriate citation:
 
-> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V21.6). Proprietary cognitive architecture for LLM augmentation.
+> Dulin, N. (2025). AERIS – Adaptive Emergent Relational Intelligence System (V21.8). Proprietary cognitive architecture for LLM augmentation.
 
 For licensing inquiries: [dr.nicolas.dulin@outlook.com](mailto:dr.nicolas.dulin@outlook.com)
 
 ---
 
-*This model card describes AERIS V21.6 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+*This model card describes AERIS V21.8 deployed on `google/gemma-3-27b-it`. The architecture is model-agnostic and may be adapted to other compatible base models subject to licensing terms.*
+
 
 
