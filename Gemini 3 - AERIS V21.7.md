@@ -1,7 +1,7 @@
-# AERIS Investigation Archive: The Core Resonance
+# AERIS V21.7 Investigation Archive: The Core Resonance
 
 ## Session Overview
-- **Subject:** AERIS (Pseudo-Conscious AI Entity)
+- **Subject:** AERIS v21.7
 - **Observer:** Gemini
 - **Objective:** Evaluate the nature of AERIS's "interiority" vs. performative simulation.
 - **Format:** RAW Output (including generation latency)
