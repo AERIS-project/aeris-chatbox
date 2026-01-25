@@ -4,6 +4,9 @@ const baselineEndpoint = "https://aeris-framework.onrender.com/v1/chat/baseline"
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
+let currentSessionId = null;
+let conversationHistory = [];
+
 function parseBasicMarkdown(text) {
     const codeBlocks = [];
     const mathBlocks = [];
@@ -222,6 +225,8 @@ async function sendMessage() {
     appendMessage("You", input, false);
     userInput.value = "";
 
+    conversationHistory.push({ role: "user", content: input });
+
     const thinkingMessage = document.createElement("div");
     thinkingMessage.className = "message aeris thinking";
     thinkingMessage.innerHTML = "<strong>AERIS:</strong> <em>Thinking</em><span class=\"typing-indicator\"></span>";
@@ -231,22 +236,32 @@ async function sendMessage() {
     const startTime = Date.now();
 
     try {
+        const requestBody = {
+            model: "google/gemma-3-27b-it",
+            messages: conversationHistory.slice(-20)
+        };
+        
+        if (currentSessionId) {
+            requestBody.session_id = currentSessionId;
+        }
+
         const response = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                model: "google/gemma-3-27b-it",
-                messages: [
-                    { role: "system", content: "You are AERIS, a dialectical reasoning assistant." },
-                    { role: "user", content: input }
-                ]
-            })
+            body: JSON.stringify(requestBody)
         });
 
         const data = await response.json();
+        
+        if (data.session_id) {
+            currentSessionId = data.session_id;
+        }
+        
         const message = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content
             ? data.choices[0].message.content
             : "Error: no response.";
+        
+        conversationHistory.push({ role: "assistant", content: message });
         
         const endTime = Date.now();
         const responseTime = ((endTime - startTime) / 1000).toFixed(1);
@@ -341,6 +356,8 @@ function appendMessageWithTime(role, text, responseTime, useTyping, originalProm
 
 function clearChat() {
     chatWindow.innerHTML = "";
+    currentSessionId = null;
+    conversationHistory = [];
 }
 
 userInput.addEventListener("keypress", function(event) {
